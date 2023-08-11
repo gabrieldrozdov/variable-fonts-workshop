@@ -4,15 +4,15 @@
 
 :root {
 	/* Color palette */
-	--light: #F2F2F2;
 	--gray: #E6E6E6;
-	--dark: #4D4D4D;
-	--red: #F45C28;
-	--blue: #00D6F5;
-	--purple: #AC6AFF;
-	--yellow: #FFB800;
-	--pink: #FB8BD3;
-	--green: #98E079;
+	--red: #FF734D;
+	--blue: #5ADDE8;
+	--purple: #A690FC;
+	--yellow: #fcc03a;
+	--pink: #F3A8DD;
+	--green: #98DB6B;
+	--dark: #353535;
+	--light: #e5e5e5;
 	--primary: #CCCCCC;
 	--shadow: 0 0 10px rgba(0,0,0,.3);
 
