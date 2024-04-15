@@ -113,11 +113,11 @@
 			<div class="menu-fonts-items-empty">No fonts found!!!</div>
 
 			<div class="menu-fonts-nav">
-				<div class="menu-fonts-nav-button" id="menu-fonts-sorting" onclick="sortMenuFonts();">
+				<div class="menu-fonts-nav-button" id="menu-fonts-sorting" onclick="sortMenuFonts(); flashScreen();">
 					<svg viewBox="0 0 24 24"><path d="M12 0l8 10h-16l8-10zm8 14h-16l8 10 8-10z"/></svg>
 					<span id="menu-fonts-sort">Sort by: Random</span>
 				</div>
-				<div class="menu-fonts-nav-button" id="menu-fonts-filters" onclick="filterMenuFonts();">
+				<div class="menu-fonts-nav-button" id="menu-fonts-filters" onclick="filterMenuFonts(); flashScreen();">
 					<svg viewBox="0 0 24 24"><path d="M1 0h22l-9 14.094v9.906l-4-2v-7.906z"/></svg>
 					<span id="menu-fonts-filter">Filter by: Show All</span>
 				</div>
@@ -129,7 +129,7 @@
 					<svg viewBox="0 0 24 24"><path d="M15.794 2.707c-.634-.634-.174-1.707.707-1.707.256 0 .512.098.707.293l4.243 4.242c.391.391.391 1.023 0 1.414s-1.023.391-1.414 0l-4.243-4.242zm-1.811 9.293h-11.42l-.445-.445c-.212-.213-.129-.609.188-.721 6.171-1.357 9.375-1.261 13.573-5.414l-1.414-1.414c-3.784 3.794-7.231 3.712-12.827 4.944-1.029.366-1.638 1.317-1.638 2.322 0 .605.224 1.217.705 1.697l9.301 9.301c.48.48 1.091.73 1.696.73 1 0 1.955-.629 2.323-1.664 1.235-5.617.884-9.288 4.683-13.086l-1.414-1.414c-1.732 1.732-2.689 3.398-3.311 5.164zm10.017 1.517c0 1.363-1.106 2.483-2.47 2.483-2.991 0-4.06-4.22.912-8-.058 2.365 1.558 3.302 1.558 5.517zm-2.371-3.466c-.346.189-.856.698-.934 1.333-.115.95.867 1.23.953-.044.04-.537 0-.794-.019-1.289z"/></svg>
 					<input type="text" placeholder="Type to preview!" oninput="sampleMenuFonts(this.value)" spellcheck="false" id="menu-fonts-sample">
 				</div>
-				<div class="menu-fonts-nav-button" onclick="resetMenuFonts();">
+				<div class="menu-fonts-nav-button" onclick="resetMenuFonts(); flashScreen();">
 					<svg viewBox="0 0 24 24"><path d="M9 12l-4.463 4.969-4.537-4.969h3c0-4.97 4.03-9 9-9 2.395 0 4.565.942 6.179 2.468l-2.004 2.231c-1.081-1.05-2.553-1.699-4.175-1.699-3.309 0-6 2.691-6 6h3zm10.463-4.969l-4.463 4.969h3c0 3.309-2.691 6-6 6-1.623 0-3.094-.65-4.175-1.699l-2.004 2.231c1.613 1.526 3.784 2.468 6.179 2.468 4.97 0 9-4.03 9-9h3l-4.537-4.969z"/></svg>
 					<span>Reset Settings</span>
 				</div>
@@ -140,19 +140,23 @@
 			<div class="controls-tabs">
 				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('variable', this)">
 					<svg viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
-					<span>Variable Axis Settings</span>
+					<span>Variable Axes</span>
 				</button>
 				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('typography', this)">
 					<svg viewBox="0 0 24 24"><path d="M22 0h-20v6h1.999c0-1.174.397-3 2.001-3h4v16.874c0 1.174-.825 2.126-2 2.126h-1v2h9.999v-2h-.999c-1.174 0-2-.952-2-2.126v-16.874h4c1.649 0 2.02 1.826 2.02 3h1.98v-6z"/></svg>
-					<span>Typography Settings</span>
+					<span>Typography</span>
 				</button>
 				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('interface', this)">
 					<svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10v-20zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>
-					<span>Interface Settings</span>
+					<span>Interface</span>
 				</button>
 				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('audio', this)">
 					<svg viewBox="0 0 24 24"><path d="M6 7l8-5v20l-8-5v-10zm-6 10h4v-10h-4v10zm20.264-13.264l-1.497 1.497c1.847 1.783 2.983 4.157 2.983 6.767 0 2.61-1.135 4.984-2.983 6.766l1.498 1.498c2.305-2.153 3.735-5.055 3.735-8.264s-1.43-6.11-3.736-8.264zm-.489 8.264c0-2.084-.915-3.967-2.384-5.391l-1.503 1.503c1.011 1.049 1.637 2.401 1.637 3.888 0 1.488-.623 2.841-1.634 3.891l1.503 1.503c1.468-1.424 2.381-3.309 2.381-5.394z"/></svg>
-					<span>Audio Settings</span>
+					<span>Audio</span>
+				</button>
+				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('information', this)">
+					<svg viewBox="0 0 24 24"><path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg>
+					<span>Credits</span>
 				</button>
 			</div>
 
@@ -301,6 +305,23 @@
 							<span>Mute</span>
 						</button>
 					</div>
+
+					<div class="controls-menu-divider"></div>
+
+					<div class="controls-menu-item">
+						<button class="controls-menu-button" onclick="toggleAnimalese()" data-state="0" id="animalese-toggle">
+							<svg viewBox="0 0 24 24"><path d="M.054 23c.971-1.912 2.048-4.538 1.993-6.368-1.308-1.562-2.047-3.575-2.047-5.625 0-5.781 5.662-10.007 12-10.007 6.299 0 12 4.195 12 10.007 0 6.052-6.732 11.705-15.968 9.458-1.678 1.027-5.377 2.065-7.978 2.535z"/></svg>
+							<span>Toggle musical typing</span>
+						</button>
+					</div>
+				</section>
+
+				<section class="controls-menu-content" data-tab="information" data-active="0">
+					<div class="controls-menu-text">
+						<p>
+							This design was designed and developed by <a href="https://gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a>.<br>For more resources and tools, check out <a href="https://gdwithgd.com/" target="_blank">GD with GD</a>!
+						</p>
+					</div>
 				</section>
 			</div>
 		</div>
@@ -311,9 +332,8 @@
 					<div class="instrument-text" contenteditable="plaintext-only" spellcheck="false"></div>
 					<div class="instrument-screen-generator">
 						<h4 class="instrument-screen-generator-title">Generate Text</h4>
-						<button class="instrument-screen-generator-button" onclick="generateText('uppercase')">Uppercase</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('lowercase')">Lowercase</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('numbers')">Numbers</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('allglyphs')">All Glyphs</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('lettersnumbers')">Letters + Numbers</button>
 						<button class="instrument-screen-generator-button" onclick="generateText('randomsentence')">Random sentence</button>
 						<button class="instrument-screen-generator-button" onclick="generateText('randomcharacters')">Random characters</button>
 						<button class="instrument-screen-generator-button" onclick="generateText('repeatedcharacters')">Repeated characters</button>
@@ -325,10 +345,10 @@
 				</div>
 				
 				<div class="instrument-controls">
-					<div class="instrument-axes"></div>
+					<div class="instrument-axes" data-lock="0"></div>
 					
 					<div class="instrument-controls-global">
-						<button class="instrument-axis-button" data-active="1"><svg viewBox="0 0 24 24"><path d="M6 8v-2c0-3.313 2.687-6 6-6 3.312 0 6 2.687 6 6v2h-2v-2c0-2.206-1.795-4-4-4s-4 1.794-4 4v2h-2zm-3 2v14h18v-14h-18z"/></svg>
+						<button class="instrument-axis-button" id="oscillator-lock" data-active="0" onclick="oscillatorLockSettings()"><svg viewBox="0 0 24 24"><path d="M6 8v-2c0-3.313 2.687-6 6-6 3.312 0 6 2.687 6 6v2h-2v-2c0-2.206-1.795-4-4-4s-4 1.794-4 4v2h-2zm-3 2v14h18v-14h-18z"/></svg>
 						<span>Lock settings together</span>
 					</button>
 				</div>
@@ -339,6 +359,8 @@
 		<div class="droparea-message" data-active="0">
 			Drop your font anywhere to use it!
 		</div>
+
+		<div class="flash"></div>
 	</div>
 	
 	<div class="background" data-motion="1" data-checkerboard="1"></div>

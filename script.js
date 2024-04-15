@@ -50,6 +50,15 @@ function endBackgroundCycle() {
 setTimeout(changeBackground, 100);
 setTimeout(changePrimaryColor, 100);
 
+// Flash to hide transitions
+function flashScreen() {
+	const flash = document.querySelector('.flash');
+	flash.dataset.active = 1;
+	setTimeout(() => {
+		flash.dataset.active = 0;
+	}, 50)
+}
+
 // Nav
 function closeNav() {
 	const nav = document.querySelector('.nav');
@@ -376,6 +385,11 @@ function updateControlsAxisSlider(e) {
 	// Recalculate range
 	let newRange = Math.abs(activeFontAxes[axis]["capmax"]-activeFontAxes[axis]["capmin"]);
 	activeFontAxes[axis]["range"] = newRange;
+
+	// Per-instrument settings
+	if (activeInstrument == "oscillator") {
+		refreshAxisSlider(axis);
+	}
 }
 function endControlsAxisSlider() {
 	document.removeEventListener('mousemove', updateControlsAxisSlider);
@@ -386,7 +400,7 @@ function endControlsAxisSlider() {
 // INTRO SCREEN
 // ——————————————————————————————————
 function setLogoDelays() {
-	let delay = 0;
+	let delay = .5;
 	for (let span of document.querySelectorAll('.intro-logo span')) {
 		span.style.animationDelay = `${delay}s`;
 		delay += .05;
@@ -398,12 +412,9 @@ function introIn() {
 	startBackgroundCycle();
 }
 function introOut() {
-	const body = document.querySelector('body');
-	body.style.backgroundColor = `white`;
 	const intro = document.querySelector('.intro');
 	intro.dataset.active = 0;
 	endBackgroundCycle();
-	setColor(colors[Math.floor(Math.random()*colors.length)]);
 	openNav();
 	showControls();
 	pickRandomFont();
@@ -443,7 +454,7 @@ function generateMenuFonts() {
 
 		htmlTemp += `
 			<div class="menu-fonts-item-transform" style="transform: translate(-${Math.round(Math.random()*100+100)}vw, ${Math.round(Math.random()*200-100)}vh);" data-filter="1" data-search="1">
-				<button class="menu-fonts-item" style="transform: rotate(${Math.round(Math.random()*20-10)}deg);" data-font="${font}" data-designer="${fontInfo["designer"].toLowerCase()}" data-tags ="${fontInfo["tags"]}" data-default="${fontInfo['preview-text']}" onclick="pickFont('${font}');">
+				<button class="menu-fonts-item" style="transform: rotate(${Math.round(Math.random()*20-10)}deg);" data-font="${font}" data-designer="${fontInfo["designer"].toLowerCase()}" data-tags ="${fontInfo["tags"]}" data-default="${fontInfo['preview-text']}" onclick="pickFont('${font}');" onmouseenter="playTomRandom();">
 					${credit}
 					<div class="menu-fonts-item-preview">${fontInfo['preview-text']}</div>
 					<div class="menu-fonts-item-info">
@@ -912,6 +923,7 @@ function prevFont() {
 		currentFontIndex = fontOrder.length-1;
 	}
 	pickFont(fontOrder[currentFontIndex]);
+	flashScreen();
 }
 function nextFont() {
 	let currentFontIndex = fontOrder.indexOf(activeFont);
@@ -920,6 +932,7 @@ function nextFont() {
 		currentFontIndex = 0;
 	}
 	pickFont(fontOrder[currentFontIndex]);
+	flashScreen();
 }
 
 // ——————————————————————————————————
@@ -958,7 +971,7 @@ function resumeInstrument() {
 function initAxisSliders(instrument) {
 	const instrumentDOM = document.querySelector(`#${instrument}`);
 	for (let slider of instrumentDOM.querySelectorAll('[data-axis-slider]')) {
-		slider.addEventListener('mousedown', (e) => {startAxisSlider(slider, slider.dataset.axisSlider); updateAxisSlider(e); updateControlsSlider(e);});
+		slider.addEventListener('mousedown', (e) => {startAxisSlider(slider, slider.dataset.axisSlider); updateAxisSlider(e);});
 	}
 }
 function resetAxisSliders(instrument) {
@@ -1011,6 +1024,11 @@ function updateAxisSlider(e) {
 	// Update text element
 	const sliderValue = activeAxisSlider.querySelector('.instrument-axis-slider-value');
 	sliderValue.innerText = `${activeFontAxes[activeAxisSliderTarget]["value"]}`;
+
+	// Per-instrument controls
+	if (activeInstrument == "oscillator") {
+		oscillatorSettings[activeAxisSliderTarget]["percent"] = percentFill;
+	}
 }
 function endAxisSlider() {
 	document.removeEventListener('mousemove', updateAxisSlider);
@@ -1036,6 +1054,30 @@ function setAxisSlider(instrument, axis, percent) {
 	sliderValue.innerText = `${activeFontAxes[axis]["value"]}`;
 }
 
+// Refresh slider to account for axis cap changes
+function refreshAxisSlider(axis) {
+	const sliderElement = document.querySelector(`#${activeInstrument} [data-axis-slider="${axis}"]`);
+	const sliderFill = sliderElement.querySelector('.instrument-axis-slider-fill');
+	const sliderValue = sliderElement.querySelector('.instrument-axis-slider-value');
+	
+	// Adjust value if needed
+	const min = Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
+	const max = Math.max(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
+	const range = max-min;
+	if (activeFontAxes[axis]["value"] < min) {
+		activeFontAxes[axis]["value"] = min;
+	} else if (activeFontAxes[axis]["value"] > max) {
+		activeFontAxes[axis]["value"] = max;
+	}
+
+	// Calculate percent filled
+	const percentFill = ((activeFontAxes[axis]["value"] - min)/range)*100;
+
+	// Update slider elements
+	sliderFill.style.height = `${percentFill}%`;
+	sliderValue.innerText = `${activeFontAxes[axis]["value"]}`;
+}
+
 // ——————————————————————————————————
 // OSCILLATOR
 // ——————————————————————————————————
@@ -1044,6 +1086,9 @@ let oscillatorLoop;
 function initializeOscillator() {
 	clearTimeout(oscillatorLoop);
 	const instrumentOscillator = document.querySelector('#oscillator');
+
+	// Turn off lock
+	oscillatorLockSettingsOff();
 
 	// Apply font
 	const instrumentText = instrumentOscillator.querySelector('.instrument-text');
@@ -1194,6 +1239,14 @@ function instrumentOscillatorLoop() {
 	let fontVariation = "";
 	for (let axis of axes) {
 		let axisOscillatorInfo = oscillatorSettings[axis];
+
+		// When locked, set to first axis
+		if (oscillatorLock && axisNumber > 0) {
+			axisOscillatorInfo["waveform"] = oscillatorSettings[axes[0]]["waveform"];
+			axisOscillatorInfo["percent"] = oscillatorSettings[axes[0]]["percent"];
+			axisOscillatorInfo["direction"] = oscillatorSettings[axes[0]]["direction"];
+		}
+		
 		let baseFrequency = oscillatorFrequencies[axisNumber%oscillatorFrequencies.length];
 		if (axisOscillatorInfo["state"]) {
 			if (axisOscillatorInfo["waveform"] == "sine") {
@@ -1370,6 +1423,29 @@ function oscillatorDisplayValue(axis, section, target) {
 	activeButton.dataset.active = 1;
 }
 
+// Lock settings together
+let oscillatorLock = false;
+function oscillatorLockSettings() {
+	const oscillatorAxes = document.querySelector(`#oscillator .instrument-axes`);
+	const oscillatlorLockToggle = document.querySelector('#oscillator-lock');
+	if (oscillatorLock) {
+		oscillatorLock = false;
+		oscillatlorLockToggle.dataset.active = 0;
+		oscillatorAxes.dataset.lock = 0;
+	} else {
+		oscillatorLock = true;
+		oscillatlorLockToggle.dataset.active = 1;
+		oscillatorAxes.dataset.lock = 1;
+	}
+}
+function oscillatorLockSettingsOff() {
+	const oscillatorAxes = document.querySelector(`#oscillator .instrument-axes`);
+	const oscillatlorLockToggle = document.querySelector('#oscillator-lock');
+	oscillatorLock = false;
+	oscillatlorLockToggle.dataset.active = 0;
+	oscillatorAxes.dataset.lock = 0;
+}
+
 // —————————————————————————————————————————————————————————————————————
 // TEXT GENERATOR
 // —————————————————————————————————————————————————————————————————————
@@ -1419,26 +1495,26 @@ function repeatedCharacters(quantity) {
 }
 
 // Generate text
-let lettersets = {
-	"uppercase": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-	"lowercase": "abcdefghijklmnopqrstuvwxyz",
-	"numbers": "0123456789"
-}
 let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 function generateText(textType) {
 	const instrumentDisplay = document.querySelector(`#${activeInstrument} .instrument-text`);
-	if (textType == "uppercase") {
-		instrumentDisplay.innerText = lettersets["uppercase"];
-	} else if (textType == "lowercase") {
-		instrumentDisplay.innerText = lettersets["lowercase"];
-	} else if (textType == "numbers") {
-		instrumentDisplay.innerText = lettersets["numbers"];
+	if (textType == "allglyphs") {
+		let textTemp = "";
+		for (const [key, value] of Object.entries(activeFontData.glyphs.glyphs)) {
+			if (value.unicode == undefined || value.unicode == 32) {
+				continue
+			}
+			textTemp += `&#${value.unicode};`;
+		}
+		instrumentDisplay.innerHTML = textTemp;
+	} else if (textType == "lettersnumbers") {
+		instrumentDisplay.innerText = characters;
 	} else if (textType == "randomsentence") {
 		instrumentDisplay.innerText = randomSentence();
 	} else if (textType == "randomcharacters") {
-		instrumentDisplay.innerText = randomCharacters(Math.round(Math.random()*30+10));
+		instrumentDisplay.innerText = randomCharacters(Math.round(Math.random()*50+30));
 	} else if (textType == "repeatedcharacters") {
-		instrumentDisplay.innerText = repeatedCharacters(Math.round(Math.random()*30+10));
+		instrumentDisplay.innerText = repeatedCharacters(Math.round(Math.random()*50+30));
 	}
 }
 
@@ -1528,6 +1604,9 @@ const tomSampler = new Tone.Sampler({
 }).toDestination();
 function playTom(freq) {
 	tomSampler.triggerAttackRelease(freq, 1);
+}
+function playTomRandom() {
+	tomSampler.triggerAttackRelease(Math.random()*100+50, 1);
 }
 
 // Kick sampler
@@ -1635,7 +1714,7 @@ for (let letter of voiceSamplerLetters) {
 			C2: `voice-${letter}.mp3`
 		},
 		baseUrl: "assets/audio/newvoice/",
-		volume: 0,
+		volume: -10,
 	}).toDestination();
 }
 function playVoice(letter, pitch) {
@@ -1644,34 +1723,36 @@ function playVoice(letter, pitch) {
 		voiceSamplers[letter].triggerAttackRelease(pitch, 1);
 	}
 }
-
-
-
+let animalese = false;
+function toggleAnimalese() {
+	const animaleseToggle = document.querySelector("#animalese-toggle");
+	if (animalese) {
+		animalese = false;
+		animaleseToggle.dataset.state = 0;
+	} else {
+		animalese = true;
+		animaleseToggle.dataset.state = 1;
+	}
+}
+document.addEventListener('keypress', typeAnimalese);
+function typeAnimalese(e) {
+	let letter = e.key.toLowerCase();
+	if (voiceSamplerLetters.includes(letter) && animalese) {
+		playVoice(letter, Math.random()*100+100);
+	}
+}
 
 // TODO
-	// fix rounding by analyzing if font axes has decimal
+// volume controls
+// text outline mode
+// interface sfx
+// fix axis rounding issues
+// instrument menu
 
-// OSCILLATOR
-	// lock settings
-	// fix dragging while oscillator is active
+// WISHLIST
+// URL options with font name and instrument name
+// linkable credits to student websites, social, etc.
 
-// INTERFACE
-	// volume
-	// text outline mode?
-
-
-// make url linked to individual fonts and instruments
-// also add credits for student fonts
-
-// FIX BUG user fonts going twice as fast on drop in
-// FIX font menu too tall rn when everything is filtered out
-
-// next and prev font buttons
-
-// square wave waaaay too loud
-
-// mobile format for oscillator
-
-// info menu on bottom
-
-// interface sound fx
+// BUGS
+// fonts with a ton of axes like roboto flex not working
+// manage volume when multiple oscillator axes used
