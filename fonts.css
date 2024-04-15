@@ -1,933 +1,205 @@
-/* ———————————————————————————————————————————————————————————————————————— */
-/* FONTS */
-/* ———————————————————————————————————————————————————————————————————————— */
 
-/* Jost */
-@font-face {
-	font-family: jost;
-	src: url("fonts/jost.ttf");
-	font-weight: 100 900;
-}
-@keyframes preview-jost {
-	0% {
-		font-variation-settings: "wght" 400, "ital" 0.00;
-	}
-	100% {
-		font-variation-settings: "wght" 900, "ital" 2.00;
-	}
-}
-[data-font="jost"] .menubox-grid-item-preview {
-	font-family: jost, sans-serif;
-}
-[data-font="jost"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-jost infinite alternate ease-in-out;
-}
-
-/* Bashful */
-@font-face {
-	font-family: bashful;
-	src: url("fonts/bashful.ttf");
-}
-@keyframes preview-bashful {
-	0% {
-		font-variation-settings: "BASH" 0;
-	}
-	100% {
-		font-variation-settings: "BASH" 100;
-	}
-}
-[data-font="bashful"] .menubox-grid-item-preview {
-	font-family: bashful, sans-serif;
-}
-[data-font="bashful"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-bashful infinite alternate ease-in-out;
-}
-
-/* PowerPack */
-@font-face {
-	font-family: powerpack;
-	src: url("fonts/powerpack.ttf");
-}
-@keyframes preview-powerpack {
-	0% {
-		font-variation-settings: "chrg" 0, "powr" 0;
-	}
-	20% {
-		font-variation-settings: "chrg" 0, "powr" 100;
-	}
-	80% {
-		font-variation-settings: "chrg" 100, "powr" 100;
-	}
-	100% {
-		font-variation-settings: "chrg" 100, "powr" 0;
-	}
-}
-[data-font="powerpack"] .menubox-grid-item-preview {
-	font-family: powerpack, sans-serif;
-}
-[data-font="powerpack"]:hover .menubox-grid-item-preview {
-	animation: 4s preview-powerpack infinite alternate ease-in-out;
-}
-
-/* That Then This */
-@font-face {
-	font-family: thatthenthis;
-	src: url("fonts/thatthenthis.ttf");
-}
-@keyframes preview-thatthenthis {
-	0% {
-		font-variation-settings: "VARI" 0, "DIST" 0;
-	}
-	25% {
-		font-variation-settings: "VARI" 100, "DIST" 0;
-	}
-	50% {
-		font-variation-settings: "VARI" 100, "DIST" 100;
-	}
-	75% {
-		font-variation-settings: "VARI" 0, "DIST" 100;
-	}
-	100% {
-		font-variation-settings: "VARI" 0, "DIST" 0;
-	}
-}
-[data-font="that-then-this"] .menubox-grid-item-preview {
-	font-family: thatthenthis, sans-serif;
-}
-[data-font="that-then-this"]:hover .menubox-grid-item-preview {
-	animation: 2s preview-thatthenthis infinite alternate ease-in-out;
-}
-
-/* Mini Mochi */
-@font-face {
-	font-family: minimochi;
-	src: url("fonts/minimochi.ttf");
-}
-@keyframes preview-minimochi {
-	0% {
-		font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
-	}
-	20% {
-		font-variation-settings: "STCH" 0, "FLAV" 0, "SLCE" 0;
-	}
-	40% {
-		font-variation-settings: "STCH" 100, "FLAV" 100, "SLCE" 0;
-	}
-	60% {
-		font-variation-settings: "STCH" 0, "FLAV" 100, "SLCE" 100;
-	}
-	80% {
-		font-variation-settings: "STCH" 100, "FLAV" 0, "SLCE" 100;
-	}
-	100% {
-		font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
-	}
-}
-[data-font="mini-mochi"] .menubox-grid-item-preview {
-	font-family: minimochi, sans-serif;
-}
-[data-font="mini-mochi"]:hover .menubox-grid-item-preview {
-	animation: 4s preview-minimochi infinite alternate ease-in-out;
-}
-
-/* Dreidel */
-@font-face {
-	font-family: dreidel;
-	src: url("fonts/dreidel.ttf");
-}
-@keyframes preview-dreidel {
-	0% {
-		font-variation-settings: "spin" -45;
-	}
-	100% {
-		font-variation-settings: "spin" 405;
-	}
-}
-[data-font="dreidel"] .menubox-grid-item-preview {
-	font-family: dreidel, sans-serif;
-}
-[data-font="dreidel"]:hover .menubox-grid-item-preview {
-	animation: 3s preview-dreidel infinite alternate ease-in-out;
-}
-
-/* Galapagos */
-@font-face {
-	font-family: galapagos;
-	src: url("fonts/galapagos.ttf");
-}
-@keyframes preview-galapagos {
-	0% {
-		font-variation-settings: "wght" 400, "shll" 0;
-	}
-	50% {
-		font-variation-settings: "wght" 400, "shll" 100;
-	}
-	100% {
-		font-variation-settings: "wght" 900, "shll" 100;
-	}
-}
-[data-font="galapagos"] .menubox-grid-item-preview {
-	font-family: galapagos, sans-serif;
-	font-feature-settings: "ss01" 1, "ss06" 1;
-}
-[data-font="galapagos"]:hover .menubox-grid-item-preview {
-	animation: 2s preview-galapagos infinite alternate ease-in-out;
-}
-
-/* AUTHENTIC Remixed */
-@font-face {
-	font-family: authenticremixed;
-	src: url("fonts/authenticremixed.ttf");
-}
-@keyframes preview-authenticremixed {
-	0% {
-		font-variation-settings: "xaxi" 0, "yaxi" 0;
-	}
-	15% {
-		font-variation-settings: "xaxi" 100, "yaxi" 0;
-	}
-	30% {
-		font-variation-settings: "xaxi" 100, "yaxi" -100;
-	}
-	45% {
-		font-variation-settings: "xaxi" -100, "yaxi" -100;
-	}
-	60% {
-		font-variation-settings: "xaxi" -100, "yaxi" 100;
-	}
-	75% {
-		font-variation-settings: "xaxi" 100, "yaxi" 100;
-	}
-	100% {
-		font-variation-settings: "xaxi" 0, "yaxi" 0;
-	}
-}
-[data-font="authentic-remixed"] .menubox-grid-item-preview {
-	font-family: authenticremixed, sans-serif;
-}
-[data-font="authentic-remixed"]:hover .menubox-grid-item-preview {
-	animation: 3s preview-authenticremixed infinite alternate ease-in-out;
-}
-
-/* SELF-PORTRAITS */
-@font-face {
-	font-family: selfportraits;
-	src: url("fonts/selfportraits.ttf");
-}
-@keyframes preview-selfportraits {
-	0% {
-		font-variation-settings: "POSI" 0, "SHPE" 0;
-	}
-	20% {
-		font-variation-settings: "POSI" 100, "SHPE" 0;
-	}
-	40% {
-		font-variation-settings: "POSI" 100, "SHPE" 100;
-	}
-	60% {
-		font-variation-settings: "POSI" 200, "SHPE" 100;
-	}
-	80% {
-		font-variation-settings: "POSI" 200, "SHPE" 0;
-	}
-	100% {
-		font-variation-settings: "POSI" 200, "SHPE" 0;
-	}
-}
-[data-font="selfportraits"] .menubox-grid-item-preview {
-	font-family: selfportraits, sans-serif;
-}
-[data-font="selfportraits"]:hover .menubox-grid-item-preview {
-	animation: 3s preview-selfportraits infinite alternate ease-in-out;
-}
-
-/* CAFFEINE */
-@font-face {
-	font-family: caffeine;
-	src: url("fonts/caffeine.ttf");
-}
-@keyframes preview-caffeine {
-	0% {
-		font-variation-settings: "SCRI" 0, "SCRA" 0;
-	}
-	25% {
-		font-variation-settings: "SCRI" 100, "SCRA" 0;
-	}
-	50% {
-		font-variation-settings: "SCRI" 100, "SCRA" 100;
-	}
-	75% {
-		font-variation-settings: "SCRI" 0, "SCRA" 100;
-	}
-}
-[data-font="caffeine"] .menubox-grid-item-preview {
-	font-family: caffeine, sans-serif;
-}
-[data-font="caffeine"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-caffeine infinite steps(1, end);
-}
-
-/* SCRIBBLE SURPRISE */
-@font-face {
-	font-family: scribblesurprise;
-	src: url("fonts/scribblesurprise.ttf");
-}
-@keyframes preview-scribblesurprise {
-	0% {
-		font-variation-settings: "SHFT" 0;
-	}
-	100% {
-		font-variation-settings: "SHFT" 100;
-	}
-}
-[data-font="scribblesurprise"] .menubox-grid-item-preview {
-	font-family: scribblesurprise, sans-serif;
-}
-[data-font="scribblesurprise"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-scribblesurprise infinite alternate ease-in-out;
-}
-
-/* SPAGHETTI SANS */
-@font-face {
-	font-family: spaghettisans;
-	src: url("fonts/spaghettisans.ttf");
-}
-@keyframes preview-spaghettisans {
-	0% {
-		font-variation-settings: "SPGH" 0;
-	}
-	100% {
-		font-variation-settings: "SPGH" 100;
-	}
-}
-[data-font="spaghettisans"] .menubox-grid-item-preview {
-	font-family: spaghettisans, sans-serif;
-	font-variation-settings: "SPGH" 0;
-}
-[data-font="spaghettisans"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-spaghettisans infinite alternate ease-in-out;
-}
-
-/* STUDIO DISPLAY */
-@font-face {
-	font-family: studiodisplay;
-	src: url("fonts/studiodisplay.ttf");
-}
-@keyframes preview-studiodisplay {
-	0% {
-		font-variation-settings: "wght" 400;
-	}
-	100% {
-		font-variation-settings: "wght" 900;
-	}
-}
-[data-font="studiodisplay"] .menubox-grid-item-preview {
-	font-family: studiodisplay, sans-serif;
-}
-[data-font="studiodisplay"]:hover .menubox-grid-item-preview {
-	animation: .5s preview-studiodisplay infinite alternate ease-in-out;
-}
-
-/* NOCTURNAL SPACE INVADERS */
-@font-face {
-	font-family: nocturnalspaceinvaders;
-	src: url("fonts/nocturnalspaceinvaders.ttf");
-}
-@keyframes preview-nocturnalspaceinvaders {
-	0% {
-		font-variation-settings: "DIVE" 0, "LINE" 0;
-	}
-	20% {
-		font-variation-settings: "DIVE" 100, "LINE" 0;
-	}
-	40% {
-		font-variation-settings: "DIVE" 100, "LINE" 100;
-	}
-	60% {
-		font-variation-settings: "DIVE" 0, "LINE" 100;
-	}
-	80% {
-		font-variation-settings: "DIVE" 0, "LINE" 0;
-	}
-}
-[data-font="nocturnalspaceinvaders"] .menubox-grid-item-preview {
-	font-family: nocturnalspaceinvaders, sans-serif;
-}
-[data-font="nocturnalspaceinvaders"]:hover .menubox-grid-item-preview {
-	animation: 3s preview-nocturnalspaceinvaders infinite ease-in-out;
-}
-
-/* CLORIS */
-@font-face {
-	font-family: cloris;
-	src: url("fonts/cloris.ttf");
-}
-@keyframes preview-cloris {
-	0% {
-		font-variation-settings: "SRFF" 0;
-	}
-	100% {
-		font-variation-settings: "SRFF" 100;
-	}
-}
-[data-font="cloris"] .menubox-grid-item-preview {
-	font-family: cloris, sans-serif;
-}
-[data-font="cloris"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-cloris infinite alternate ease-in-out;
-}
-
-/* JUMP */
-@font-face {
-	font-family: jump;
-	src: url("fonts/jump.ttf");
-}
-@keyframes preview-jump {
-	0% {
-		font-variation-settings: "JUMP" 0;
-	}
-	100% {
-		font-variation-settings: "JUMP" 100;
-	}
-}
-[data-font="jump"] .menubox-grid-item-preview {
-	font-family: jump, sans-serif;
-}
-[data-font="jump"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-jump infinite alternate ease-in-out;
-}
-
-/* FUNGUS */
-@font-face {
-	font-family: fungus;
-	src: url("fonts/fungus.ttf");
-}
-@keyframes preview-fungus {
-	0% {
-		font-variation-settings: "GROW" 0;
-	}
-	100% {
-		font-variation-settings: "GROW" 100;
-	}
-}
-[data-font="fungus"] .menubox-grid-item-preview {
-	font-family: fungus, sans-serif;
-}
-[data-font="fungus"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-fungus infinite alternate ease-in-out;
-}
-
-/* FUNKY SERIF */
-@font-face {
-	font-family: funkyserif;
-	src: url("fonts/funkyserif.ttf");
-}
-@keyframes preview-funkyserif {
-	0% {
-		font-variation-settings: "SRFF" 0;
-	}
-	100% {
-		font-variation-settings: "SRFF" 100;
-	}
-}
-[data-font="funkyserif"] .menubox-grid-item-preview {
-	font-family: funkyserif, sans-serif;
-}
-[data-font="funkyserif"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-funkyserif infinite alternate ease-in-out;
-}
-
-/* LITTLE MONSTER */
-@font-face {
-	font-family: littlemonster;
-	src: url("fonts/littlemonster.ttf");
-}
-@keyframes preview-littlemonster {
-	0% {
-		font-variation-settings: "VARI" 0;
-	}
-	100% {
-		font-variation-settings: "VARI" 100;
-	}
-}
-[data-font="littlemonster"] .menubox-grid-item-preview {
-	font-family: littlemonster, sans-serif;
-}
-[data-font="littlemonster"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-littlemonster infinite alternate ease-in-out;
-}
-
-/* GILBERTO */
-@font-face {
-	font-family: gilberto;
-	src: url("fonts/gilberto.ttf");
-}
-@keyframes preview-gilberto {
-	0% {
-		font-variation-settings: "SMBA" 0;
-	}
-	100% {
-		font-variation-settings: "SMBA" 100;
-	}
-}
-[data-font="gilberto"] .menubox-grid-item-preview {
-	font-family: gilberto, sans-serif;
-}
-[data-font="gilberto"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-gilberto infinite alternate ease-in-out;
-}
-
-/* CORRUPTION */
-@font-face {
-	font-family: corruption;
-	src: url("fonts/corruption.ttf");
-}
-@keyframes preview-corruption {
-	0% {
-		font-variation-settings: "wght" 0, "CRPT" 0;
-	}
-	33% {
-		font-variation-settings: "wght" 100, "CRPT" 0;
-	}
-	66% {
-		font-variation-settings: "wght" 100, "CRPT" 100;
-	}
-	100% {
-		font-variation-settings: "wght" 0, "CRPT" 100;
-	}
-}
-[data-font="corruption"] .menubox-grid-item-preview {
-	font-family: corruption, sans-serif;
-	font-variation-settings: "wght" 0, "CRPT" 0;
-}
-[data-font="corruption"]:hover .menubox-grid-item-preview {
-	animation: 2s preview-corruption infinite alternate ease-in-out;
-}
-
-/* EMOTYPE */
-@font-face {
-	font-family: emotype;
-	src: url("fonts/emotype.ttf");
-}
-@keyframes preview-emotype {
-	0% {
-		font-variation-settings: "VOLM" 0, "EMOT" 0;
-	}
-	25% {
-		font-variation-settings: "VOLM" 100, "EMOT" 0;
-	}
-	50% {
-		font-variation-settings: "VOLM" 100, "EMOT" 100;
-	}
-	75% {
-		font-variation-settings: "VOLM" 0, "EMOT" 100;
-	}
-	100% {
-		font-variation-settings: "VOLM" 0, "EMOT" 0;
-	}
-}
-[data-font="emotype"] .menubox-grid-item-preview {
-	font-family: emotype, sans-serif;
-}
-[data-font="emotype"]:hover .menubox-grid-item-preview {
-	animation: 4s preview-emotype infinite alternate ease-in-out;
-}
-
-/* GARDEN */
-@font-face {
-	font-family: garden;
-	src: url("fonts/garden.ttf");
-}
-@keyframes preview-garden {
-	0% {
-		font-variation-settings: "wght" 0;
-	}
-	100% {
-		font-variation-settings: "wght" 1000;
-	}
-}
-[data-font="garden"] .menubox-grid-item-preview {
-	font-family: garden, sans-serif;
-	font-variation-settings: "wght" 0;
-}
-[data-font="garden"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-garden infinite alternate ease-in-out;
-}
-
-/* LAVA */
-@font-face {
-	font-family: lava;
-	src: url("fonts/lava.ttf");
-}
-@keyframes preview-lava {
-	0% {
-		font-variation-settings: "DIST" 500;
-	}
-	100% {
-		font-variation-settings: "DIST" 100;
-	}
-}
-[data-font="lava"] .menubox-grid-item-preview {
-	font-family: lava, sans-serif;
-}
-[data-font="lava"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-lava infinite alternate ease-in-out;
-}
-
-/* MACARONI */
-@font-face {
-	font-family: macaroni;
-	src: url("fonts/macaroni.ttf");
-}
-@keyframes preview-macaroni {
-	0% {
-		font-variation-settings: "BEND" 0;
-	}
-	100% {
-		font-variation-settings: "BEND" 100;
-	}
-}
-[data-font="macaroni"] .menubox-grid-item-preview {
-	font-family: macaroni, sans-serif;
-}
-[data-font="macaroni"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-macaroni infinite alternate ease-in-out;
-}
-
-/* NATO ALPHABET */
-@font-face {
-	font-family: natoalphabet;
-	src: url("fonts/natoalphabet.ttf");
-}
-@keyframes preview-natoalphabet {
-	0% {
-		font-variation-settings: "NATO" 0;
-	}
-	100% {
-		font-variation-settings: "NATO" 100;
-	}
-}
-[data-font="natoalphabet"] .menubox-grid-item-preview {
-	font-family: natoalphabet, sans-serif;
-}
-[data-font="natoalphabet"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-natoalphabet infinite alternate ease-in-out;
-}
-
-/* NOAH */
-@font-face {
-	font-family: noah;
-	src: url("fonts/noah.ttf");
-}
-@keyframes preview-noah {
-	0% {
-		font-variation-settings: "wght" 100;
-	}
-	100% {
-		font-variation-settings: "wght" 0;
-	}
-}
-[data-font="noah"] .menubox-grid-item-preview {
-	font-family: noah, sans-serif;
-}
-[data-font="noah"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-noah infinite alternate ease-in-out;
-}
-
-/* PHROM PHONG */
-@font-face {
-	font-family: phromphong;
-	src: url("fonts/phromphong.ttf");
-}
-@keyframes preview-phromphong {
-	0% {
-		font-variation-settings: "SHRP" 0;
-	}
-	100% {
-		font-variation-settings: "SHRP" 100;
-	}
-}
-[data-font="phromphong"] .menubox-grid-item-preview {
-	font-family: phromphong, sans-serif;
-}
-[data-font="phromphong"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-phromphong infinite alternate ease-in-out;
-}
-
-/* POP UP */
-@font-face {
-	font-family: popup;
-	src: url("fonts/popup.ttf");
-}
-@keyframes preview-popup {
-	0% {
-		font-variation-settings: "hght" 100;
-	}
-	100% {
-		font-variation-settings: "hght" 0;
-	}
-}
-[data-font="popup"] .menubox-grid-item-preview {
-	font-family: popup, sans-serif;
-}
-[data-font="popup"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-popup infinite alternate ease-in-out;
-}
-
-/* STAR FONT */
-@font-face {
-	font-family: starfont;
-	src: url("fonts/starfont.ttf");
-}
-@keyframes preview-starfont {
-	0% {
-		font-variation-settings: "STAR" 0;
-	}
-	100% {
-		font-variation-settings: "STAR" 100;
-	}
-}
-[data-font="starfont"] .menubox-grid-item-preview {
-	font-family: starfont, sans-serif;
-}
-[data-font="starfont"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-starfont infinite alternate ease-in-out;
-}
-
-/* TETRIS */
-@font-face {
-	font-family: tetris;
-	src: url("fonts/tetris.ttf");
-}
-@keyframes preview-tetris {
-	0% {
-		font-variation-settings: "PXLR" 0;
-	}
-	50% {
-		font-variation-settings: "PXLR" -100;
-	}
-	100% {
-		font-variation-settings: "PXLR" 100;
-	}
-}
-[data-font="tetris"] .menubox-grid-item-preview {
-	font-family: tetris, sans-serif;
-}
-[data-font="tetris"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-tetris infinite alternate ease-in-out;
-}
-
-/* USELESS */
-@font-face {
-	font-family: useless;
-	src: url("fonts/useless.ttf");
-}
-@keyframes preview-useless {
-	0% {
-		font-variation-settings: "HAND" 0;
-	}
-	100% {
-		font-variation-settings: "HAND" 100;
-	}
-}
-[data-font="useless"] .menubox-grid-item-preview {
-	font-family: useless, sans-serif;
-}
-[data-font="useless"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-useless infinite alternate ease-in-out;
-}
-
-/* WHATS THE POINT */
-@font-face {
-	font-family: whatsthepoint;
-	src: url("fonts/whatsthepoint.ttf");
-}
-@keyframes preview-whatsthepoint {
-	0% {
-		font-variation-settings: "ANIM" 0;
-	}
-	100% {
-		font-variation-settings: "ANIM" 100;
-	}
-}
-[data-font="whatsthepoint"] .menubox-grid-item-preview {
-	font-family: whatsthepoint, sans-serif;
-}
-[data-font="whatsthepoint"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-whatsthepoint infinite alternate ease-in-out;
-}
-
-/* WINDY DAY */
-@font-face {
-	font-family: windyday;
-	src: url("fonts/windyday.ttf");
-}
-@keyframes preview-windyday {
-	0% {
-		font-variation-settings: "WIND" 0;
-	}
-	100% {
-		font-variation-settings: "WIND" 100;
-	}
-}
-[data-font="windyday"] .menubox-grid-item-preview {
-	font-family: windyday, sans-serif;
-}
-[data-font="windyday"]:hover .menubox-grid-item-preview {
-	animation: 1s preview-windyday infinite alternate ease-in-out;
-}
-
-/* XO PUZZLES */
-@font-face {
-	font-family: xopuzzles;
-	src: url("fonts/xopuzzles.ttf");
-}
-@keyframes preview-xopuzzles {
-	0% {
-		font-variation-settings: "PUZZ" 200;
-	}
-	33% {
-		font-variation-settings: "PUZZ" 400;
-	}
-	66% {
-		font-variation-settings: "PUZZ" 0;
-	}
-	100% {
-		font-variation-settings: "PUZZ" 200;
-	}
-}
-[data-font="xopuzzles"] .menubox-grid-item-preview {
-	font-family: xopuzzles, sans-serif;
-	font-variation-settings: "PUZZ" 200;
-}
-[data-font="xopuzzles"]:hover .menubox-grid-item-preview {
-	animation: 4s preview-xopuzzles infinite alternate ease-in-out;
-}
-
-/* NEW IVY */
-@font-face {
-	font-family: newivy;
-	src: url("fonts/newivy.ttf");
-}
-@keyframes preview-newivy {
-	0% {
-		font-variation-settings: "OFST" 0;
-	}
-	50% {
-		font-variation-settings: "OFST" -100;
-	}
-	100% {
-		font-variation-settings: "OFST" 100;
-	}
-}
-[data-font="newivy"] .menubox-grid-item-preview {
-	font-family: newivy, sans-serif;
-	font-variation-settings: "OFST" 0;
-}
-[data-font="newivy"]:hover .menubox-grid-item-preview {
-	animation: 2s preview-newivy infinite alternate ease-in-out;
-}
-
-
-
-/* ———————————————————————————————————————————————————————————————————————— */
-/* JOST REMIXES */
-/* ———————————————————————————————————————————————————————————————————————— */
-
-[data-font="jost-remix"] .menubox-grid-item-preview {
-	font-family: jost, sans-serif;
-}
-[data-font="jost-remix"]:hover .menubox-grid-item-preview {
-	font-variation-settings: "VARI" 100;
-	animation: 2s preview-jostremix infinite linear;
-}
-@keyframes preview-jostremix {
-	10% {
-		font-family: jost-yl, sans-serif;
-	}
-	20% {
-		font-family: jost-jc, sans-serif;
-	}
-	30% {
-		font-family: jost-pointy, sans-serif;
-	}
-	40% {
-		font-family: jost-ml, sans-serif;
-	}
-	50% {
-		font-family: jost-nn, sans-serif;
-	}
-	60% {
-		font-family: jost-ha, sans-serif;
-	}
-	70% {
-		font-family: jost-hu, sans-serif;
-	}
-	80% {
-		font-family: jost-sleepy, sans-serif;
-	}
-	90% {
-		font-family: jost-amputation, sans-serif;
-	}
-}
-.jost-remix:hover .menubox-grid-item-preview {
-	animation: 1s preview-jostremix infinite alternate;
-}
-
-/* SECTION 01 REMIXES */
-@font-face {
-	font-family: jost-amputation;
-	src: url("fonts/remixes/jost-amputation.ttf");
-}
-@font-face {
-	font-family: jost-kilter;
-	src: url("fonts/remixes/jost-kilter.ttf");
-}
-@font-face {
-	font-family: jost-pointy;
-	src: url("fonts/remixes/jost-pointy.ttf");
-}
-@font-face {
-	font-family: jost-squint;
-	src: url("fonts/remixes/jost-squint.ttf");
-}
-@font-face {
-	font-family: jost-jc;
-	src: url("fonts/remixes/jost-jc.ttf");
-}
-@font-face {
-	font-family: jost-scone;
-	src: url("fonts/remixes/jost-scone.ttf");
-}
-@font-face {
-	font-family: jost-mmb;
-	src: url("fonts/remixes/jost-mmb.ttf");
-}
-@font-face {
-	font-family: jost-ml;
-	src: url("fonts/remixes/jost-ml.ttf");
-}
-@font-face {
-	font-family: jost-negativespace;
-	src: url("fonts/remixes/jost-negativespace.ttf");
-}
-@font-face {
-	font-family: jost-sleepy;
-	src: url("fonts/remixes/jost-sleepy.ttf");
-}
-@font-face {
-	font-family: jost-yl;
-	src: url("fonts/remixes/jost-yl.ttf");
-}
-@font-face {
-	font-family: jost-nn;
-	src: url("fonts/remixes/jost-nn.ttf");
-}
-@font-face {
-	font-family: jost-ha;
-	src: url("fonts/remixes/jost-ha.ttf");
-}
-@font-face {
-	font-family: jost-hu;
-	src: url("fonts/remixes/jost-hu.ttf");
-}
+			@font-face {
+				font-family: "authentic-remixed";
+				src: url("/assets/fonts/tmt/TMT-AUTHENTICRemixedVF.ttf");
+				
+			}
+			@keyframes preview-authentic-remixed {
+				0% { font-variation-settings: 'XAXI' 0, 'YAXI' 0; } 20% { font-variation-settings: 'XAXI' 100, 'YAXI' 10; } 40% { font-variation-settings: 'XAXI' -100, 'YAXI' 100; } 60% { font-variation-settings: 'XAXI' -100, 'YAXI' -100; } 80% { font-variation-settings: 'XAXI' 100, 'YAXI' -100; } 100% { font-variation-settings: 'XAXI' 0, 'YAXI' 0; }
+			}
+			[data-font="authentic-remixed"] .menu-fonts-item-preview {
+				font-family: "authentic-remixed";
+				font-variation-settings: "XAXI" 0, "YAXI" 0;
+				
+			}
+			[data-font="authentic-remixed"]:hover .menu-fonts-item-preview {
+				animation: preview-authentic-remixed 2s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "avara-burst";
+				src: url("/assets/fonts/tmt/TMT-AvaraBurstVF.ttf");
+				
+			}
+			@keyframes preview-avara-burst {
+				0% { font-variation-settings: 'BRST' 0; } 17% { font-variation-settings: 'BRST' 1; } 34% { font-variation-settings: 'BRST' 0; } 100% { font-variation-settings: 'BRST' 3; }
+			}
+			[data-font="avara-burst"] .menu-fonts-item-preview {
+				font-family: "avara-burst";
+				font-variation-settings: "BRST" 0;
+				
+			}
+			[data-font="avara-burst"]:hover .menu-fonts-item-preview {
+				animation: preview-avara-burst 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "bashful";
+				src: url("/assets/fonts/tmt/TMT-BashfulVF.ttf");
+				
+			}
+			@keyframes preview-bashful {
+				0% { font-variation-settings: 'BASH' 0; } 100% { font-variation-settings: 'BASH' 100; }
+			}
+			[data-font="bashful"] .menu-fonts-item-preview {
+				font-family: "bashful";
+				font-variation-settings: "BASH" 0;
+				
+			}
+			[data-font="bashful"]:hover .menu-fonts-item-preview {
+				animation: preview-bashful 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "caffeine";
+				src: url("/assets/fonts/tmt/TMT-CaffeineVF.ttf");
+				
+			}
+			@keyframes preview-caffeine {
+				0% { font-variation-settings: 'SCRI' 0, 'SCRA' 0; } 20% { font-variation-settings: 'SCRI' 0, 'SCRA' 50; } 40% { font-variation-settings: 'SCRI' 100, 'SCRA' 0; } 60% { font-variation-settings: 'SCRI' 75, 'SCRA' 50; } 80% { font-variation-settings: 'SCRI' 25, 'SCRA' 100; } 100% { font-variation-settings: 'SCRI' 50, 'SCRA' 0; }
+			}
+			[data-font="caffeine"] .menu-fonts-item-preview {
+				font-family: "caffeine";
+				font-variation-settings: "SCRI" 0, "SCRA" 0;
+				
+			}
+			[data-font="caffeine"]:hover .menu-fonts-item-preview {
+				animation: preview-caffeine 1s infinite steps(1);
+			}
+		
+			@font-face {
+				font-family: "dreidel";
+				src: url("/assets/fonts/tmt/TMT-DreidelVF.ttf");
+				
+			}
+			@keyframes preview-dreidel {
+				0% { font-variation-settings: 'SPIN' -45; } 100% { font-variation-settings: 'SPIN' 405; }
+			}
+			[data-font="dreidel"] .menu-fonts-item-preview {
+				font-family: "dreidel";
+				font-variation-settings: "SPIN" -45;
+				
+			}
+			[data-font="dreidel"]:hover .menu-fonts-item-preview {
+				animation: preview-dreidel 2s infinite ease-in-out;
+			}
+		
+			@font-face {
+				font-family: "limkin";
+				src: url("/assets/fonts/tmt/TMT-LimkinVF.ttf");
+				font-weight: 100 900;
+			}
+			@keyframes preview-limkin {
+				0% { font-variation-settings: 'wght' 500, 'SRFF' 100; } 100% { font-variation-settings: 'wght' 500, 'SRFF' 0; }
+			}
+			[data-font="limkin"] .menu-fonts-item-preview {
+				font-family: "limkin";
+				font-variation-settings: "wght" 500, "SRFF" 100;
+				
+			}
+			[data-font="limkin"]:hover .menu-fonts-item-preview {
+				animation: preview-limkin 1s infinite alternate ease-in-out;
+			}
+		
+			@font-face {
+				font-family: "limkin-pixel";
+				src: url("/assets/fonts/tmt/TMT-LimkinPixelVF.ttf");
+				font-weight: 100 900;
+			}
+			@keyframes preview-limkin-pixel {
+				0% { font-variation-settings: 'wght' 500; } 25% { font-variation-settings: 'wght' 100; } 50% { font-variation-settings: 'wght' 500; } 75% { font-variation-settings: 'wght' 900; } 100% { font-variation-settings: 'wght' 500; }
+			}
+			[data-font="limkin-pixel"] .menu-fonts-item-preview {
+				font-family: "limkin-pixel";
+				font-variation-settings: "wght" 500;
+				
+			}
+			[data-font="limkin-pixel"]:hover .menu-fonts-item-preview {
+				animation: preview-limkin-pixel 3s infinite ease-in-out;
+			}
+		
+			@font-face {
+				font-family: "mini-mochi";
+				src: url("/assets/fonts/tmt/TMT-MiniMochiVF.ttf");
+				
+			}
+			@keyframes preview-mini-mochi {
+				0% { font-variation-settings: 'STCH' 50, 'FLAV' 0, 'SLCE' 0; } 17% { font-variation-settings: 'STCH' 100, 'FLAV' 0, 'SLCE' 0; } 34% { font-variation-settings: 'STCH' 0, 'FLAV' 0, 'SLCE' 0; } 51% { font-variation-settings: 'STCH' 100, 'FLAV' 100, 'SLCE' 0; } 68% { font-variation-settings: 'STCH' 0, 'FLAV' 100, 'SLCE' 0; } 85% { font-variation-settings: 'STCH' 100, 'FLAV' 100, 'SLCE' 100; } 100% { font-variation-settings: 'STCH' 0, 'FLAV' 100, 'SLCE' 100; }
+			}
+			[data-font="mini-mochi"] .menu-fonts-item-preview {
+				font-family: "mini-mochi";
+				font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+				
+			}
+			[data-font="mini-mochi"]:hover .menu-fonts-item-preview {
+				animation: preview-mini-mochi 4s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "music-box";
+				src: url("/assets/fonts/tmt/TMT-MusicBoxVF.ttf");
+				
+			}
+			@keyframes preview-music-box {
+				0% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; } 25% { font-variation-settings: 'FREQ' 100, 'AMPL' 50; } 50% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; } 75% { font-variation-settings: 'FREQ' -100, 'AMPL' 50; } 100% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; }
+			}
+			[data-font="music-box"] .menu-fonts-item-preview {
+				font-family: "music-box";
+				font-variation-settings: "FREQ" 0, "AMPL" 50;
+				
+			}
+			[data-font="music-box"]:hover .menu-fonts-item-preview {
+				animation: preview-music-box 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+			}
+		
+			@font-face {
+				font-family: "powerpack";
+				src: url("/assets/fonts/tmt/TMT-PowerPackVF.ttf");
+				
+			}
+			@keyframes preview-powerpack {
+				0% { font-variation-settings: 'CHRG' 0, 'POWR' 0; } 50% { font-variation-settings: 'CHRG' 0, 'POWR' 100; } 100% { font-variation-settings: 'CHRG' 100, 'POWR' 100; }
+			}
+			[data-font="powerpack"] .menu-fonts-item-preview {
+				font-family: "powerpack";
+				font-variation-settings: "CHRG" 0, "POWR" 0;
+				
+			}
+			[data-font="powerpack"]:hover .menu-fonts-item-preview {
+				animation: preview-powerpack 2s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "that-then-this";
+				src: url("/assets/fonts/tmt/TMT-ThatThenThisVF.ttf");
+				
+			}
+			@keyframes preview-that-then-this {
+				0% { font-variation-settings: 'THAT' 0, 'THIS' 0; } 25% { font-variation-settings: 'THAT' 0, 'THIS' 100; } 50% { font-variation-settings: 'THAT' 100, 'THIS' 100; } 75% { font-variation-settings: 'THAT' 100, 'THIS' 0; } 100% { font-variation-settings: 'THAT' 0, 'THIS' 0; }
+			}
+			[data-font="that-then-this"] .menu-fonts-item-preview {
+				font-family: "that-then-this";
+				font-variation-settings: "THAT" 0, "THIS" 0;
+				
+			}
+			[data-font="that-then-this"]:hover .menu-fonts-item-preview {
+				animation: preview-that-then-this 2s infinite ease-in-out;
+			}
+		
+			@font-face {
+				font-family: "work-sans-galapagos";
+				src: url("/assets/fonts/tmt/TMT-WorkSansGalapagosVF.ttf");
+				font-weight: 100 900;
+			}
+			@keyframes preview-work-sans-galapagos {
+				0% { font-variation-settings: 'wght' 500, 'SHLL' 100; } 17% { font-variation-settings: 'wght' 500, 'SHLL' 0; } 34% { font-variation-settings: 'wght' 900, 'SHLL' 100; } 51% { font-variation-settings: 'wght' 900, 'SHLL' 0; } 68% { font-variation-settings: 'wght' 100, 'SHLL' 100; } 85% { font-variation-settings: 'wght' 100, 'SHLL' 0; } 100% { font-variation-settings: 'wght' 500, 'SHLL' 100; }
+			}
+			[data-font="work-sans-galapagos"] .menu-fonts-item-preview {
+				font-family: "work-sans-galapagos";
+				font-variation-settings: "wght" 500, "SHLL" 100;
+				font-feature-settings: 'ss01' 1, 'ss06' 1;
+			}
+			[data-font="work-sans-galapagos"]:hover .menu-fonts-item-preview {
+				animation: preview-work-sans-galapagos 5s infinite ease-in-out;
+			}
+		

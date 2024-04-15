@@ -1,0 +1,296 @@
+{
+	"authentic-remixed": {
+		"name": "AUTHENTIC Remixed",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Peek",
+		"preview-animation": "0% { font-variation-settings: 'XAXI' 0, 'YAXI' 0; } 20% { font-variation-settings: 'XAXI' 100, 'YAXI' 10; } 40% { font-variation-settings: 'XAXI' -100, 'YAXI' 100; } 60% { font-variation-settings: 'XAXI' -100, 'YAXI' -100; } 80% { font-variation-settings: 'XAXI' 100, 'YAXI' -100; } 100% { font-variation-settings: 'XAXI' 0, 'YAXI' 0; }",
+		"preview-css": "2s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-AUTHENTICRemixedVF.ttf",
+		"axes": {
+			"XAXI": {
+				"name": "X axis",
+				"min": -100,
+				"default": 0,
+				"max": 100
+			},
+			"YAXI": {
+				"name": "Y axis",
+				"min": -100,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "Based on AUTHENTIC Sans by Christina Janus and Desmond Wong",
+		"tags": "remixed, vector"
+	},
+	"avara-burst": {
+		"name": "Avara Burst",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Fireworks",
+		"preview-animation": "0% { font-variation-settings: 'BRST' 0; } 17% { font-variation-settings: 'BRST' 1; } 34% { font-variation-settings: 'BRST' 0; } 100% { font-variation-settings: 'BRST' 3; }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-AvaraBurstVF.ttf",
+		"axes": {
+			"BRST": {
+				"name": "Burst",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "Based on Avara by Raphaël Bastide",
+		"tags": "remixed, vector"
+	},
+	"bashful": {
+		"name": "Bashful",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Hide",
+		"preview-animation": "0% { font-variation-settings: 'BASH' 0; } 100% { font-variation-settings: 'BASH' 100; }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-BashfulVF.ttf",
+		"axes": {
+			"BASH": {
+				"name": "Bashfulness",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "original, vector"
+	},
+	"caffeine": {
+		"name": "Caffeine",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Awake",
+		"preview-animation": "0% { font-variation-settings: 'SCRI' 0, 'SCRA' 0; } 20% { font-variation-settings: 'SCRI' 0, 'SCRA' 50; } 40% { font-variation-settings: 'SCRI' 100, 'SCRA' 0; } 60% { font-variation-settings: 'SCRI' 75, 'SCRA' 50; } 80% { font-variation-settings: 'SCRI' 25, 'SCRA' 100; } 100% { font-variation-settings: 'SCRI' 50, 'SCRA' 0; }",
+		"preview-css": "1s infinite steps(1)",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-CaffeineVF.ttf",
+		"axes": {
+			"SCRI": {
+				"name": "Scribble",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"SCRA": {
+				"name": "Scrabble",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "original, vector"
+	},
+	"dreidel": {
+		"name": "Dreidel",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Spin",
+		"preview-animation": "0% { font-variation-settings: 'SPIN' -45; } 100% { font-variation-settings: 'SPIN' 405; }",
+		"preview-css": "2s infinite ease-in-out",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-DreidelVF.ttf",
+		"axes": {
+			"SPIN": {
+				"name": "SPIN",
+				"min": -45,
+				"default": -45,
+				"max": 405
+			}
+		},
+		"credit": "",
+		"tags": "original, pixel"
+	},
+	"limkin": {
+		"name": "Limkin",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Limkin",
+		"preview-animation": "0% { font-variation-settings: 'wght' 500, 'SRFF' 100; } 100% { font-variation-settings: 'wght' 500, 'SRFF' 0; }",
+		"preview-css": "1s infinite alternate ease-in-out",
+		"weight-css": "100 900",
+		"special-css": "",
+		"file": "tmt/TMT-LimkinVF.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 100,
+				"default": 500,
+				"max": 900
+			},
+			"SRFF": {
+				"name": "Serif",
+				"min": 0,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "original, vector"
+	},
+	"limkin-pixel": {
+		"name": "Limkin Pixel",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Retro",
+		"preview-animation": "0% { font-variation-settings: 'wght' 500; } 25% { font-variation-settings: 'wght' 100; } 50% { font-variation-settings: 'wght' 500; } 75% { font-variation-settings: 'wght' 900; } 100% { font-variation-settings: 'wght' 500; }",
+		"preview-css": "3s infinite ease-in-out",
+		"weight-css": "100 900",
+		"special-css": "",
+		"file": "tmt/TMT-LimkinPixelVF.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 100,
+				"default": 500,
+				"max": 900
+			}
+		},
+		"credit": "Based on Limkin by Gabriel Drozdov",
+		"tags": "remixed, pixel"
+	},
+	"mini-mochi": {
+		"name": "Mini Mochi",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Squish",
+		"preview-animation": "0% { font-variation-settings: 'STCH' 50, 'FLAV' 0, 'SLCE' 0; } 17% { font-variation-settings: 'STCH' 100, 'FLAV' 0, 'SLCE' 0; } 34% { font-variation-settings: 'STCH' 0, 'FLAV' 0, 'SLCE' 0; } 51% { font-variation-settings: 'STCH' 100, 'FLAV' 100, 'SLCE' 0; } 68% { font-variation-settings: 'STCH' 0, 'FLAV' 100, 'SLCE' 0; } 85% { font-variation-settings: 'STCH' 100, 'FLAV' 100, 'SLCE' 100; } 100% { font-variation-settings: 'STCH' 0, 'FLAV' 100, 'SLCE' 100; }",
+		"preview-css": "4s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-MiniMochiVF.ttf",
+		"axes": {
+			"STCH": {
+				"name": "Stretch",
+				"min": 0,
+				"default": 50,
+				"max": 100
+			},
+			"FLAV": {
+				"name": "Flavor",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"SLCE": {
+				"name": "Slice",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "original, vector"
+	},
+	"music-box": {
+		"name": "Music Box",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Beat",
+		"preview-animation": "0% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; } 25% { font-variation-settings: 'FREQ' 100, 'AMPL' 50; } 50% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; } 75% { font-variation-settings: 'FREQ' -100, 'AMPL' 50; } 100% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; }",
+		"preview-css": "2s infinite cubic-bezier(0.16, 1, 0.3, 1)",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-MusicBoxVF.ttf",
+		"axes": {
+			"FREQ": {
+				"name": "Frequency",
+				"min": -100,
+				"default": 0,
+				"max": 100
+			},
+			"AMPL": {
+				"name": "Amplitude",
+				"min": 0,
+				"default": 50,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "original, vector"
+	},
+	"powerpack": {
+		"name": "PowerPack",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Charge",
+		"preview-animation": "0% { font-variation-settings: 'CHRG' 0, 'POWR' 0; } 50% { font-variation-settings: 'CHRG' 0, 'POWR' 100; } 100% { font-variation-settings: 'CHRG' 100, 'POWR' 100; }",
+		"preview-css": "2s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-PowerPackVF.ttf",
+		"axes": {
+			"CHRG": {
+				"name": "Charge",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"POWR": {
+				"name": "Power",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "original, pixel"
+	},
+	"that-then-this": {
+		"name": "That Then This",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Techno",
+		"preview-animation": "0% { font-variation-settings: 'THAT' 0, 'THIS' 0; } 25% { font-variation-settings: 'THAT' 0, 'THIS' 100; } 50% { font-variation-settings: 'THAT' 100, 'THIS' 100; } 75% { font-variation-settings: 'THAT' 100, 'THIS' 0; } 100% { font-variation-settings: 'THAT' 0, 'THIS' 0; }",
+		"preview-css": "2s infinite ease-in-out",
+		"weight-css": "",
+		"special-css": "",
+		"file": "tmt/TMT-ThatThenThisVF.ttf",
+		"axes": {
+			"THAT": {
+				"name": "That",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"THIS": {
+				"name": "This",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "original, vector"
+	},
+	"work-sans-galapagos": {
+		"name": "Work Sans Galápagos",
+		"designer": "Gabriel Drozdov",
+		"preview-text": "Island",
+		"preview-animation": "0% { font-variation-settings: 'wght' 500, 'SHLL' 100; } 17% { font-variation-settings: 'wght' 500, 'SHLL' 0; } 34% { font-variation-settings: 'wght' 900, 'SHLL' 100; } 51% { font-variation-settings: 'wght' 900, 'SHLL' 0; } 68% { font-variation-settings: 'wght' 100, 'SHLL' 100; } 85% { font-variation-settings: 'wght' 100, 'SHLL' 0; } 100% { font-variation-settings: 'wght' 500, 'SHLL' 100; }",
+		"preview-css": "5s infinite ease-in-out",
+		"weight-css": "100 900",
+		"special-css": "font-feature-settings: 'ss01' 1, 'ss06' 1;",
+		"file": "tmt/TMT-WorkSansGalapagosVF.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 100,
+				"default": 500,
+				"max": 900
+			},
+			"SHLL": {
+				"name": "Shell",
+				"min": 0,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "Based on Work Sans by Wei Huang",
+		"tags": "remixed, vector"
+	}
+}
