@@ -289,7 +289,7 @@ button {
 	animation: intro-cta 1s steps(1) infinite;
 	font-size: 14px;
 	margin-right: -.1em;
-	letter-spacing: .1em;
+	letter-spacing: .05em;
 	padding-top: .2em;
 	text-transform: uppercase;
 	white-space: nowrap;
@@ -386,7 +386,7 @@ button {
 	font-size: 10px;
 	font-weight: 700;
 	font-variation-settings: "wght" 700, "SRFF" 0;
-	letter-spacing: .1em;
+	letter-spacing: .05em;
 	color: var(--primary);
 	line-height: 1em;
 	transition: color .2s;
@@ -1120,7 +1120,7 @@ button {
 	font-size: 10px;
 	font-weight: 700;
 	font-variation-settings: "wght" 700, "SRFF" 0;
-	letter-spacing: .1em;
+	letter-spacing: .05em;
 	line-height: 1em;
 	padding-top: .2em;
 	text-transform: uppercase;
@@ -1137,7 +1137,7 @@ button {
 	font-size: 10px;
 	font-weight: 700;
 	font-variation-settings: "wght" 700, "SRFF" 0;
-	letter-spacing: .1em;
+	letter-spacing: .05em;
 	line-height: 1em;
 	padding: .2em 10px 0 10px;
 	transition: background-color .2s, opacity .2s;
@@ -1219,7 +1219,7 @@ button {
 	display: flex;
 	flex-direction: column;
 	gap: 2px;
-	padding: 20px;
+	padding: 10px 20px 20px 20px;
 	width: 100%;
 	z-index: 2;
 	position: sticky;
@@ -1230,6 +1230,28 @@ button {
 }
 .instrument[data-global="0"] .instrument-controls-global {
 	display: none;
+}
+.instrument-controls-global-group {
+	display: grid;
+	grid-auto-columns: 1fr;
+	grid-auto-flow: column;
+	gap: 2px;
+}
+.instrument-controls-global-heading {
+	color: var(--primary);
+	font-size: 10px;
+	font-weight: 700;
+	font-variation-settings: "wght" 700, "SRFF" 0;
+	line-height: 1em;
+	padding-top: .3em;
+	transition: color .2s;
+	text-transform: uppercase;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: .05em;
+	margin-bottom: 2px;
 }
 
 /* Instrument axes */
@@ -1272,6 +1294,7 @@ button {
 .instrument-axis-section-label {
 	color: var(--primary);
 	font-size: 10px;
+	letter-spacing: .05em;
 	font-weight: 700;
 	font-variation-settings: "wght" 700, "SRFF" 0;
 	line-height: 1em;
@@ -1390,7 +1413,7 @@ button {
 	color: var(--off-black);
 	line-height: 1em;
 	transition: color .2s;
-	letter-spacing: .1em;
+	letter-spacing: .05em;
 }
 
 /* Instrument button group */
@@ -1474,6 +1497,7 @@ button {
 }
 .instrument-axis-label-code {
 	font-size: 10px;
+	letter-spacing: .05em;
 	font-weight: 700;
 	font-variation-settings: "wght" 700, "SRFF" 0;
 	line-height: 1em;

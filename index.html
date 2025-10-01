@@ -69,14 +69,14 @@
 
 		<nav class="nav" data-active="0">
 			<div class="nav-section" id="nav-font">
-				<button class="nav-section-arrow" onclick="prevFont(); playPercussion('A5');">
+				<button class="nav-section-arrow" onclick="prevFont(); playPercussion('E2');" onmouseenter="playPercussion('A5');">
 					<svg viewBox="0 0 24 24"><path d="M10.975,1l2.847,2.828-6.176,6.176h16.354v3.992H7.646l6.176,6.176-2.847,2.828L0,12,10.975,1Z"/></svg>
 				</button>
-				<button class="nav-section-content" onclick="openMenuFonts(); closeNav(); hideControls(); playPercussion('C3');">
+				<button class="nav-section-content" onclick="openMenuFonts(); closeNav(); hideControls(); playPercussion('C3');" onmouseenter="playPercussion('D3');">
 					<span class="nav-section-title">Font</span>
 					<span class="nav-section-info">Bashful by Gabriel Drozdov</span>
 				</button>
-				<button class="nav-section-arrow" onclick="nextFont(); playPercussion('B5');">
+				<button class="nav-section-arrow" onclick="nextFont(); playPercussion('F2');" onmouseenter="playPercussion('B5');">
 					<svg viewBox="0 0 24 24"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/></svg>
 				</button>
 			</div>
@@ -329,8 +329,8 @@
 					<div class="instrument-text" contenteditable="plaintext-only" spellcheck="false"></div>
 					<div class="instrument-screen-generator">
 						<h4 class="instrument-screen-generator-title">Generate Text</h4>
-						<button class="instrument-screen-generator-button" onclick="generateText('allglyphs'); playBlockRandom();">All Glyphs</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('lettersnumbers'); playBlockRandom();">Letters + Numbers</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('allglyphs'); playBlock(1000);">All Glyphs</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('lettersnumbers'); playBlock(500);">Letters + Numbers</button>
 						<button class="instrument-screen-generator-button" onclick="generateText('randomsentence'); playBlockRandom();">Random sentence</button>
 						<button class="instrument-screen-generator-button" onclick="generateText('randomcharacters'); playBlockRandom();">Random characters</button>
 						<button class="instrument-screen-generator-button" onclick="generateText('repeatedcharacters'); playBlockRandom();">Repeated characters</button>
@@ -345,6 +345,13 @@
 					<div class="instrument-axes" data-lock="0"></div>
 					
 					<div class="instrument-controls-global">
+						<div class="instrument-controls-global-heading">Global Settings</div>
+						<div class="instrument-controls-global-group">
+							<button class="instrument-axis-button" onclick="playBlock(500); oscillatorOffAll();"><span>Off</span></button>
+							<button class="instrument-axis-button"onclick="playBlock(1000); oscillatorOnAll();"><span>On</span></button>
+							<button class="instrument-axis-button"onclick="playBlockRandom(); oscillatorRandoAll();"><span>Rando</span></button>
+							<button class="instrument-axis-button"onclick="playBlock(400); oscillatorResetAll();"><span>Reset</span></button>
+						</div>
 						<button class="instrument-axis-button" id="oscillator-lock" data-active="0" onclick="oscillatorLockSettings()"><svg viewBox="0 0 24 24"><path d="M6 8v-2c0-3.313 2.687-6 6-6 3.312 0 6 2.687 6 6v2h-2v-2c0-2.206-1.795-4-4-4s-4 1.794-4 4v2h-2zm-3 2v14h18v-14h-18z"/></svg>
 						<span>Lock settings together</span>
 					</button>

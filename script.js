@@ -1009,8 +1009,10 @@ function initAxisSliders(instrument) {
 
 	// Set volumes according to number of sliders
 	let maxVolume = sliders.length;
-	for (let synth of monoSynths) {
-
+	for (let synthType of monoSynths) {
+		for (let synth of synthType) {
+			synth.volume.value = -18 - sliders.length;
+		}
 	}
 }
 function resetAxisSliders(instrument) {
@@ -1210,7 +1212,7 @@ function initializeOscillator() {
 							<svg viewBox="0 0 24 24"><path d="M0 9h24v6h-24z"/></svg>
 						</button>
 						<div class="instrument-axis-increment-display">
-							&times;1.0
+							&times; 1.0
 						</div>
 						<button class="instrument-axis-increment-button" onclick="oscillatorSpeedUp('${axis}'); playBlock(1200);">
 							<svg viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg>
@@ -1291,10 +1293,17 @@ function instrumentOscillatorLoop() {
 		let axisOscillatorInfo = oscillatorSettings[axis];
 
 		// When locked, set to first axis
+		let backup = [
+			axisOscillatorInfo["waveform"],
+			axisOscillatorInfo["percent"],
+			axisOscillatorInfo["direction"],
+			axisOscillatorInfo["state"]
+		]
 		if (oscillatorLock && axisNumber > 0) {
 			axisOscillatorInfo["waveform"] = oscillatorSettings[axes[0]]["waveform"];
 			axisOscillatorInfo["percent"] = oscillatorSettings[axes[0]]["percent"];
 			axisOscillatorInfo["direction"] = oscillatorSettings[axes[0]]["direction"];
+			axisOscillatorInfo["state"] = oscillatorSettings[axes[0]]["state"];
 		}
 		
 		let baseFrequency = oscillatorFrequencies[axisNumber%oscillatorFrequencies.length];
@@ -1309,7 +1318,7 @@ function instrumentOscillatorLoop() {
 					axisOscillatorInfo["direction"] = axisOscillatorInfo["direction"]*-1;
 				}
 				setAxisSlider("oscillator", axis, easeInOutQuad(axisOscillatorInfo["percent"]));
-				playMono(baseFrequency+(easeInOutQuad(axisOscillatorInfo["percent"]))*baseFrequency, axisNumber);
+				playMono(baseFrequency+(easeInOutQuad(axisOscillatorInfo["percent"]))*baseFrequency, axisNumber, 'sine');
 
 				activeFontAxes[axis]["value"] = easeInOutQuad(axisOscillatorInfo["percent"])*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
@@ -1323,7 +1332,7 @@ function instrumentOscillatorLoop() {
 					axisOscillatorInfo["direction"] = axisOscillatorInfo["direction"]*-1;
 				}
 				setAxisSlider("oscillator", axis, axisOscillatorInfo["percent"]);
-				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber);
+				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber, 'triangle');
 
 				activeFontAxes[axis]["value"] = axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
@@ -1337,7 +1346,7 @@ function instrumentOscillatorLoop() {
 					axisOscillatorInfo["direction"] = axisOscillatorInfo["direction"]*-1;
 				}
 				setAxisSlider("oscillator", axis, easeInOutExpo(axisOscillatorInfo["percent"]));
-				playMono(baseFrequency+(easeInOutExpo(axisOscillatorInfo["percent"]))*baseFrequency, axisNumber);
+				playMono(baseFrequency+(easeInOutExpo(axisOscillatorInfo["percent"]))*baseFrequency, axisNumber, 'square');
 
 				activeFontAxes[axis]["value"] = easeInOutExpo(axisOscillatorInfo["percent"])*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
@@ -1347,7 +1356,7 @@ function instrumentOscillatorLoop() {
 					axisOscillatorInfo["percent"] = 0;
 				}
 				setAxisSlider("oscillator", axis, axisOscillatorInfo["percent"]);
-				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber);
+				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber, 'sawtooth');
 
 				activeFontAxes[axis]["value"] = axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
@@ -1357,7 +1366,7 @@ function instrumentOscillatorLoop() {
 					axisOscillatorInfo["percent"] = 1;
 				}
 				setAxisSlider("oscillator", axis, axisOscillatorInfo["percent"]);
-				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber);
+				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber, 'sawtooth');
 
 				activeFontAxes[axis]["value"] = axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
@@ -1374,11 +1383,19 @@ function instrumentOscillatorLoop() {
 					axisOscillatorInfo["direction"] *= -1;
 				}
 				setAxisSlider("oscillator", axis, axisOscillatorInfo["percent"]);
-				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber);
+				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber, synthTypes[Math.floor(Math.random()*synthTypes.length)]);
 
 				activeFontAxes[axis]["value"] = axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
 			}
+		}
+
+		// When locked, set to first axis
+		if (oscillatorLock && axisNumber > 0) {
+			axisOscillatorInfo["waveform"] = backup[0];
+			axisOscillatorInfo["percent"] = backup[1];
+			axisOscillatorInfo["direction"] = backup[2];
+			axisOscillatorInfo["state"] = backup[3];
 		}
 
 		fontVariation += `"${axis}" ${activeFontAxes[axis]["value"]}`;
@@ -1423,8 +1440,8 @@ function oscillatorSpeedDown(axis) {
 }
 function oscillatorSpeedUp(axis) {
 	oscillatorSettings[axis]["speed"] = oscillatorSettings[axis]["speed"]+.5;
-	if (oscillatorSettings[axis]["speed"] >= 4) {
-		oscillatorSettings[axis]["speed"] = 4;
+	if (oscillatorSettings[axis]["speed"] >= 5) {
+		oscillatorSettings[axis]["speed"] = 5;
 	}
 	oscillatorDisplaySpeed(axis);
 }
@@ -1449,17 +1466,49 @@ function oscillatorOff(axis) {
 	oscillatorSettings[axis]["state"] = false;
 	oscillatorDisplayValue(axis, "state", "false");
 }
+function oscillatorOffAll() {
+	for (let axis of Object.keys(activeFontAxes)) {
+		oscillatorSettings[axis]["state"] = false;
+		oscillatorDisplayValue(axis, "state", "false");
+	}
+}
 function oscillatorOn(axis) {
 	oscillatorSettings[axis]["state"] = true;
 	oscillatorDisplayValue(axis, "state", "true");
 }
+function oscillatorOnAll() {
+	for (let axis of Object.keys(activeFontAxes)) {
+		oscillatorSettings[axis]["state"] = true;
+		oscillatorDisplayValue(axis, "state", "true");
+	}
+}
 function oscillatorRando(axis) {
 	oscillatorPickWaveform(axis, oscillatorWaveforms[Math.floor(Math.random()*oscillatorWaveforms.length)]);
-	oscillatorSetSpeed(axis, (Math.round(Math.random()*8) * .5));
+	oscillatorSetSpeed(axis, (Math.round(Math.random()*9) * .5 + .5));
+	oscillatorSettings[axis]["percent"] = Math.random();
+	setAxisSlider("oscillator", axis, oscillatorSettings[axis]["percent"]);
+}
+function oscillatorRandoAll() {
+	for (let axis of Object.keys(activeFontAxes)) {
+		oscillatorPickWaveform(axis, oscillatorWaveforms[Math.floor(Math.random()*oscillatorWaveforms.length)]);
+		oscillatorSetSpeed(axis, (Math.round(Math.random()*9) * .5 + .5));
+		oscillatorSettings[axis]["percent"] = Math.random();
+		setAxisSlider("oscillator", axis, oscillatorSettings[axis]["percent"]);
+	}
 }
 function oscillatorReset(axis) {
 	oscillatorPickWaveform(axis, "sine");
 	oscillatorSetSpeed(axis, 1);
+	oscillatorSettings[axis]["percent"] = 0;
+	setAxisSlider("oscillator", axis, oscillatorSettings[axis]["percent"]);
+}
+function oscillatorResetAll() {
+	for (let axis of Object.keys(activeFontAxes)) {
+		oscillatorPickWaveform(axis, "sine");
+		oscillatorSetSpeed(axis, 1);
+		oscillatorSettings[axis]["percent"] = 0;
+		setAxisSlider("oscillator", axis, oscillatorSettings[axis]["percent"]);
+	}
 }
 
 // Display correct value for button sections
@@ -1573,14 +1622,61 @@ function generateText(textType) {
 // ——————————————————————————————————————————
 
 // Mono synths
-let monoSynths = [];
-let oscillatorTypes = ["sine", "triangle", "square", "sawtooth"];
 let oscillatorFrequencies = [130, 165, 196, 262];
+let sineSynths = [];
+let triangleSynths = [];
+let squareSynths = [];
+let sawtoothSynths = [];
 for (let i=0; i<20; i++) {
-	monoSynths.push(new Tone.MonoSynth());
-	monoSynths[monoSynths.length-1].set({
+	sineSynths.push(new Tone.MonoSynth());
+	sineSynths[sineSynths.length-1].set({
 		oscillator: {
-			type: oscillatorTypes[i%4]
+			type: 'sine'
+		},
+		envelope: {
+			attack: 0.01,
+			decay: 0.01,
+			sustain: 1,
+			release: 0.05
+		},
+		portamento: 0.1,
+		volume: -18
+	}).toDestination();
+
+	triangleSynths.push(new Tone.MonoSynth());
+	triangleSynths[triangleSynths.length-1].set({
+		oscillator: {
+			type: 'triangle'
+		},
+		envelope: {
+			attack: 0.01,
+			decay: 0.01,
+			sustain: 1,
+			release: 0.05
+		},
+		portamento: 0.1,
+		volume: -18
+	}).toDestination();
+
+	squareSynths.push(new Tone.MonoSynth());
+	squareSynths[squareSynths.length-1].set({
+		oscillator: {
+			type: 'square'
+		},
+		envelope: {
+			attack: 0.01,
+			decay: 0.01,
+			sustain: 1,
+			release: 0.05
+		},
+		portamento: 0.1,
+		volume: -18
+	}).toDestination();
+
+	sawtoothSynths.push(new Tone.MonoSynth());
+	sawtoothSynths[sawtoothSynths.length-1].set({
+		oscillator: {
+			type: 'sawtooth'
 		},
 		envelope: {
 			attack: 0.01,
@@ -1592,8 +1688,23 @@ for (let i=0; i<20; i++) {
 		volume: -18
 	}).toDestination();
 }
-function playMono(freq, synthNumber) {
-	monoSynths[synthNumber].triggerAttackRelease(freq, .2);
+let synthTypes = ['sine', 'triangle', 'square', 'sawtooth'];
+let monoSynths = [
+	sineSynths,
+	triangleSynths,
+	squareSynths,
+	sawtoothSynths
+]
+function playMono(freq, synthNumber, type) {
+	if (type == 'sine') {
+		sineSynths[synthNumber].triggerAttackRelease(freq, .2);
+	} else if (type == "triangle") {
+		triangleSynths[synthNumber].triggerAttackRelease(freq, .2);
+	} else if (type == "square") {
+		squareSynths[synthNumber].triggerAttackRelease(freq, .2);
+	} else if (type == 'sawtooth') {
+		sawtoothSynths[synthNumber].triggerAttackRelease(freq, .2);
+	}
 }
 
 // Piano sampler
@@ -1874,17 +1985,3 @@ function playPercussion(sample) {
 		percussionSampler.triggerAttackRelease(sample, 1);
 	}
 }
-
-
-// TODO
-// volume controls
-// text outline mode
-// interface sfx
-// instrument menu
-
-// WISHLIST
-// URL options with font name and instrument name
-// linkable credits to student websites, social, etc.
-
-// BUGS
-// fonts with a ton of axes like roboto flex not working

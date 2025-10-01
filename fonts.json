@@ -1,5 +1,145 @@
 {
-	"violeit-jin-sharp-pixel": {
+	"CynthiaWang-Willow": {
+		"name": "Willow",
+		"designer": "Cynthia Wang",
+		"preview-text": "branch",
+		"preview-animation": "0% { font-variation-settings: 'wght' 700 } 100% { font-variation-settings: 'wght' 200 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/CynthiaWang-Willow.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 200,
+				"default": 700,
+				"max": 700
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"CocoLi-Fractured": {
+		"name": "Fractured",
+		"designer": "Coco Li",
+		"preview-text": "Cut Up",
+		"preview-animation": "0% { font-variation-settings: 'FRAC' 100 } 100% { font-variation-settings: 'FRAC' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/CocoLi-Fractured.ttf",
+		"axes": {
+			"FRAC": {
+				"name": "Fractured",
+				"min": 0,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "Based on Amiamie by Mirat Masson",
+		"tags": "vector, remixed"
+	},
+	"AveryBrowne-Valentine": {
+		"name": "Valentine",
+		"designer": "Avery Brown",
+		"preview-text": "friendly",
+		"preview-animation": "0% { font-variation-settings: 'XXXX' 0 } 100% { font-variation-settings: 'XXXX' 200 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/AveryBrowne-Valentine.ttf",
+		"axes": {
+			"XXXX": {
+				"name": "x",
+				"min": 0,
+				"default": 0,
+				"max": 200
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"AnhNguyen-ThousandCloud": {
+		"name": "Thousand Cloud",
+		"designer": "Anh Nguyen",
+		"preview-text": "Misty",
+		"preview-animation": "0% { font-variation-settings: 'BLED' 200 } 100% { font-variation-settings: 'BLED' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/AnhNguyen-ThousandCloud.ttf",
+		"axes": {
+			"BLED": {
+				"name": "Bleed",
+				"min": 0,
+				"default": 200,
+				"max": 200
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"SelinaKehuanWu-Samsara": {
+		"name": "Samsara",
+		"designer": "Selina Kehuan Wu",
+		"preview-text": "Elegance",
+		"preview-animation": "0% { font-variation-settings: 'ELGC' 0 } 100% { font-variation-settings: 'ELGC' 1000 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/SelinaKehuanWu-Samsara.ttf",
+		"axes": {
+			"ELGC": {
+				"name": "Elegance",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"NatalieHo-Shard": {
+		"name": "Shard",
+		"designer": "Allie Heffner",
+		"preview-text": "Shatter",
+		"preview-animation": "0% { font-variation-settings: 'CURV' 0 } 100% { font-variation-settings: 'CURV' 1000 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/NatalieHo-Shard.ttf",
+		"axes": {
+			"CURV": {
+				"name": "Curve",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"AllieHeffner-Spores": {
+		"name": "Spores",
+		"designer": "Allie Heffner",
+		"preview-text": "Pollinate",
+		"preview-animation": "0% { font-variation-settings: 'SHFT' 0 } 100% { font-variation-settings: 'SHFT' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/AllieHeffner-Spores.ttf",
+		"axes": {
+			"SHFT": {
+				"name": "Shift",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"VioleitJin-SharpPixel": {
 		"name": "Sharp Pixel",
 		"designer": "Violeit Jin",
 		"preview-text": "Crush",
@@ -17,7 +157,7 @@
 			}
 		},
 		"credit": "",
-		"tags": "vector"
+		"tags": "vector, original"
 	},
 	"authentic-remixed": {
 		"name": "AUTHENTIC Remixed",

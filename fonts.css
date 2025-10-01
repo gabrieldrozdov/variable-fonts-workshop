@@ -1,19 +1,138 @@
 
 			@font-face {
-				font-family: "violeit-jin-sharp-pixel";
+				font-family: "CynthiaWang-Willow";
+				src: url("/assets/fonts/students/vfw24-section3/CynthiaWang-Willow.ttf");
+				
+			}
+			@keyframes preview-CynthiaWang-Willow {
+				0% { font-variation-settings: 'wght' 700 } 100% { font-variation-settings: 'wght' 200 }
+			}
+			[data-font="CynthiaWang-Willow"] .menu-fonts-item-preview {
+				font-family: "CynthiaWang-Willow";
+				font-variation-settings: "wght" 700;
+				
+			}
+			[data-font="CynthiaWang-Willow"]:hover .menu-fonts-item-preview {
+				animation: preview-CynthiaWang-Willow 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "CocoLi-Fractured";
+				src: url("/assets/fonts/students/vfw24-section3/CocoLi-Fractured.ttf");
+				
+			}
+			@keyframes preview-CocoLi-Fractured {
+				0% { font-variation-settings: 'FRAC' 100 } 100% { font-variation-settings: 'FRAC' 0 }
+			}
+			[data-font="CocoLi-Fractured"] .menu-fonts-item-preview {
+				font-family: "CocoLi-Fractured";
+				font-variation-settings: "FRAC" 100;
+				
+			}
+			[data-font="CocoLi-Fractured"]:hover .menu-fonts-item-preview {
+				animation: preview-CocoLi-Fractured 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "AveryBrowne-Valentine";
+				src: url("/assets/fonts/students/vfw24-section3/AveryBrowne-Valentine.ttf");
+				
+			}
+			@keyframes preview-AveryBrowne-Valentine {
+				0% { font-variation-settings: 'XXXX' 0 } 100% { font-variation-settings: 'XXXX' 200 }
+			}
+			[data-font="AveryBrowne-Valentine"] .menu-fonts-item-preview {
+				font-family: "AveryBrowne-Valentine";
+				font-variation-settings: "XXXX" 0;
+				
+			}
+			[data-font="AveryBrowne-Valentine"]:hover .menu-fonts-item-preview {
+				animation: preview-AveryBrowne-Valentine 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "AnhNguyen-ThousandCloud";
+				src: url("/assets/fonts/students/vfw24-section3/AnhNguyen-ThousandCloud.ttf");
+				
+			}
+			@keyframes preview-AnhNguyen-ThousandCloud {
+				0% { font-variation-settings: 'BLED' 200 } 100% { font-variation-settings: 'BLED' 0 }
+			}
+			[data-font="AnhNguyen-ThousandCloud"] .menu-fonts-item-preview {
+				font-family: "AnhNguyen-ThousandCloud";
+				font-variation-settings: "BLED" 200;
+				
+			}
+			[data-font="AnhNguyen-ThousandCloud"]:hover .menu-fonts-item-preview {
+				animation: preview-AnhNguyen-ThousandCloud 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "SelinaKehuanWu-Samsara";
+				src: url("/assets/fonts/students/vfw24-section3/SelinaKehuanWu-Samsara.ttf");
+				
+			}
+			@keyframes preview-SelinaKehuanWu-Samsara {
+				0% { font-variation-settings: 'ELGC' 0 } 100% { font-variation-settings: 'ELGC' 1000 }
+			}
+			[data-font="SelinaKehuanWu-Samsara"] .menu-fonts-item-preview {
+				font-family: "SelinaKehuanWu-Samsara";
+				font-variation-settings: "ELGC" 0;
+				
+			}
+			[data-font="SelinaKehuanWu-Samsara"]:hover .menu-fonts-item-preview {
+				animation: preview-SelinaKehuanWu-Samsara 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "NatalieHo-Shard";
+				src: url("/assets/fonts/students/vfw24-section3/NatalieHo-Shard.ttf");
+				
+			}
+			@keyframes preview-NatalieHo-Shard {
+				0% { font-variation-settings: 'CURV' 0 } 100% { font-variation-settings: 'CURV' 1000 }
+			}
+			[data-font="NatalieHo-Shard"] .menu-fonts-item-preview {
+				font-family: "NatalieHo-Shard";
+				font-variation-settings: "CURV" 0;
+				
+			}
+			[data-font="NatalieHo-Shard"]:hover .menu-fonts-item-preview {
+				animation: preview-NatalieHo-Shard 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "AllieHeffner-Spores";
+				src: url("/assets/fonts/students/vfw24-section3/AllieHeffner-Spores.ttf");
+				
+			}
+			@keyframes preview-AllieHeffner-Spores {
+				0% { font-variation-settings: 'SHFT' 0 } 100% { font-variation-settings: 'SHFT' 100 }
+			}
+			[data-font="AllieHeffner-Spores"] .menu-fonts-item-preview {
+				font-family: "AllieHeffner-Spores";
+				font-variation-settings: "SHFT" 0;
+				
+			}
+			[data-font="AllieHeffner-Spores"]:hover .menu-fonts-item-preview {
+				animation: preview-AllieHeffner-Spores 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "VioleitJin-SharpPixel";
 				src: url("/assets/fonts/students/vfw24-section3/VioleitJin-SharpPixel.ttf");
 				
 			}
-			@keyframes preview-violeit-jin-sharp-pixel {
+			@keyframes preview-VioleitJin-SharpPixel {
 				0% { font-variation-settings: 'SHRP' 0 } 100% { font-variation-settings: 'SHRP' 100 }
 			}
-			[data-font="violeit-jin-sharp-pixel"] .menu-fonts-item-preview {
-				font-family: "violeit-jin-sharp-pixel";
+			[data-font="VioleitJin-SharpPixel"] .menu-fonts-item-preview {
+				font-family: "VioleitJin-SharpPixel";
 				font-variation-settings: "SHAP" 0;
 				
 			}
-			[data-font="violeit-jin-sharp-pixel"]:hover .menu-fonts-item-preview {
-				animation: preview-violeit-jin-sharp-pixel 1s infinite ease-in-out alternate;
+			[data-font="VioleitJin-SharpPixel"]:hover .menu-fonts-item-preview {
+				animation: preview-VioleitJin-SharpPixel 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
