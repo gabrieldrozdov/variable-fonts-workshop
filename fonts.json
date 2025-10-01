@@ -1,4 +1,24 @@
 {
+	"violeit-jin-sharp-pixel": {
+		"name": "Sharp Pixel",
+		"designer": "Violeit Jin",
+		"preview-text": "Crush",
+		"preview-animation": "0% { font-variation-settings: 'SHRP' 0 } 100% { font-variation-settings: 'SHRP' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/VioleitJin-SharpPixel.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Sharp",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector"
+	},
 	"authentic-remixed": {
 		"name": "AUTHENTIC Remixed",
 		"designer": "Gabriel Drozdov",

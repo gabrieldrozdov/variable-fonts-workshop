@@ -1,5 +1,22 @@
 
 			@font-face {
+				font-family: "violeit-jin-sharp-pixel";
+				src: url("/assets/fonts/students/vfw24-section3/VioleitJin-SharpPixel.ttf");
+				
+			}
+			@keyframes preview-violeit-jin-sharp-pixel {
+				0% { font-variation-settings: 'SHRP' 0 } 100% { font-variation-settings: 'SHRP' 100 }
+			}
+			[data-font="violeit-jin-sharp-pixel"] .menu-fonts-item-preview {
+				font-family: "violeit-jin-sharp-pixel";
+				font-variation-settings: "SHAP" 0;
+				
+			}
+			[data-font="violeit-jin-sharp-pixel"]:hover .menu-fonts-item-preview {
+				animation: preview-violeit-jin-sharp-pixel 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
 				font-family: "authentic-remixed";
 				src: url("/assets/fonts/tmt/TMT-AUTHENTICRemixedVF.ttf");
 				

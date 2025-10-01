@@ -3,18 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Variable Fonts Workshop</title>
-	<link rel="stylesheet" href="fonts.css">
-	<link rel="stylesheet" href="style.css">
+	<title>Variable Fonts Workshop, by GD with GD</title>
+	<link rel="stylesheet" href="/fonts.css">
+	<link rel="stylesheet" href="/style.css">
 
-	<meta name="author" content="Gabriel Drozdov">
+	<meta name="author" content="Gabriel Drozdov / GD with GD">
 	<meta name="keywords" content="Variable Fonts, HTML, CSS, JavaScript, Music, Creative Coding, Typography, Type Design">
-	<meta name="description" content="">
+	<meta name="description" content="Toys for playing with and testing variable fonts, as well as a showcase of student fonts!">
 	<meta property="og:url" content="https://variablefonts.gdwithgd.com/">
-	<meta name="og:title" property="og:title" content="Variable Fonts Workshop">
-	<meta property="og:description" content="">
+	<meta name="og:title" property="og:title" content="Variable Fonts Workshop, by GD with GD">
+	<meta property="og:description" content="Toys for playing with and testing variable fonts, as well as a showcase of student fonts!">
 	<meta property="og:image" content="./assets/meta/opengraph.jpg">
-	<link rel="icon" type="image/png" href="assets/meta/favicon.png" />
+	<link rel="icon" type="png" href="/assets/meta/favicon.png">
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔡</text></svg>">
 
 	<!-- User fonts -->
 	<style id="user-font">
@@ -33,7 +34,7 @@
 </head>
 <body>
 	<div class="container">
-		<header class="intro" data-active="0" onclick="introOut();">
+		<header class="intro" data-active="0" onclick="introOut(); playPercussion('B1');">
 			<div class="intro-logo">
 				<div class="intro-logo-line intro-logo-line1">
 					<div class="intro-logo-bolt" data-position="0"></div>
@@ -68,14 +69,14 @@
 
 		<nav class="nav" data-active="0">
 			<div class="nav-section" id="nav-font">
-				<button class="nav-section-arrow" onclick="prevFont();">
+				<button class="nav-section-arrow" onclick="prevFont(); playPercussion('A5');">
 					<svg viewBox="0 0 24 24"><path d="M10.975,1l2.847,2.828-6.176,6.176h16.354v3.992H7.646l6.176,6.176-2.847,2.828L0,12,10.975,1Z"/></svg>
 				</button>
-				<button class="nav-section-content" onclick="openMenuFonts(); closeNav(); hideControls();">
+				<button class="nav-section-content" onclick="openMenuFonts(); closeNav(); hideControls(); playPercussion('C3');">
 					<span class="nav-section-title">Font</span>
 					<span class="nav-section-info">Bashful by Gabriel Drozdov</span>
 				</button>
-				<button class="nav-section-arrow" onclick="nextFont();">
+				<button class="nav-section-arrow" onclick="nextFont(); playPercussion('B5');">
 					<svg viewBox="0 0 24 24"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/></svg>
 				</button>
 			</div>
@@ -94,7 +95,7 @@
 		</nav>
 
 		<div class="menu-fonts" data-active="0" data-empty="0">
-			<button class="menu-fonts-button" onclick="document.getElementById('menu-fonts-input').click();">
+			<button class="menu-fonts-button" onclick="document.getElementById('menu-fonts-input').click(); playPercussion('B0');" onmouseenter="playPercussion('A0');">
 				<svg class="menu-fonts-button-text" viewBox="0 0 100 100"><defs><path id="buttonText" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs><text><textPath xlink:href="#buttonText">Upload a font!</textPath></text></svg>
 				<div class="menu-fonts-button-icon">
 					<svg viewBox="0 0 24 24"><path d="M8 10h-5l9-10 9 10h-5v10h-8v-10zm11 9v3h-14v-3h-2v5h18v-5h-2z"/></svg>
@@ -102,7 +103,7 @@
 				<input id="menu-fonts-input" name="file" type="file">
 			</button>
 
-			<button class="menu-fonts-button" onclick="closeMenuFonts(); showControls(); openNav(); resumeInstrument();" style="left: unset; right: 10px;">
+			<button class="menu-fonts-button" onclick="closeMenuFonts(); showControls(); openNav(); resumeInstrument(); playPercussion('B2');" onmouseenter="playPercussion('D5');" style="left: unset; right: 10px;">
 				<svg class="menu-fonts-button-text" viewBox="0 0 100 100"><defs><path id="buttonText" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs><text><textPath xlink:href="#buttonText">Close Menu</textPath></text></svg>
 				<div class="menu-fonts-button-icon">
 					<svg viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
@@ -113,23 +114,23 @@
 			<div class="menu-fonts-items-empty">No fonts found!!!</div>
 
 			<div class="menu-fonts-nav">
-				<div class="menu-fonts-nav-button" id="menu-fonts-sorting" onclick="sortMenuFonts(); flashScreen();">
+				<div class="menu-fonts-nav-button" id="menu-fonts-sorting" onclick="sortMenuFonts(); playPercussion('G1');" onmouseenter="playPercussion('F1');">
 					<svg viewBox="0 0 24 24"><path d="M12 0l8 10h-16l8-10zm8 14h-16l8 10 8-10z"/></svg>
 					<span id="menu-fonts-sort">Sort by: Random</span>
 				</div>
-				<div class="menu-fonts-nav-button" id="menu-fonts-filters" onclick="filterMenuFonts(); flashScreen();">
+				<div class="menu-fonts-nav-button" id="menu-fonts-filters" onclick="filterMenuFonts(); playPercussion('F3');" onmouseenter="playPercussion('E3');">
 					<svg viewBox="0 0 24 24"><path d="M1 0h22l-9 14.094v9.906l-4-2v-7.906z"/></svg>
 					<span id="menu-fonts-filter">Filter by: Show All</span>
 				</div>
-				<div class="menu-fonts-nav-search">
+				<div class="menu-fonts-nav-search" onmouseenter="playPercussion('G4');">
 					<svg viewBox="0 0 24 24"><path d="M23.822 20.88l-6.353-6.354c.93-1.465 1.467-3.2 1.467-5.059.001-5.219-4.247-9.467-9.468-9.467s-9.468 4.248-9.468 9.468c0 5.221 4.247 9.469 9.468 9.469 1.768 0 3.421-.487 4.839-1.333l6.396 6.396 3.119-3.12zm-20.294-11.412c0-3.273 2.665-5.938 5.939-5.938 3.275 0 5.94 2.664 5.94 5.938 0 3.275-2.665 5.939-5.94 5.939-3.274 0-5.939-2.664-5.939-5.939z"/></svg>
 					<input type="text" placeholder="Search for fonts!" oninput="searchMenuFonts(this.value)" spellcheck="false" id="menu-fonts-search">
 				</div>
-				<div class="menu-fonts-nav-search">
+				<div class="menu-fonts-nav-search" onmouseenter="playPercussion('A7');">
 					<svg viewBox="0 0 24 24"><path d="M15.794 2.707c-.634-.634-.174-1.707.707-1.707.256 0 .512.098.707.293l4.243 4.242c.391.391.391 1.023 0 1.414s-1.023.391-1.414 0l-4.243-4.242zm-1.811 9.293h-11.42l-.445-.445c-.212-.213-.129-.609.188-.721 6.171-1.357 9.375-1.261 13.573-5.414l-1.414-1.414c-3.784 3.794-7.231 3.712-12.827 4.944-1.029.366-1.638 1.317-1.638 2.322 0 .605.224 1.217.705 1.697l9.301 9.301c.48.48 1.091.73 1.696.73 1 0 1.955-.629 2.323-1.664 1.235-5.617.884-9.288 4.683-13.086l-1.414-1.414c-1.732 1.732-2.689 3.398-3.311 5.164zm10.017 1.517c0 1.363-1.106 2.483-2.47 2.483-2.991 0-4.06-4.22.912-8-.058 2.365 1.558 3.302 1.558 5.517zm-2.371-3.466c-.346.189-.856.698-.934 1.333-.115.95.867 1.23.953-.044.04-.537 0-.794-.019-1.289z"/></svg>
 					<input type="text" placeholder="Type to preview!" oninput="sampleMenuFonts(this.value)" spellcheck="false" id="menu-fonts-sample">
 				</div>
-				<div class="menu-fonts-nav-button" onclick="resetMenuFonts(); flashScreen();">
+				<div class="menu-fonts-nav-button" onclick="resetMenuFonts(); flashScreen(); playPercussion('E7');" onmouseenter="playPercussion('D6');">
 					<svg viewBox="0 0 24 24"><path d="M9 12l-4.463 4.969-4.537-4.969h3c0-4.97 4.03-9 9-9 2.395 0 4.565.942 6.179 2.468l-2.004 2.231c-1.081-1.05-2.553-1.699-4.175-1.699-3.309 0-6 2.691-6 6h3zm10.463-4.969l-4.463 4.969h3c0 3.309-2.691 6-6 6-1.623 0-3.094-.65-4.175-1.699l-2.004 2.231c1.613 1.526 3.784 2.468 6.179 2.468 4.97 0 9-4.03 9-9h3l-4.537-4.969z"/></svg>
 					<span>Reset Settings</span>
 				</div>
@@ -138,23 +139,23 @@
 
 		<div class="controls" data-active="0" data-open="0" data-tab="">
 			<div class="controls-tabs">
-				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('variable', this)">
+				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('variable', this); playPercussion('G1');" onmouseenter="playPercussion('F1');">
 					<svg viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
 					<span>Variable Axes</span>
 				</button>
-				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('typography', this)">
+				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('typography', this); playPercussion('F3');" onmouseenter="playPercussion('E3');">
 					<svg viewBox="0 0 24 24"><path d="M22 0h-20v6h1.999c0-1.174.397-3 2.001-3h4v16.874c0 1.174-.825 2.126-2 2.126h-1v2h9.999v-2h-.999c-1.174 0-2-.952-2-2.126v-16.874h4c1.649 0 2.02 1.826 2.02 3h1.98v-6z"/></svg>
 					<span>Typography</span>
 				</button>
-				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('interface', this)">
+				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('interface', this); playPercussion('B4');" onmouseenter="playPercussion('G4');">
 					<svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10v-20zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>
 					<span>Interface</span>
 				</button>
-				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('audio', this)">
+				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('audio', this); playPercussion('G7');" onmouseenter="playPercussion('A7');">
 					<svg viewBox="0 0 24 24"><path d="M6 7l8-5v20l-8-5v-10zm-6 10h4v-10h-4v10zm20.264-13.264l-1.497 1.497c1.847 1.783 2.983 4.157 2.983 6.767 0 2.61-1.135 4.984-2.983 6.766l1.498 1.498c2.305-2.153 3.735-5.055 3.735-8.264s-1.43-6.11-3.736-8.264zm-.489 8.264c0-2.084-.915-3.967-2.384-5.391l-1.503 1.503c1.011 1.049 1.637 2.401 1.637 3.888 0 1.488-.623 2.841-1.634 3.891l1.503 1.503c1.468-1.424 2.381-3.309 2.381-5.394z"/></svg>
 					<span>Audio</span>
 				</button>
-				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('information', this)">
+				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('information', this); playPercussion('E7');" onmouseenter="playPercussion('D6');">
 					<svg viewBox="0 0 24 24"><path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg>
 					<span>Credits</span>
 				</button>
@@ -197,15 +198,15 @@
 
 					<div class="controls-menu-item" id="alignment">
 						<div class="controls-menu-item-label">Alignment</div>
-						<button class="controls-menu-button" onclick="setAlignment('left')" data-state="0" data-alignment="left">
+						<button class="controls-menu-button" onclick="setAlignment('left'); playBlock(500);" data-state="0" data-alignment="left">
 							<svg viewBox="0 0 24 24"><path d="m17 17.75c0-.414-.336-.75-.75-.75h-13.5c-.414 0-.75.336-.75.75s.336.75.75.75h13.5c.414 0 .75-.336.75-.75zm5-4c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-9-4c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm7-4c0-.414-.336-.75-.75-.75h-16.5c-.414 0-.75.336-.75.75s.336.75.75.75h16.5c.414 0 .75-.336.75-.75z"/></svg>
 							<span>Left</span>
 						</button>
-						<button class="controls-menu-button" onclick="setAlignment('center')" data-state="1" data-alignment="center">
+						<button class="controls-menu-button" onclick="setAlignment('center'); playBlock(700);" data-state="1" data-alignment="center">
 							<svg viewBox="0 0 24 24"><path d="m6 17.75c0-.414.336-.75.75-.75h10.5c.414 0 .75.336.75.75s-.336.75-.75.75h-10.5c-.414 0-.75-.336-.75-.75zm-4-4c0-.414.336-.75.75-.75h18.5c.414 0 .75.336.75.75s-.336.75-.75.75h-18.5c-.414 0-.75-.336-.75-.75zm0-4c0-.414.336-.75.75-.75h18.5c.414 0 .75.336.75.75s-.336.75-.75.75h-18.5c-.414 0-.75-.336-.75-.75zm4-4c0-.414.336-.75.75-.75h10.5c.414 0 .75.336.75.75s-.336.75-.75.75h-10.5c-.414 0-.75-.336-.75-.75z"/></svg>
 							<span>Center</span>
 						</button>
-						<button class="controls-menu-button" onclick="setAlignment('right')" data-state="0" data-alignment="right">
+						<button class="controls-menu-button" onclick="setAlignment('right'); playBlock(900);" data-state="0" data-alignment="right">
 							<svg viewBox="0 0 24 24"><path d="m7 17.75c0-.414.336-.75.75-.75h13.5c.414 0 .75.336.75.75s-.336.75-.75.75h-13.5c-.414 0-.75-.336-.75-.75zm-5-4c0-.414.336-.75.75-.75h18.5c.414 0 .75.336.75.75s-.336.75-.75.75h-18.5c-.414 0-.75-.336-.75-.75zm9-4c0-.414.336-.75.75-.75h9.5c.414 0 .75.336.75.75s-.336.75-.75.75h-9.5c-.414 0-.75-.336-.75-.75zm-7-4c0-.414.336-.75.75-.75h16.5c.414 0 .75.336.75.75s-.336.75-.75.75h-16.5c-.414 0-.75-.336-.75-.75z"/></svg>
 							<span>Right</span>
 						</button>
@@ -215,13 +216,13 @@
 
 					<div class="controls-menu-item" id="capitalization">
 						<div class="controls-menu-item-label">Capitalization</div>
-						<button class="controls-menu-button" onclick="setCapitalization('normal')" data-state="1" data-capitalization="normal">
+						<button class="controls-menu-button" onclick="setCapitalization('normal'); playBlock(900);" data-state="1" data-capitalization="normal">
 							<span>Normal</span>
 						</button>
-						<button class="controls-menu-button" onclick="setCapitalization('uppercase')" data-state="0" data-capitalization="uppercase">
+						<button class="controls-menu-button" onclick="setCapitalization('uppercase'); playBlock(700);" data-state="0" data-capitalization="uppercase">
 							<span>Uppercase</span>
 						</button>
-						<button class="controls-menu-button" onclick="setCapitalization('lowercase')" data-state="0" data-capitalization="lowercase">
+						<button class="controls-menu-button" onclick="setCapitalization('lowercase'); playBlock(500);" data-state="0" data-capitalization="lowercase">
 							<span>Lowercase</span>
 						</button>
 					</div>
@@ -229,46 +230,42 @@
 
 				<section class="controls-menu-content" data-tab="interface" data-active="0">
 					<div class="controls-menu-item-label">Text Color</div>
-					<input class="controls-menu-color" type="color" id="textcolor" onchange="displayForegroundColor(this.value)" value="#353535">
+					<input class="controls-menu-color" type="color" id="textcolor" oninput="displayForegroundColor(this.value)" value="#353535">
 
 					<div class="controls-menu-divider"></div>
 
 					<div class="controls-menu-item-label">Display Color</div>
-					<input class="controls-menu-color" type="color" id="displaycolor" onchange="displayBackgroundColor(this.value)" value="#e5e5e5">
+					<input class="controls-menu-color" type="color" id="displaycolor" oninput="displayBackgroundColor(this.value)" value="#e5e5e5">
 
 					<div class="controls-menu-divider"></div>
 
 					<div class="controls-menu-item">
 						<div class="controls-menu-item-label">Interface Color</div>
-						<button class="controls-menu-button" data-background-color="purple" onclick="setColor('purple')" data-state="0">
-							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
-							<span>Purple</span>
-						</button>
-						<button class="controls-menu-button" data-background-color="yellow" onclick="setColor('yellow')" data-state="0">
-							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
-							<span>Yellow</span>
-						</button>
-						<button class="controls-menu-button" data-background-color="blue" onclick="setColor('blue')" data-state="0">
-							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
-							<span>Blue</span>
-						</button>
-						<button class="controls-menu-button" data-background-color="red" onclick="setColor('red')" data-state="0">
-							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
-							<span>Red</span>
-						</button>
-						<button class="controls-menu-button" data-background-color="pink" onclick="setColor('pink')" data-state="0">
+						<button class="controls-menu-button" data-background-color="pink" onclick="setColor('pink'); playBlock(400);" data-state="0">
 							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
 							<span>Pink</span>
 						</button>
-						<button class="controls-menu-button" data-background-color="green" onclick="setColor('green')" data-state="0">
+						<button class="controls-menu-button" data-background-color="green" onclick="setColor('green'); playBlock(450);" data-state="0">
 							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
 							<span>Green</span>
 						</button>
-						<button class="controls-menu-button" data-background-color="white" onclick="setColor('white')" data-state="0">
+						<button class="controls-menu-button" data-background-color="blue" onclick="setColor('blue'); playBlock(500);" data-state="0">
 							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
-							<span>White</span>
+							<span>Blue</span>
 						</button>
-						<button class="controls-menu-button" data-background-color="cycle" onclick="setColor('cycle')" data-state="0">
+						<button class="controls-menu-button" data-background-color="yellow" onclick="setColor('yellow'); playBlock(550);" data-state="0">
+							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
+							<span>Yellow</span>
+						</button>
+						<button class="controls-menu-button" data-background-color="purple" onclick="setColor('purple'); playBlock(600);" data-state="0">
+							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
+							<span>Purple</span>
+						</button>
+						<button class="controls-menu-button" data-background-color="red" onclick="setColor('red'); playBlock(650);" data-state="0">
+							<svg viewBox="0 0 24 24"><path d="M17.831 7.672c1.096-1.096 2.875-1.865 3.688-3.106.892-1.362.508-3.192-.851-4.085-1.362-.892-3.187-.508-4.081.854-.842 1.286-.801 3.322-1.433 4.779-.817 1.882-3.553 2.116-6.698.474-1.727 3.352-4.075 6.949-6.456 9.874l2.263 1.484c1.018-.174 2.279-1.059 2.792-2.03-.04 1.167-.478 2.2-1.337 2.983l4.275 2.797c.546-.544 1.054-.976 1.616-1.345-.319.643-.532 1.324-.63 1.99l2.532 1.659c1.5-2.884 4.416-7.343 6.455-9.874-2.82-2.272-3.657-4.936-2.135-6.454zm1.762-5.545c.454.296.58.908.281 1.36-.294.457-.905.582-1.356.286-.456-.297-.582-.906-.284-1.36.295-.455.905-.583 1.359-.286zm-3.959 15.037l-8.225-5.386 1.616-2.469 8.221 5.387-1.612 2.468z"/></svg>
+							<span>Red</span>
+						</button>
+						<button class="controls-menu-button" data-background-color="cycle" onclick="setColor('cycle'); playBlockRandom();" data-state="0">
 							<svg viewBox="0 0 24 24"><path d="M9 12l-4.463 4.969-4.537-4.969h3c0-4.97 4.03-9 9-9 2.395 0 4.565.942 6.179 2.468l-2.004 2.231c-1.081-1.05-2.553-1.699-4.175-1.699-3.309 0-6 2.691-6 6h3zm10.463-4.969l-4.463 4.969h3c0 3.309-2.691 6-6 6-1.623 0-3.094-.65-4.175-1.699l-2.004 2.231c1.613 1.526 3.784 2.468 6.179 2.468 4.97 0 9-4.03 9-9h3l-4.537-4.969z"/></svg>
 							<span>Cycle</span>
 						</button>
@@ -278,15 +275,15 @@
 
 					<div class="controls-menu-item">
 						<div class="controls-menu-item-label">Background</div>
-						<button class="controls-menu-button" onclick="changeBackground()">
+						<button class="controls-menu-button" onclick="changeBackground(); playBlockRandom();">
 							<svg viewBox="0 0 24 24"><path d="M18.342 0l-2.469 2.47 2.121 2.121-.707.707-2.121-2.121-1.414 1.414 1.414 1.414-.707.707-1.414-1.414-1.414 1.414 1.414 1.414-.707.707-1.414-1.414-1.414 1.414 2.121 2.122-.707.707-2.121-2.121-1.414 1.414 1.414 1.414-.708.707-1.414-1.414-1.414 1.414 1.414 1.414-.708.709-1.414-1.414-1.414 1.413 2.121 2.121-.706.706-2.122-2.121-2.438 2.439 5.656 5.657 18.344-18.343z"/></svg>
 							<span>Change scale</span>
 						</button>
-						<button class="controls-menu-button" id="controls-background-motion" onclick="toggleBackgroundMotion()" data-state="1">
+						<button class="controls-menu-button" id="controls-background-motion" onclick="toggleBackgroundMotion(); playBlock(800);" data-state="1">
 							<svg viewBox="0 0 24 24"><path d="M3 22v-20l18 10-18 10z"/></svg>
 							<span>Toggle motion</span>
 						</button>
-						<button class="controls-menu-button" id="controls-background-checkerboard" onclick="toggleBackgroundCheckerboard()" data-state="1">
+						<button class="controls-menu-button" id="controls-background-checkerboard" onclick="toggleBackgroundCheckerboard(); playBlock(400);" data-state="1">
 							<svg viewBox="0 0 24 24"><path d="M11 11h-11v-11h11v11zm13 0h-11v-11h11v11zm-13 13h-11v-11h11v11zm13 0h-11v-11h11v11z"/></svg>
 							<span>Toggle checkerboard</span>
 						</button>
@@ -300,7 +297,7 @@
 							<div class="controls-menu-slider-value"></div>
 							<div class="controls-menu-slider-fill"></div>
 						</div>
-						<button class="controls-menu-button" onclick="toggleMute()" data-state="0">
+						<button class="controls-menu-button" data-controls-toggle="mute" onclick="toggleMute()" data-state="0">
 							<svg viewBox="0 0 24 24"><path d="M19 7.358v15.642l-8-5v-.785l8-9.857zm3-6.094l-1.548-1.264-3.446 4.247-6.006 3.753v3.646l-2 2.464v-6.11h-4v10h.843l-3.843 4.736 1.548 1.264 18.452-22.736z"/></svg>
 							<span>Mute</span>
 						</button>
@@ -309,7 +306,7 @@
 					<div class="controls-menu-divider"></div>
 
 					<div class="controls-menu-item">
-						<button class="controls-menu-button" onclick="toggleAnimalese()" data-state="0" id="animalese-toggle">
+						<button class="controls-menu-button" onclick="toggleAnimalese(); triggerAnimalese('a');" data-state="1" id="animalese-toggle">
 							<svg viewBox="0 0 24 24"><path d="M.054 23c.971-1.912 2.048-4.538 1.993-6.368-1.308-1.562-2.047-3.575-2.047-5.625 0-5.781 5.662-10.007 12-10.007 6.299 0 12 4.195 12 10.007 0 6.052-6.732 11.705-15.968 9.458-1.678 1.027-5.377 2.065-7.978 2.535z"/></svg>
 							<span>Toggle musical typing</span>
 						</button>
@@ -332,11 +329,11 @@
 					<div class="instrument-text" contenteditable="plaintext-only" spellcheck="false"></div>
 					<div class="instrument-screen-generator">
 						<h4 class="instrument-screen-generator-title">Generate Text</h4>
-						<button class="instrument-screen-generator-button" onclick="generateText('allglyphs')">All Glyphs</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('lettersnumbers')">Letters + Numbers</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('randomsentence')">Random sentence</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('randomcharacters')">Random characters</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('repeatedcharacters')">Repeated characters</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('allglyphs'); playBlockRandom();">All Glyphs</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('lettersnumbers'); playBlockRandom();">Letters + Numbers</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('randomsentence'); playBlockRandom();">Random sentence</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('randomcharacters'); playBlockRandom();">Random characters</button>
+						<button class="instrument-screen-generator-button" onclick="generateText('repeatedcharacters'); playBlockRandom();">Repeated characters</button>
 					</div>
 					<div class="instrument-screen-bolt" data-position="0"></div>
 					<div class="instrument-screen-bolt" data-position="1"></div>
@@ -361,9 +358,9 @@
 		</div>
 
 		<div class="flash"></div>
-	</div>
 	
-	<div class="background" data-motion="1" data-checkerboard="1"></div>
+		<div class="background" data-motion="1" data-checkerboard="1"></div>
+	</div>
 
 	<script src="script.js"></script>
 </body>

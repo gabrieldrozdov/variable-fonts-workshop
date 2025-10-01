@@ -27,16 +27,22 @@ function changeBackground() {
 	const background = document.querySelector('.background');
 	background.style.transform = `scale(${Math.random()*2+.5}, ${Math.random()*2+.5})`;
 }
-let colors = ['purple', 'yellow', 'blue', 'red', 'pink', 'green'];
+let colors = ['pink', 'green', 'blue', 'yellow', 'purple', 'red'];
 shuffle(colors);
 let currentColor = 0;
 function changePrimaryColor() {
-	const root = document.querySelector('html');
-	root.style.setProperty('--primary', `var(--${colors[currentColor]}`);
 	currentColor++;
 	if (currentColor >= colors.length) {
 		currentColor = 0;
 	}
+	const root = document.querySelector('html');
+	root.style.setProperty('--primary', `var(--${colors[currentColor]}`);
+
+	for (let backgroundColorToggle of document.querySelectorAll('[data-background-color')) {
+		backgroundColorToggle.dataset.state = 0;
+	}
+	const backgroundColorToggle = document.querySelector(`[data-background-color="${colors[currentColor]}"]`);
+	backgroundColorToggle.dataset.state = 1;
 }
 let backgroundLoop, colorLoop;
 function startBackgroundCycle() {
@@ -46,6 +52,8 @@ function startBackgroundCycle() {
 function endBackgroundCycle() {
 	clearInterval(backgroundLoop);
 	clearInterval(colorLoop);
+	setColor(colors[currentColor]);
+	changeBackground();
 }
 setTimeout(changeBackground, 100);
 setTimeout(changePrimaryColor, 100);
@@ -303,7 +311,9 @@ function updateControlsSlider(e) {
 
 	// Apply settings
 	if (activeControlsSliderTarget == "volume") {
-
+		disableMute();
+		const dB = Tone.gainToDb(controlsSliders[activeControlsSliderTarget]["value"] / 100); // convert value to decibels
+		Tone.Destination.volume.value = dB;
 	} else if (activeControlsSliderTarget == "fontsize") {
 		document.querySelector('body').style.setProperty("--fontsize", controlsSliders[activeControlsSliderTarget]["value"]+units);
 	} else if (activeControlsSliderTarget == "letterspacing") {
@@ -396,6 +406,25 @@ function endControlsAxisSlider() {
 	document.removeEventListener('mouseup', endControlsAxisSlider);
 }
 
+// Mute
+let muted = false;
+function toggleMute() {
+	let muteBtn = document.querySelector('[data-controls-toggle="mute"]');
+	muted = !muted;
+	Tone.Destination.mute = muted;
+	if (muted) {
+		muteBtn.dataset.state = 1;
+	} else {
+		muteBtn.dataset.state = 0;
+	}
+}
+function disableMute() {
+	muted = false;
+	Tone.Destination.mute = false;
+	let muteBtn = document.querySelector('[data-controls-toggle="mute"]');
+	muteBtn.dataset.state = 0;
+}
+
 // ——————————————————————————————————
 // INTRO SCREEN
 // ——————————————————————————————————
@@ -454,7 +483,7 @@ function generateMenuFonts() {
 
 		htmlTemp += `
 			<div class="menu-fonts-item-transform" style="transform: translate(-${Math.round(Math.random()*100+100)}vw, ${Math.round(Math.random()*200-100)}vh);" data-filter="1" data-search="1">
-				<button class="menu-fonts-item" style="transform: rotate(${Math.round(Math.random()*20-10)}deg);" data-font="${font}" data-designer="${fontInfo["designer"].toLowerCase()}" data-tags ="${fontInfo["tags"]}" data-default="${fontInfo['preview-text']}" onclick="pickFont('${font}');" onmouseenter="playTomRandom();">
+				<button class="menu-fonts-item" style="transform: rotate(${Math.round(Math.random()*20-10)}deg);" data-font="${font}" data-designer="${fontInfo["designer"].toLowerCase()}" data-tags ="${fontInfo["tags"]}" data-default="${fontInfo['preview-text']}" onclick="pickFont('${font}'); playPercussion('C2');" onmouseenter="playTomRandom();">
 					${credit}
 					<div class="menu-fonts-item-preview">${fontInfo['preview-text']}</div>
 					<div class="menu-fonts-item-info">
@@ -783,6 +812,9 @@ async function pickFont(fontName) {
 
 	// Fetch font data and load using Opentype.js
 	loadFontData(await fetch(`/assets/fonts/${fontData[fontName]["file"]}`), fontName);
+
+	changeBackground();
+	changePrimaryColor();
 }
 async function loadFontData(file, fontName) {
     const isWoff2 = fontName.endsWith('.woff2');
@@ -970,8 +1002,15 @@ function resumeInstrument() {
 // Instrument sliders
 function initAxisSliders(instrument) {
 	const instrumentDOM = document.querySelector(`#${instrument}`);
-	for (let slider of instrumentDOM.querySelectorAll('[data-axis-slider]')) {
+	let sliders = instrumentDOM.querySelectorAll('[data-axis-slider]');
+	for (let slider of sliders) {
 		slider.addEventListener('mousedown', (e) => {startAxisSlider(slider, slider.dataset.axisSlider); updateAxisSlider(e);});
+	}
+
+	// Set volumes according to number of sliders
+	let maxVolume = sliders.length;
+	for (let synth of monoSynths) {
+
 	}
 }
 function resetAxisSliders(instrument) {
@@ -993,9 +1032,15 @@ function resetAxisSliders(instrument) {
 	}
 }
 let activeAxisSlider, activeAxisSliderTarget;
+let activeAxisSliderState = false;
 function startAxisSlider(element, target) {
 	activeAxisSlider = element;
 	activeAxisSliderTarget = target;
+
+	// Temporarily disable slider
+	activeAxisSliderState = oscillatorSettings[activeAxisSliderTarget]["state"];
+	oscillatorOff(activeAxisSliderTarget);
+
 	document.addEventListener('mousemove', updateAxisSlider);
 	document.addEventListener('mouseup', endAxisSlider);
 }
@@ -1031,6 +1076,11 @@ function updateAxisSlider(e) {
 	}
 }
 function endAxisSlider() {
+	// Reactivate slider if needed
+	if (activeAxisSliderState == true) {
+		oscillatorOn(activeAxisSliderTarget);
+	}
+	
 	document.removeEventListener('mousemove', updateAxisSlider);
 	document.removeEventListener('mouseup', endAxisSlider);
 }
@@ -1132,22 +1182,22 @@ function initializeOscillator() {
 				<section class="instrument-axis-section" data-instrument-section="waveform">
 					<h4 class="instrument-axis-section-label">Waveform</h4>
 					<div class="instrument-axis-buttons">
-						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'sine')" data-active="1" data-value="sine">
+						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'sine'); playBlock(450);" data-active="1" data-value="sine">
 							<svg viewBox="0 0 100 56"><path d="m60.66,42.42c-7.77,0-11.34-6.99-14.21-12.6-2.62-5.13-4.4-8.24-7.09-8.24s-4.47,3.11-7.09,8.24c-2.87,5.61-6.44,12.6-14.21,12.6h-4v-8h4c2.68,0,4.47-3.11,7.09-8.24,2.87-5.61,6.44-12.6,14.21-12.6s11.34,6.99,14.21,12.6c2.62,5.13,4.4,8.24,7.09,8.24s4.46-3.11,7.08-8.24c2.87-5.61,6.43-12.6,14.2-12.6h4v8h-4c-2.68,0-4.46,3.11-7.08,8.24-2.87,5.61-6.43,12.6-14.2,12.6Z"/></svg>
 						</button>
-						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'triangle')" data-active="0" data-value="triangle">
+						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'triangle'); playBlock(550);" data-active="0" data-value="triangle">
 							<svg viewBox="0 0 100 56"><polygon points="18 44.08 12.41 38.36 39.36 11.98 60.65 32.82 82 11.92 87.59 17.64 60.66 44.02 39.36 23.18 18 44.08"/></svg>
 						</button>
-						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'square')" data-active="0" data-value="square">
+						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'square'); playBlock(650);" data-active="0" data-value="square">
 							<svg viewBox="0 0 100 56"><polygon points="75.29 42.42 46.01 42.42 46.01 21.58 32.71 21.58 32.71 42.42 11.87 42.42 11.87 34.42 24.71 34.42 24.71 13.58 54.01 13.58 54.01 34.42 67.29 34.42 67.29 13.58 88.13 13.58 88.13 21.58 75.29 21.58 75.29 42.42"/></svg>
 						</button>
-						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'sawtooth')" data-active="0" data-value="sawtooth">
+						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'sawtooth'); playBlock(750);" data-active="0" data-value="sawtooth">
 							<svg viewBox="0 0 100 56"><polygon points="46.01 45.55 46.01 24.71 14.54 43.92 10.37 37.09 54.01 10.45 54.01 31.29 88.13 10.45 88.13 42.42 80.13 42.42 80.13 24.71 46.01 45.55"/></svg>
 						</button>
-						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'sawtoothreverse')" data-active="0" data-value="sawtoothreverse">
+						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'sawtoothreverse'); playBlock(850);" data-active="0" data-value="sawtoothreverse">
 							<svg viewBox="0 0 100 56"><polygon points="53.99 45.55 19.87 24.71 19.87 42.42 11.87 42.42 11.87 10.45 45.99 31.29 45.99 10.45 89.63 37.09 85.46 43.92 53.99 24.71 53.99 45.55"/></svg>
 						</button>
-						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'noise')" data-active="0" data-value="noise">
+						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'noise'); playBlock(950);" data-active="0" data-value="noise">
 							<svg viewBox="0 0 100 56"><path d="m54.35,50.22c-5.19,0-6.23-6.99-7.81-17.57-.37-2.51-.9-6.05-1.48-8.73-.16.46-.31.91-.44,1.29-1.32,3.99-2.97,8.96-7.67,8.96-5.04,0-6.31-6.25-7.78-13.5-.19-.94-.43-2.1-.69-3.25-.43,2.33-.83,4.96-1.12,6.93-1.58,10.56-2.62,17.54-7.81,17.54h-8.5v-7h7.14c.86-2.25,1.71-7.98,2.25-11.57,1.58-10.56,2.62-17.54,7.81-17.54s6.31,6.25,7.78,13.5c.33,1.62.79,3.89,1.28,5.69.25-.69.48-1.39.67-1.95,1.32-3.99,2.97-8.96,7.67-8.96,5.19,0,6.23,6.99,7.81,17.57.2,1.35.45,3,.72,4.66.4-2.72.75-5.68,1.04-8.11,1.69-14.13,2.54-21.22,7.82-21.22s6.23,7.01,7.81,17.62c.38,2.53.91,6.1,1.49,8.8.16-.45.3-.89.43-1.27,1.33-3.96,2.97-8.89,7.67-8.89h8.5v7h-7.9c-.54.83-1.21,2.85-1.63,4.11-1.33,3.96-2.97,8.89-7.67,8.89-5.19,0-6.23-7.01-7.81-17.62-.2-1.36-.45-3.02-.72-4.68-.39,2.71-.75,5.66-1.04,8.08-1.7,14.13-2.54,21.22-7.83,21.22Z"/></svg>
 						</button>
 					</div>
@@ -1156,13 +1206,13 @@ function initializeOscillator() {
 				<section class="instrument-axis-section" data-instrument-section="speed">
 					<h4 class="instrument-axis-section-label">Speed</h4>
 					<div class="instrument-axis-increment">
-						<button class="instrument-axis-increment-button" onclick="oscillatorSpeedDown('${axis}');">
+						<button class="instrument-axis-increment-button" onclick="oscillatorSpeedDown('${axis}'); playBlock(600);">
 							<svg viewBox="0 0 24 24"><path d="M0 9h24v6h-24z"/></svg>
 						</button>
 						<div class="instrument-axis-increment-display">
 							&times;1.0
 						</div>
-						<button class="instrument-axis-increment-button" onclick="oscillatorSpeedUp('${axis}');">
+						<button class="instrument-axis-increment-button" onclick="oscillatorSpeedUp('${axis}'); playBlock(1200);">
 							<svg viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg>
 						</button>
 					</div>
@@ -1171,10 +1221,10 @@ function initializeOscillator() {
 				<section class="instrument-axis-section" data-instrument-section="state">
 					<h4 class="instrument-axis-section-label">State</h4>
 					<div class="instrument-axis-buttons">
-						<button class="instrument-axis-button" data-active="0" onclick="oscillatorOff('${axis}');" data-value="false">
+						<button class="instrument-axis-button" data-active="0" onclick="oscillatorOff('${axis}'); playBlock(500);" data-value="false">
 							<span>Off</span>
 						</button>
-						<button class="instrument-axis-button" data-active="1" onclick="oscillatorOn('${axis}');" data-value="true">
+						<button class="instrument-axis-button" data-active="1" onclick="oscillatorOn('${axis}'); playBlock(1000);" data-value="true">
 							<span>On</span>
 						</button>
 					</div>
@@ -1183,10 +1233,10 @@ function initializeOscillator() {
 				<section class="instrument-axis-section" data-instrument-section="actions">
 					<h4 class="instrument-axis-section-label">Actions</h4>
 					<div class="instrument-axis-buttons">
-						<button class="instrument-axis-button" data-active="0" onclick="oscillatorRando('${axis}');">
+						<button class="instrument-axis-button" data-active="0" onclick="oscillatorRando('${axis}'); playBlockRandom();">
 							<span>Rando</span>
 						</button>
-						<button class="instrument-axis-button" data-active="0" onclick="oscillatorReset('${axis}');">
+						<button class="instrument-axis-button" data-active="0" onclick="oscillatorReset('${axis}'); playBlock(400);">
 							<span>Reset</span>
 						</button>
 					</div>
@@ -1261,7 +1311,7 @@ function instrumentOscillatorLoop() {
 				setAxisSlider("oscillator", axis, easeInOutQuad(axisOscillatorInfo["percent"]));
 				playMono(baseFrequency+(easeInOutQuad(axisOscillatorInfo["percent"]))*baseFrequency, axisNumber);
 
-				activeFontAxes[axis]["value"] = Math.round(easeInOutQuad(axisOscillatorInfo["percent"])*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]));
+				activeFontAxes[axis]["value"] = easeInOutQuad(axisOscillatorInfo["percent"])*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
 			} else if (axisOscillatorInfo["waveform"] == "triangle") {
 				axisOscillatorInfo["percent"] += (axisOscillatorInfo["speed"])/100 * axisOscillatorInfo["direction"];
@@ -1275,7 +1325,7 @@ function instrumentOscillatorLoop() {
 				setAxisSlider("oscillator", axis, axisOscillatorInfo["percent"]);
 				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber);
 
-				activeFontAxes[axis]["value"] = Math.round(axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]));
+				activeFontAxes[axis]["value"] = axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
 			} else if (axisOscillatorInfo["waveform"] == "square") {
 				axisOscillatorInfo["percent"] += (axisOscillatorInfo["speed"])/100 * axisOscillatorInfo["direction"];
@@ -1289,7 +1339,7 @@ function instrumentOscillatorLoop() {
 				setAxisSlider("oscillator", axis, easeInOutExpo(axisOscillatorInfo["percent"]));
 				playMono(baseFrequency+(easeInOutExpo(axisOscillatorInfo["percent"]))*baseFrequency, axisNumber);
 
-				activeFontAxes[axis]["value"] = Math.round(easeInOutExpo(axisOscillatorInfo["percent"])*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]));
+				activeFontAxes[axis]["value"] = easeInOutExpo(axisOscillatorInfo["percent"])*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
 			} else if (axisOscillatorInfo["waveform"] == "sawtooth") {
 				axisOscillatorInfo["percent"] += (axisOscillatorInfo["speed"])/100;
@@ -1299,7 +1349,7 @@ function instrumentOscillatorLoop() {
 				setAxisSlider("oscillator", axis, axisOscillatorInfo["percent"]);
 				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber);
 
-				activeFontAxes[axis]["value"] = Math.round(axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]));
+				activeFontAxes[axis]["value"] = axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
 			} else if (axisOscillatorInfo["waveform"] == "sawtoothreverse") {
 				axisOscillatorInfo["percent"] -= (axisOscillatorInfo["speed"])/100;
@@ -1309,7 +1359,7 @@ function instrumentOscillatorLoop() {
 				setAxisSlider("oscillator", axis, axisOscillatorInfo["percent"]);
 				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber);
 
-				activeFontAxes[axis]["value"] = Math.round(axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]));
+				activeFontAxes[axis]["value"] = axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
 			} else if (axisOscillatorInfo["waveform"] == "noise") {
 				axisOscillatorInfo["percent"] += (axisOscillatorInfo["speed"])/100 * axisOscillatorInfo["direction"];
@@ -1326,7 +1376,7 @@ function instrumentOscillatorLoop() {
 				setAxisSlider("oscillator", axis, axisOscillatorInfo["percent"]);
 				playMono(baseFrequency+(axisOscillatorInfo["percent"])*baseFrequency, axisNumber);
 
-				activeFontAxes[axis]["value"] = Math.round((axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"])));
+				activeFontAxes[axis]["value"] = axisOscillatorInfo["percent"]*activeFontAxes[axis]["range"] + Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
 
 			}
 		}
@@ -1365,14 +1415,14 @@ function oscillatorPickWaveform(axis, waveform) {
 	oscillatorDisplayValue(axis, "waveform", waveform);
 }
 function oscillatorSpeedDown(axis) {
-	oscillatorSettings[axis]["speed"] = oscillatorSettings[axis]["speed"]-.1;
-	if (oscillatorSettings[axis]["speed"] <= .1) {
-		oscillatorSettings[axis]["speed"] = .1;
+	oscillatorSettings[axis]["speed"] = oscillatorSettings[axis]["speed"]-.5;
+	if (oscillatorSettings[axis]["speed"] <= .5) {
+		oscillatorSettings[axis]["speed"] = .5;
 	}
 	oscillatorDisplaySpeed(axis);
 }
 function oscillatorSpeedUp(axis) {
-	oscillatorSettings[axis]["speed"] = oscillatorSettings[axis]["speed"]+.1;
+	oscillatorSettings[axis]["speed"] = oscillatorSettings[axis]["speed"]+.5;
 	if (oscillatorSettings[axis]["speed"] >= 4) {
 		oscillatorSettings[axis]["speed"] = 4;
 	}
@@ -1405,7 +1455,7 @@ function oscillatorOn(axis) {
 }
 function oscillatorRando(axis) {
 	oscillatorPickWaveform(axis, oscillatorWaveforms[Math.floor(Math.random()*oscillatorWaveforms.length)]);
-	oscillatorSetSpeed(axis, (Math.round((Math.random()*3.9+.1) * 10)) / 10);
+	oscillatorSetSpeed(axis, (Math.round(Math.random()*8) * .5));
 }
 function oscillatorReset(axis) {
 	oscillatorPickWaveform(axis, "sine");
@@ -1512,9 +1562,9 @@ function generateText(textType) {
 	} else if (textType == "randomsentence") {
 		instrumentDisplay.innerText = randomSentence();
 	} else if (textType == "randomcharacters") {
-		instrumentDisplay.innerText = randomCharacters(Math.round(Math.random()*50+30));
+		instrumentDisplay.innerText = randomCharacters(Math.round(Math.random()*100+30));
 	} else if (textType == "repeatedcharacters") {
-		instrumentDisplay.innerText = repeatedCharacters(Math.round(Math.random()*50+30));
+		instrumentDisplay.innerText = repeatedCharacters(Math.round(Math.random()*100+30));
 	}
 }
 
@@ -1526,7 +1576,7 @@ function generateText(textType) {
 let monoSynths = [];
 let oscillatorTypes = ["sine", "triangle", "square", "sawtooth"];
 let oscillatorFrequencies = [130, 165, 196, 262];
-for (let i=0; i<12; i++) {
+for (let i=0; i<20; i++) {
 	monoSynths.push(new Tone.MonoSynth());
 	monoSynths[monoSynths.length-1].set({
 		oscillator: {
@@ -1561,7 +1611,7 @@ const pianoSampler = new Tone.Sampler({
 		sustain: 1,
 		release: 1
 	},
-	baseUrl: "assets/audio/piano/",
+	baseUrl: "assets/audio/instruments/",
 	volume: 2,
 }).toDestination();
 function playPiano(sample, duration) {
@@ -1583,7 +1633,7 @@ const synthSampler = new Tone.Sampler({
 		sustain: 1,
 		release: 1
 	},
-	baseUrl: "assets/audio/synth/",
+	baseUrl: "assets/audio/instruments/",
 	volume: -8,
 }).toDestination();
 function playSynth(sample, duration) {
@@ -1599,8 +1649,8 @@ const tomSampler = new Tone.Sampler({
 		C4: "tom-c4.mp3",
 		C5: "tom-c5.mp3"
 	},
-	baseUrl: "assets/audio/toms/",
-	volume: -3,
+	baseUrl: "assets/audio/instruments/",
+	volume: -12,
 }).toDestination();
 function playTom(freq) {
 	tomSampler.triggerAttackRelease(freq, 1);
@@ -1618,7 +1668,7 @@ const kickSampler = new Tone.Sampler({
 		C4: "kick-c4.mp3",
 		C5: "kick-c5.mp3"
 	},
-	baseUrl: "assets/audio/kick/",
+	baseUrl: "assets/audio/instruments/",
 	volume: 0,
 }).toDestination();
 function playKick(freq) {
@@ -1634,7 +1684,7 @@ const snareSampler = new Tone.Sampler({
 		C4: "snare-c4.mp3",
 		C5: "snare-c5.mp3"
 	},
-	baseUrl: "assets/audio/snare/",
+	baseUrl: "assets/audio/instruments/",
 	volume: 0,
 }).toDestination();
 function playSnare(freq) {
@@ -1650,7 +1700,7 @@ const hihatSampler = new Tone.Sampler({
 		C4: "hihat-c4.mp3",
 		C5: "hihat-c5.mp3"
 	},
-	baseUrl: "assets/audio/hihat/",
+	baseUrl: "assets/audio/instruments/",
 	volume: 0,
 }).toDestination();
 function playHihat(freq) {
@@ -1666,11 +1716,14 @@ const blockSampler = new Tone.Sampler({
 		C4: "woodblock-c4.mp3",
 		C5: "woodblock-c5.mp3"
 	},
-	baseUrl: "assets/audio/woodblock/",
-	volume: 0,
+	baseUrl: "assets/audio/instruments/",
+	volume: -5,
 }).toDestination();
 function playBlock(freq) {
 	blockSampler.triggerAttackRelease(freq, 1);
+}
+function playBlockRandom() {
+	blockSampler.triggerAttackRelease(Math.random()*800+400, 1);
 }
 
 // Guitar sampler
@@ -1682,7 +1735,7 @@ const guitarSampler = new Tone.Sampler({
 		C4: "guitar-c4.mp3",
 		C5: "guitar-c5.mp3"
 	},
-	baseUrl: "assets/audio/guitar/",
+	baseUrl: "assets/audio/instruments/",
 	volume: -5,
 }).toDestination();
 function playGuitar(freq, duration) {
@@ -1698,7 +1751,7 @@ const hornSampler = new Tone.Sampler({
 		C4: "horn-c4.mp3",
 		C5: "horn-c5.mp3"
 	},
-	baseUrl: "assets/audio/horn/",
+	baseUrl: "assets/audio/instruments/",
 	volume: -5,
 }).toDestination();
 function playHorn(freq, duration) {
@@ -1713,7 +1766,7 @@ for (let letter of voiceSamplerLetters) {
 		urls: {
 			C2: `voice-${letter}.mp3`
 		},
-		baseUrl: "assets/audio/newvoice/",
+		baseUrl: "assets/audio/voice/",
 		volume: -10,
 	}).toDestination();
 }
@@ -1723,7 +1776,7 @@ function playVoice(letter, pitch) {
 		voiceSamplers[letter].triggerAttackRelease(pitch, 1);
 	}
 }
-let animalese = false;
+let animalese = true;
 function toggleAnimalese() {
 	const animaleseToggle = document.querySelector("#animalese-toggle");
 	if (animalese) {
@@ -1741,12 +1794,92 @@ function typeAnimalese(e) {
 		playVoice(letter, Math.random()*100+100);
 	}
 }
+function triggerAnimalese(input) {
+	let letter = input.toLowerCase();
+	if (voiceSamplerLetters.includes(letter) && animalese) {
+		playVoice(letter, Math.random()*100+100);
+	}
+}
+
+// Percussion sampler
+const percussionSampler = new Tone.Sampler({
+	urls: {
+		C0: "agogo-low.mp3",
+		D0: "agogo-high.mp3",
+		E0: "block.mp3",
+		F0: "bongo-low.mp3",
+		G0: "bongo-high.mp3",
+		A0: "cabasa-low.mp3",
+		B0: "cabasa-high.mp3",
+		C1: "castanet.mp3",
+		D1: "chimes.mp3",
+		E1: "clap.mp3",
+		F1: "conga-low.mp3",
+		G1: "conga-high.mp3",
+		A1: "cowbell.mp3",
+		B1: "crash-low.mp3",
+		C2: "crash-mid.mp3",
+		D2: "crash-high.mp3",
+		E2: "cuica-low.mp3",
+		F2: "cuica-high.mp3",
+		G2: "drum-low.mp3",
+		A2: "drum-high.mp3",
+		B2: "gong.mp3",
+		C3: "guiro.mp3",
+		D3: "guiro-hit.mp3",
+		E3: "hat-closed.mp3",
+		F3: "hat-open.mp3",
+		G3: "jingle.mp3",
+		A3: "kick-low.mp3",
+		B3: "kick-high.mp3",
+		C4: "kick-808.mp3",
+		D4: "ride-low.mp3",
+		E4: "ride-mid.mp3",
+		F4: "ride-high.mp3",
+		G4: "rim-low.mp3",
+		A4: "rim-high.mp3",
+		B4: "rim-ring.mp3",
+		C5: "shaker.mp3",
+		D5: "snare.mp3",
+		E5: "snare-deep.mp3",
+		F5: "snare-loose.mp3",
+		G5: "snare-808.mp3",
+		A5: "spin-down.mp3",
+		B5: "spin-up.mp3",
+		C6: "sticks.mp3",
+		D6: "tambourine.mp3",
+		E6: "tom0.mp3",
+		F6: "tom1.mp3",
+		G6: "tom2.mp3",
+		A6: "tom3.mp3",
+		B6: "tom4.mp3",
+		C7: "tom5.mp3",
+		D7: "triangle-muted.mp3",
+		E7: "triangle-open.mp3",
+		F7: "vibraslap.mp3",
+		G7: "whistle-low.mp3",
+		A7: "whistle-high.mp3",
+		B7: "woodblock-low.mp3",
+		C8: "woodblock-high.mp3",
+		D8: "woodblock-higher.mp3"
+	},
+	baseUrl: "assets/audio/percussion/",
+	volume: -10,
+}).toDestination();
+let percussionNotes = ["C0","D0","E0","F0","G0","A0","B0","C1","D1","E1","F1","G1","A1","B1","C2","D2","E2","F2","G2","A2","B2","C3","D3","E3","F3","G3","A3","B3","C4","D4","E4","F4","G4","A4","B4","C5","D5","E5","F5","G5","A5","B5","C6","D6","E6","F6","G6","A6","B6","C7","D7","E7","F7","G7","A7","B7","C8","D8"]
+function playPercussion(sample) {
+	if (sample == "random") {
+		percussionSampler.triggerAttackRelease(percussionNotes[Math.floor(Math.random()*percussionNotes.length)], 1);
+	} else {
+		percussionSampler.triggerAttackRelease(sample, 1);
+	}
+}
+
 
 // TODO
 // volume controls
 // text outline mode
 // interface sfx
-// fix axis rounding issues
 // instrument menu
 
 // WISHLIST
@@ -1755,4 +1888,3 @@ function typeAnimalese(e) {
 
 // BUGS
 // fonts with a ton of axes like roboto flex not working
-// manage volume when multiple oscillator axes used
