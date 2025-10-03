@@ -1,341 +1,1888 @@
 
 			@font-face {
-				font-family: "CynthiaWang-Willow";
-				src: url("/assets/fonts/students/vfw24-section3/CynthiaWang-Willow.ttf");
+				font-family: "Pet";
+				src: url("/assets/fonts/students/vfw24-section3/VioleitJin-Pet.ttf");
 				
 			}
-			@keyframes preview-CynthiaWang-Willow {
-				0% { font-variation-settings: 'wght' 700 } 100% { font-variation-settings: 'wght' 200 }
+			@keyframes preview-pet {
+				0% { font-variation-settings: 'GIIF' 0, 'SHAP' 0 } 100% { font-variation-settings: 'GIIF' 100, 'SHAP' 0 }
 			}
-			[data-font="CynthiaWang-Willow"] .menu-fonts-item-preview {
-				font-family: "CynthiaWang-Willow";
-				font-variation-settings: "wght" 700;
+			[data-font="Pet"] .menu-fonts-item-preview {
+				font-family: "Pet";
+				font-variation-settings: "GIIF" 0, "SHAP" 0;
 				
 			}
-			[data-font="CynthiaWang-Willow"]:hover .menu-fonts-item-preview {
-				animation: preview-CynthiaWang-Willow 1s infinite ease-in-out alternate;
+			[data-font="Pet"]:hover .menu-fonts-item-preview {
+				animation: preview-pet 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "CocoLi-Fractured";
-				src: url("/assets/fonts/students/vfw24-section3/CocoLi-Fractured.ttf");
+				font-family: "Decode";
+				src: url("/assets/fonts/students/vfw24-section3/SelinaKehuanWu-Decode.ttf");
 				
 			}
-			@keyframes preview-CocoLi-Fractured {
-				0% { font-variation-settings: 'FRAC' 100 } 100% { font-variation-settings: 'FRAC' 0 }
+			@keyframes preview-decode {
+				0% { font-variation-settings: 'DCOD' 1000 } 100% { font-variation-settings: 'DCOD' 0 }
 			}
-			[data-font="CocoLi-Fractured"] .menu-fonts-item-preview {
-				font-family: "CocoLi-Fractured";
-				font-variation-settings: "FRAC" 100;
+			[data-font="Decode"] .menu-fonts-item-preview {
+				font-family: "Decode";
+				font-variation-settings: "DCOD" 1000;
 				
 			}
-			[data-font="CocoLi-Fractured"]:hover .menu-fonts-item-preview {
-				animation: preview-CocoLi-Fractured 1s infinite ease-in-out alternate;
+			[data-font="Decode"]:hover .menu-fonts-item-preview {
+				animation: preview-decode 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "AveryBrowne-Valentine";
-				src: url("/assets/fonts/students/vfw24-section3/AveryBrowne-Valentine.ttf");
+				font-family: "Traffic";
+				src: url("/assets/fonts/students/vfw24-section3/NatalieHo-Traffic.ttf");
 				
 			}
-			@keyframes preview-AveryBrowne-Valentine {
-				0% { font-variation-settings: 'XXXX' 0 } 100% { font-variation-settings: 'XXXX' 200 }
+			@keyframes preview-traffic {
+				0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 100 }
 			}
-			[data-font="AveryBrowne-Valentine"] .menu-fonts-item-preview {
-				font-family: "AveryBrowne-Valentine";
-				font-variation-settings: "XXXX" 0;
+			[data-font="Traffic"] .menu-fonts-item-preview {
+				font-family: "Traffic";
+				font-variation-settings: "POSI" 0;
 				
 			}
-			[data-font="AveryBrowne-Valentine"]:hover .menu-fonts-item-preview {
-				animation: preview-AveryBrowne-Valentine 1s infinite ease-in-out alternate;
+			[data-font="Traffic"]:hover .menu-fonts-item-preview {
+				animation: preview-traffic 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "AnhNguyen-ThousandCloud";
-				src: url("/assets/fonts/students/vfw24-section3/AnhNguyen-ThousandCloud.ttf");
+				font-family: "Garden";
+				src: url("/assets/fonts/students/vfw24-section3/NadineMacapagal-Garden.ttf");
 				
 			}
-			@keyframes preview-AnhNguyen-ThousandCloud {
-				0% { font-variation-settings: 'BLED' 200 } 100% { font-variation-settings: 'BLED' 0 }
+			@keyframes preview-garden {
+				0% { font-variation-settings: 'FLOW' 0 } 100% { font-variation-settings: 'FLOW' 1000 }
 			}
-			[data-font="AnhNguyen-ThousandCloud"] .menu-fonts-item-preview {
-				font-family: "AnhNguyen-ThousandCloud";
-				font-variation-settings: "BLED" 200;
+			[data-font="Garden"] .menu-fonts-item-preview {
+				font-family: "Garden";
+				font-variation-settings: "FLOW" 0;
 				
 			}
-			[data-font="AnhNguyen-ThousandCloud"]:hover .menu-fonts-item-preview {
-				animation: preview-AnhNguyen-ThousandCloud 1s infinite ease-in-out alternate;
+			[data-font="Garden"]:hover .menu-fonts-item-preview {
+				animation: preview-garden 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "SelinaKehuanWu-Samsara";
-				src: url("/assets/fonts/students/vfw24-section3/SelinaKehuanWu-Samsara.ttf");
+				font-family: "Barkada";
+				src: url("/assets/fonts/students/vfw24-section3/NadineMacapagal-Barkada.ttf");
 				
 			}
-			@keyframes preview-SelinaKehuanWu-Samsara {
-				0% { font-variation-settings: 'ELGC' 0 } 100% { font-variation-settings: 'ELGC' 1000 }
+			@keyframes preview-barkada {
+				0% { font-variation-settings: 'STRK' 0 } 100% { font-variation-settings: 'STRK' 100 }
 			}
-			[data-font="SelinaKehuanWu-Samsara"] .menu-fonts-item-preview {
-				font-family: "SelinaKehuanWu-Samsara";
-				font-variation-settings: "ELGC" 0;
+			[data-font="Barkada"] .menu-fonts-item-preview {
+				font-family: "Barkada";
+				font-variation-settings: "STRK" 0;
 				
 			}
-			[data-font="SelinaKehuanWu-Samsara"]:hover .menu-fonts-item-preview {
-				animation: preview-SelinaKehuanWu-Samsara 1s infinite ease-in-out alternate;
+			[data-font="Barkada"]:hover .menu-fonts-item-preview {
+				animation: preview-barkada 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "NatalieHo-Shard";
-				src: url("/assets/fonts/students/vfw24-section3/NatalieHo-Shard.ttf");
+				font-family: "Lubbly";
+				src: url("/assets/fonts/students/vfw24-section3/IsabelLee-Lubbly.ttf");
 				
 			}
-			@keyframes preview-NatalieHo-Shard {
-				0% { font-variation-settings: 'CURV' 0 } 100% { font-variation-settings: 'CURV' 1000 }
+			@keyframes preview-lubbly {
+				0% { font-variation-settings: 'LUVV' 0 } 100% { font-variation-settings: 'LUVV' 100 }
 			}
-			[data-font="NatalieHo-Shard"] .menu-fonts-item-preview {
-				font-family: "NatalieHo-Shard";
-				font-variation-settings: "CURV" 0;
+			[data-font="Lubbly"] .menu-fonts-item-preview {
+				font-family: "Lubbly";
+				font-variation-settings: "LUVV" 0;
 				
 			}
-			[data-font="NatalieHo-Shard"]:hover .menu-fonts-item-preview {
-				animation: preview-NatalieHo-Shard 1s infinite ease-in-out alternate;
+			[data-font="Lubbly"]:hover .menu-fonts-item-preview {
+				animation: preview-lubbly 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "AllieHeffner-Spores";
-				src: url("/assets/fonts/students/vfw24-section3/AllieHeffner-Spores.ttf");
+				font-family: "Gabis Pixel Font";
+				src: url("/assets/fonts/students/vfw24-section3/GabiHarkless-GabisPixelFont.ttf");
 				
 			}
-			@keyframes preview-AllieHeffner-Spores {
-				0% { font-variation-settings: 'SHFT' 0 } 100% { font-variation-settings: 'SHFT' 100 }
+			@keyframes preview-gabis-pixel-font {
+				0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 1000 }
 			}
-			[data-font="AllieHeffner-Spores"] .menu-fonts-item-preview {
-				font-family: "AllieHeffner-Spores";
-				font-variation-settings: "SHFT" 0;
+			[data-font="Gabis Pixel Font"] .menu-fonts-item-preview {
+				font-family: "Gabis Pixel Font";
+				font-variation-settings: "wght" 0;
 				
 			}
-			[data-font="AllieHeffner-Spores"]:hover .menu-fonts-item-preview {
-				animation: preview-AllieHeffner-Spores 1s infinite ease-in-out alternate;
+			[data-font="Gabis Pixel Font"]:hover .menu-fonts-item-preview {
+				animation: preview-gabis-pixel-font 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "VioleitJin-SharpPixel";
-				src: url("/assets/fonts/students/vfw24-section3/VioleitJin-SharpPixel.ttf");
+				font-family: "Lawnmower";
+				src: url("/assets/fonts/students/vfw24-section3/EnzPan-Lawnmower.ttf");
 				
 			}
-			@keyframes preview-VioleitJin-SharpPixel {
-				0% { font-variation-settings: 'SHRP' 0 } 100% { font-variation-settings: 'SHRP' 100 }
+			@keyframes preview-lawnmower {
+				0% { font-variation-settings: 'GROW' 1000 } 100% { font-variation-settings: 'GROW' 0 }
 			}
-			[data-font="VioleitJin-SharpPixel"] .menu-fonts-item-preview {
-				font-family: "VioleitJin-SharpPixel";
+			[data-font="Lawnmower"] .menu-fonts-item-preview {
+				font-family: "Lawnmower";
+				font-variation-settings: "GROW" 1000;
+				
+			}
+			[data-font="Lawnmower"]:hover .menu-fonts-item-preview {
+				animation: preview-lawnmower 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Pixel Pastry";
+				src: url("/assets/fonts/students/vfw24-section3/CynthiaWang-PixelPastry.ttf");
+				
+			}
+			@keyframes preview-pixel-pastry {
+				0% { font-variation-settings: 'SHAP' 0 } 100% { font-variation-settings: 'SHAP' 100 }
+			}
+			[data-font="Pixel Pastry"] .menu-fonts-item-preview {
+				font-family: "Pixel Pastry";
 				font-variation-settings: "SHAP" 0;
 				
 			}
-			[data-font="VioleitJin-SharpPixel"]:hover .menu-fonts-item-preview {
-				animation: preview-VioleitJin-SharpPixel 1s infinite ease-in-out alternate;
+			[data-font="Pixel Pastry"]:hover .menu-fonts-item-preview {
+				animation: preview-pixel-pastry 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "authentic-remixed";
+				font-family: "Bamboo";
+				src: url("/assets/fonts/students/vfw24-section3/CocoLi-Bamboo.ttf");
+				
+			}
+			@keyframes preview-bamboo {
+				0% { font-variation-settings: 'COCO' 0 } 100% { font-variation-settings: 'COCO' 1000 }
+			}
+			[data-font="Bamboo"] .menu-fonts-item-preview {
+				font-family: "Bamboo";
+				font-variation-settings: "COCO" 0;
+				
+			}
+			[data-font="Bamboo"]:hover .menu-fonts-item-preview {
+				animation: preview-bamboo 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Curly Fry";
+				src: url("/assets/fonts/students/vfw24-section3/AveryBrowne-CurlyFry.ttf");
+				
+			}
+			@keyframes preview-curly-fry {
+				0% { font-variation-settings: 'MEOW' 0 } 100% { font-variation-settings: 'MEOW' 1000 }
+			}
+			[data-font="Curly Fry"] .menu-fonts-item-preview {
+				font-family: "Curly Fry";
+				font-variation-settings: "MEOW" 0;
+				
+			}
+			[data-font="Curly Fry"]:hover .menu-fonts-item-preview {
+				animation: preview-curly-fry 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Backward";
+				src: url("/assets/fonts/students/vfw24-section3/AnhNguyen-Backward.ttf");
+				
+			}
+			@keyframes preview-backward {
+				0% { font-variation-settings: 'POSI' 0, 'SHAP' 0 } 100% { font-variation-settings: 'POSI' 100, 'SHAP' 0 }
+			}
+			[data-font="Backward"] .menu-fonts-item-preview {
+				font-family: "Backward";
+				font-variation-settings: "POSI" 0, "SHAP" 0;
+				
+			}
+			[data-font="Backward"]:hover .menu-fonts-item-preview {
+				animation: preview-backward 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Allies Pixel Font";
+				src: url("/assets/fonts/students/vfw24-section3/AllieHeffner-AlliesPixelFont.ttf");
+				
+			}
+			@keyframes preview-allies-pixel-font {
+				0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 100 }
+			}
+			[data-font="Allies Pixel Font"] .menu-fonts-item-preview {
+				font-family: "Allies Pixel Font";
+				font-variation-settings: "POSI" 0;
+				
+			}
+			[data-font="Allies Pixel Font"]:hover .menu-fonts-item-preview {
+				animation: preview-allies-pixel-font 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Funky Serif";
+				src: url("/assets/fonts/students/vfw23-section1/IvyZhang-FunkySerif.ttf");
+				
+			}
+			@keyframes preview-funky-serif {
+				0% { font-variation-settings: 'SRFF' 0 } 100% { font-variation-settings: 'SRFF' 100 }
+			}
+			[data-font="Funky Serif"] .menu-fonts-item-preview {
+				font-family: "Funky Serif";
+				font-variation-settings: "SRFF" 0;
+				
+			}
+			[data-font="Funky Serif"]:hover .menu-fonts-item-preview {
+				animation: preview-funky-serif 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Nocturnal Space Invaders";
+				src: url("/assets/fonts/students/vfw23-section1/KryeolChen-NocturnalSpaceInvaders.ttf");
+				
+			}
+			@keyframes preview-nocturnal-space-invaders {
+				0% { font-variation-settings: 'DIVE' 0, 'LINE' 0 } 100% { font-variation-settings: 'DIVE' 100, 'LINE' 100 }
+			}
+			[data-font="Nocturnal Space Invaders"] .menu-fonts-item-preview {
+				font-family: "Nocturnal Space Invaders";
+				font-variation-settings: "DIVE" 0, "LINE" 0;
+				
+			}
+			[data-font="Nocturnal Space Invaders"]:hover .menu-fonts-item-preview {
+				animation: preview-nocturnal-space-invaders 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Clintons Pixel Font";
+				src: url("/assets/fonts/students/vfw24-section2/ClintonVanArnam-ClintonsPixelFont.ttf");
+				
+			}
+			@keyframes preview-clintons-pixel-font {
+				0% { font-variation-settings: 'SINE' 0, 'NNSE' 0 } 100% { font-variation-settings: 'SINE' 100, 'NNSE' 0 }
+			}
+			[data-font="Clintons Pixel Font"] .menu-fonts-item-preview {
+				font-family: "Clintons Pixel Font";
+				font-variation-settings: "SINE" 0, "NNSE" 0;
+				
+			}
+			[data-font="Clintons Pixel Font"]:hover .menu-fonts-item-preview {
+				animation: preview-clintons-pixel-font 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Optical";
+				src: url("/assets/fonts/students/vfw24-section2/ClintonVanArnam-Optical.ttf");
+				
+			}
+			@keyframes preview-optical {
+				0% { font-variation-settings: 'DRCT' 0, 'CRZY' 0 } 100% { font-variation-settings: 'DRCT' 100, 'CRZY' 0 }
+			}
+			[data-font="Optical"] .menu-fonts-item-preview {
+				font-family: "Optical";
+				font-variation-settings: "DRCT" 0, "CRZY" 0;
+				transform: scale(1.5);
+			}
+			[data-font="Optical"]:hover .menu-fonts-item-preview {
+				animation: preview-optical 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Rain";
+				src: url("/assets/fonts/students/vfw24-section2/HannahJeong-Rain.ttf");
+				
+			}
+			@keyframes preview-rain {
+				0% { font-variation-settings: 'RAIN' 0 } 100% { font-variation-settings: 'RAIN' 100 }
+			}
+			[data-font="Rain"] .menu-fonts-item-preview {
+				font-family: "Rain";
+				font-variation-settings: "RAIN" 0;
+				
+			}
+			[data-font="Rain"]:hover .menu-fonts-item-preview {
+				animation: preview-rain 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Work In Progress";
+				src: url("/assets/fonts/students/vfw24-section2/HannahJeong-WorkInProgress.ttf");
+				
+			}
+			@keyframes preview-work-in-progress {
+				0% { font-variation-settings: 'PROC' 0, 'wght' 0 } 100% { font-variation-settings: 'PROC' 100, 'wght' 0 }
+			}
+			[data-font="Work In Progress"] .menu-fonts-item-preview {
+				font-family: "Work In Progress";
+				font-variation-settings: "PROC" 0, "wght" 0;
+				
+			}
+			[data-font="Work In Progress"]:hover .menu-fonts-item-preview {
+				animation: preview-work-in-progress 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Textile Pixel";
+				src: url("/assets/fonts/students/vfw24-section2/HyunminKim-TextilePixel.ttf");
+				
+			}
+			@keyframes preview-textile-pixel {
+				0% { font-variation-settings: 'SHAP' 0, 'wght' 0 } 100% { font-variation-settings: 'SHAP' 100, 'wght' 50 }
+			}
+			[data-font="Textile Pixel"] .menu-fonts-item-preview {
+				font-family: "Textile Pixel";
+				font-variation-settings: "SHAP" 0, "wght" 0;
+				
+			}
+			[data-font="Textile Pixel"]:hover .menu-fonts-item-preview {
+				animation: preview-textile-pixel 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Binel";
+				src: url("/assets/fonts/students/vfw24-section2/JasmineShen-Binel.ttf");
+				
+			}
+			@keyframes preview-binel {
+				0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 100 }
+			}
+			[data-font="Binel"] .menu-fonts-item-preview {
+				font-family: "Binel";
+				font-variation-settings: "wght" 0;
+				
+			}
+			[data-font="Binel"]:hover .menu-fonts-item-preview {
+				animation: preview-binel 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Jasmines Pixel Font";
+				src: url("/assets/fonts/students/vfw24-section2/JasmineShen-JasminesPixelFont.ttf");
+				
+			}
+			@keyframes preview-jasmines-pixel-font {
+				0% { font-variation-settings: 'BLOR' 0 } 100% { font-variation-settings: 'BLOR' 100 }
+			}
+			[data-font="Jasmines Pixel Font"] .menu-fonts-item-preview {
+				font-family: "Jasmines Pixel Font";
+				font-variation-settings: "BLOR" 0;
+				
+			}
+			[data-font="Jasmines Pixel Font"]:hover .menu-fonts-item-preview {
+				animation: preview-jasmines-pixel-font 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Balloooooon";
+				src: url("/assets/fonts/students/vfw24-section2/JayLee-Balloooooon.ttf");
+				
+			}
+			@keyframes preview-balloooooon {
+				0% { font-variation-settings: 'BLOT' 0 } 100% { font-variation-settings: 'BLOT' 100 }
+			}
+			[data-font="Balloooooon"] .menu-fonts-item-preview {
+				font-family: "Balloooooon";
+				font-variation-settings: "BLOT" 0;
+				
+			}
+			[data-font="Balloooooon"]:hover .menu-fonts-item-preview {
+				animation: preview-balloooooon 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Boing";
+				src: url("/assets/fonts/students/vfw24-section2/JayLee-Boing.ttf");
+				
+			}
+			@keyframes preview-boing {
+				0% { font-variation-settings: 'POSI' 0, 'SHAP' 0 } 100% { font-variation-settings: 'POSI' 100, 'SHAP' 0 }
+			}
+			[data-font="Boing"] .menu-fonts-item-preview {
+				font-family: "Boing";
+				font-variation-settings: "SHAP" 0, "POSI" 0;
+				
+			}
+			[data-font="Boing"]:hover .menu-fonts-item-preview {
+				animation: preview-boing 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Sprout";
+				src: url("/assets/fonts/students/vfw24-section2/JoyceLi-Sprout.ttf");
+				
+			}
+			@keyframes preview-sprout {
+				0% { font-variation-settings: 'WATR' 0 } 100% { font-variation-settings: 'WATR' 100 }
+			}
+			[data-font="Sprout"] .menu-fonts-item-preview {
+				font-family: "Sprout";
+				font-variation-settings: "WATR" 0;
+				
+			}
+			[data-font="Sprout"]:hover .menu-fonts-item-preview {
+				animation: preview-sprout 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Tension";
+				src: url("/assets/fonts/students/vfw24-section2/JoyceLi-Tension.ttf");
+				
+			}
+			@keyframes preview-tension {
+				0% { font-variation-settings: 'RLSE' 0 } 100% { font-variation-settings: 'RLSE' 200 }
+			}
+			[data-font="Tension"] .menu-fonts-item-preview {
+				font-family: "Tension";
+				font-variation-settings: "RLSE" 0;
+				
+			}
+			[data-font="Tension"]:hover .menu-fonts-item-preview {
+				animation: preview-tension 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Inkflow";
+				src: url("/assets/fonts/students/vfw24-section2/KevinLiao-Inkflow.ttf");
+				
+			}
+			@keyframes preview-inkflow {
+				0% { font-variation-settings: 'SRFF' 0 } 100% { font-variation-settings: 'SRFF' 100 }
+			}
+			[data-font="Inkflow"] .menu-fonts-item-preview {
+				font-family: "Inkflow";
+				font-variation-settings: "SRFF" 0;
+				
+			}
+			[data-font="Inkflow"]:hover .menu-fonts-item-preview {
+				animation: preview-inkflow 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Trees Animiert";
+				src: url("/assets/fonts/students/vfw24-section2/LuisaHeindl-TreesAnimiert.ttf");
+				
+			}
+			@keyframes preview-trees-animiert {
+				0% { font-variation-settings: 'ANIM' 0 } 100% { font-variation-settings: 'ANIM' 100 }
+			}
+			[data-font="Trees Animiert"] .menu-fonts-item-preview {
+				font-family: "Trees Animiert";
+				font-variation-settings: "ANIM" 0;
+				
+			}
+			[data-font="Trees Animiert"]:hover .menu-fonts-item-preview {
+				animation: preview-trees-animiert 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Turquoise";
+				src: url("/assets/fonts/students/vfw24-section2/LuisaHeindl-Turquoise.ttf");
+				
+			}
+			@keyframes preview-turquoise {
+				0% { font-variation-settings: 'wdth' 0 } 100% { font-variation-settings: 'wdth' 100 }
+			}
+			[data-font="Turquoise"] .menu-fonts-item-preview {
+				font-family: "Turquoise";
+				font-variation-settings: "wdth" 0;
+				
+			}
+			[data-font="Turquoise"]:hover .menu-fonts-item-preview {
+				animation: preview-turquoise 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Fundamental";
+				src: url("/assets/fonts/students/vfw24-section2/MinyaLarkin-Fundamental.ttf");
+				
+			}
+			@keyframes preview-fundamental {
+				0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 100 }
+			}
+			[data-font="Fundamental"] .menu-fonts-item-preview {
+				font-family: "Fundamental";
+				font-variation-settings: "POSI" 0;
+				
+			}
+			[data-font="Fundamental"]:hover .menu-fonts-item-preview {
+				animation: preview-fundamental 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Superposition";
+				src: url("/assets/fonts/students/vfw24-section2/MinyaLarkin-Superposition.ttf");
+				
+			}
+			@keyframes preview-superposition {
+				0% { font-variation-settings: 'TNGL' 0 } 100% { font-variation-settings: 'TNGL' 100 }
+			}
+			[data-font="Superposition"] .menu-fonts-item-preview {
+				font-family: "Superposition";
+				font-variation-settings: "TNGL" 0;
+				
+			}
+			[data-font="Superposition"]:hover .menu-fonts-item-preview {
+				animation: preview-superposition 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Circuit";
+				src: url("/assets/fonts/students/vfw24-section2/NoahChalfant-Circuit.ttf");
+				
+			}
+			@keyframes preview-circuit {
+				0% { font-variation-settings: 'ELEC' 0 } 100% { font-variation-settings: 'ELEC' 100 }
+			}
+			[data-font="Circuit"] .menu-fonts-item-preview {
+				font-family: "Circuit";
+				font-variation-settings: "ELEC" 0;
+				
+			}
+			[data-font="Circuit"]:hover .menu-fonts-item-preview {
+				animation: preview-circuit 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Noahs Pixel Font";
+				src: url("/assets/fonts/students/vfw24-section2/NoahChalfant-NoahsPixelFont.ttf");
+				
+			}
+			@keyframes preview-noahs-pixel-font {
+				0% { font-variation-settings: 'DOTS' 0 } 100% { font-variation-settings: 'DOTS' 100 }
+			}
+			[data-font="Noahs Pixel Font"] .menu-fonts-item-preview {
+				font-family: "Noahs Pixel Font";
+				font-variation-settings: "DOTS" 0;
+				
+			}
+			[data-font="Noahs Pixel Font"]:hover .menu-fonts-item-preview {
+				animation: preview-noahs-pixel-font 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Eyeguy";
+				src: url("/assets/fonts/students/vfw24-section2/SishuWu-Eyeguy.ttf");
+				
+			}
+			@keyframes preview-eyeguy {
+				0% { font-variation-settings: 'OPEN' 0 } 100% { font-variation-settings: 'OPEN' 100 }
+			}
+			[data-font="Eyeguy"] .menu-fonts-item-preview {
+				font-family: "Eyeguy";
+				font-variation-settings: "OPEN" 0;
+				
+			}
+			[data-font="Eyeguy"]:hover .menu-fonts-item-preview {
+				animation: preview-eyeguy 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Sishus Pixel Font";
+				src: url("/assets/fonts/students/vfw24-section2/SishuWu-SishusPixelFont.ttf");
+				
+			}
+			@keyframes preview-sishus-pixel-font {
+				0% { font-variation-settings: 'SIZE' 0 } 100% { font-variation-settings: 'SIZE' 100 }
+			}
+			[data-font="Sishus Pixel Font"] .menu-fonts-item-preview {
+				font-family: "Sishus Pixel Font";
+				font-variation-settings: "SIZE" 0;
+				
+			}
+			[data-font="Sishus Pixel Font"]:hover .menu-fonts-item-preview {
+				animation: preview-sishus-pixel-font 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Hula Hoop";
+				src: url("/assets/fonts/students/vfw24-section2/ToniaZhang-HulaHoop.ttf");
+				
+			}
+			@keyframes preview-hula-hoop {
+				0% { font-variation-settings: 'HULA' 0 } 100% { font-variation-settings: 'HULA' 100 }
+			}
+			[data-font="Hula Hoop"] .menu-fonts-item-preview {
+				font-family: "Hula Hoop";
+				font-variation-settings: "HULA" 0;
+				
+			}
+			[data-font="Hula Hoop"]:hover .menu-fonts-item-preview {
+				animation: preview-hula-hoop 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Andreas Pixel Font";
+				src: url("/assets/fonts/students/vfw24-section1/AndreaMato-AndreasPixelFont.ttf");
+				
+			}
+			@keyframes preview-andreas-pixel-font {
+				0% { font-variation-settings: 'SHAP' 0 } 100% { font-variation-settings: 'SHAP' 100 }
+			}
+			[data-font="Andreas Pixel Font"] .menu-fonts-item-preview {
+				font-family: "Andreas Pixel Font";
+				font-variation-settings: "SHAP" 0;
+				
+			}
+			[data-font="Andreas Pixel Font"]:hover .menu-fonts-item-preview {
+				animation: preview-andreas-pixel-font 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Floorplan";
+				src: url("/assets/fonts/students/vfw24-section1/GlikeriyaShotanova-Floorplan.ttf");
+				
+			}
+			@keyframes preview-floorplan {
+				0% { font-variation-settings: 'PLAN' 0 } 100% { font-variation-settings: 'PLAN' 100 }
+			}
+			[data-font="Floorplan"] .menu-fonts-item-preview {
+				font-family: "Floorplan";
+				font-variation-settings: "PLAN" 0;
+				
+			}
+			[data-font="Floorplan"]:hover .menu-fonts-item-preview {
+				animation: preview-floorplan 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Wacky Tape";
+				src: url("/assets/fonts/students/vfw24-section1/GlikeriyaShotanova-WackyTape.ttf");
+				
+			}
+			@keyframes preview-wacky-tape {
+				0% { font-variation-settings: 'SHAP' 0, 'POSI' 0 } 100% { font-variation-settings: 'SHAP' 200, 'POSI' 0 }
+			}
+			[data-font="Wacky Tape"] .menu-fonts-item-preview {
+				font-family: "Wacky Tape";
+				font-variation-settings: "SHAP" 0, "POSI" 0;
+				
+			}
+			[data-font="Wacky Tape"]:hover .menu-fonts-item-preview {
+				animation: preview-wacky-tape 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "CakeCake";
+				src: url("/assets/fonts/students/vfw24-section1/JiayiLi-CakeCake.ttf");
+				
+			}
+			@keyframes preview-cakecake {
+				0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 300 }
+			}
+			[data-font="CakeCake"] .menu-fonts-item-preview {
+				font-family: "CakeCake";
+				font-variation-settings: "POSI" 0;
+				
+			}
+			[data-font="CakeCake"]:hover .menu-fonts-item-preview {
+				animation: preview-cakecake 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "I_I";
+				src: url("/assets/fonts/students/vfw24-section1/JiayiLi-I_I.ttf");
+				
+			}
+			@keyframes preview-i_i {
+				0% { font-variation-settings: 'SHAP' 0 } 100% { font-variation-settings: 'SHAP' 200 }
+			}
+			[data-font="I_I"] .menu-fonts-item-preview {
+				font-family: "I_I";
+				font-variation-settings: "SHAP" 0;
+				
+			}
+			[data-font="I_I"]:hover .menu-fonts-item-preview {
+				animation: preview-i_i 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "CHUCU CHUCU";
+				src: url("/assets/fonts/students/vfw24-section1/JoZixuan-CHUCUCHUCU.ttf");
+				
+			}
+			@keyframes preview-chucu-chucu {
+				0% { font-variation-settings: 'SHAP' 0, 'EXPA' 0, 'STCH' 0 } 25% { font-variation-settings: 'SHAP' 200, 'EXPA' 0, 'STCH' 0 } 50% { font-variation-settings: 'SHAP' 200, 'EXPA' 100, 'STCH' 0 } 75% { font-variation-settings: 'SHAP' 200, 'EXPA' 0, 'STCH' 0 } 100% { font-variation-settings: 'SHAP' 0, 'EXPA' 0, 'STCH' 0 }
+			}
+			[data-font="CHUCU CHUCU"] .menu-fonts-item-preview {
+				font-family: "CHUCU CHUCU";
+				font-variation-settings: "SHAP" 0, "EXPA" 0, "STCH" 0;
+				
+			}
+			[data-font="CHUCU CHUCU"]:hover .menu-fonts-item-preview {
+				animation: preview-chucu-chucu 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Hexagon";
+				src: url("/assets/fonts/students/vfw24-section1/JoZixuan-Hexagon.ttf");
+				
+			}
+			@keyframes preview-hexagon {
+				0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 800 }
+			}
+			[data-font="Hexagon"] .menu-fonts-item-preview {
+				font-family: "Hexagon";
+				font-variation-settings: "wght" 0;
+				
+			}
+			[data-font="Hexagon"]:hover .menu-fonts-item-preview {
+				animation: preview-hexagon 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Cherry Furry";
+				src: url("/assets/fonts/students/vfw24-section1/LeaSeo-CherryFurry.ttf");
+				
+			}
+			@keyframes preview-cherry-furry {
+				0% { font-variation-settings: 'SHAP' 0, 'POSI' 0 } 100% { font-variation-settings: 'SHAP' 100, 'POSI' 0 }
+			}
+			[data-font="Cherry Furry"] .menu-fonts-item-preview {
+				font-family: "Cherry Furry";
+				font-variation-settings: "SHAP" 0, "POSI" 0;
+				
+			}
+			[data-font="Cherry Furry"]:hover .menu-fonts-item-preview {
+				animation: preview-cherry-furry 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Masking Tape Ribbon";
+				src: url("/assets/fonts/students/vfw24-section1/LeaSeo-MaskingTapeRibbon.ttf");
+				
+			}
+			@keyframes preview-masking-tape-ribbon {
+				0% { font-variation-settings: 'RIBB' 0 } 100% { font-variation-settings: 'RIBB' 700 }
+			}
+			[data-font="Masking Tape Ribbon"] .menu-fonts-item-preview {
+				font-family: "Masking Tape Ribbon";
+				font-variation-settings: "RIBB" 0;
+				
+			}
+			[data-font="Masking Tape Ribbon"]:hover .menu-fonts-item-preview {
+				animation: preview-masking-tape-ribbon 1.5s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Abacus";
+				src: url("/assets/fonts/students/vfw24-section1/LydiaChodosh-Abacus.ttf");
+				
+			}
+			@keyframes preview-abacus {
+				0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 100 }
+			}
+			[data-font="Abacus"] .menu-fonts-item-preview {
+				font-family: "Abacus";
+				font-variation-settings: "POSI" 0;
+				
+			}
+			[data-font="Abacus"]:hover .menu-fonts-item-preview {
+				animation: preview-abacus 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Whole Part";
+				src: url("/assets/fonts/students/vfw24-section1/LydiaChodosh-WholePart.ttf");
+				
+			}
+			@keyframes preview-whole-part {
+				0% { font-variation-settings: 'FORM' 20 } 100% { font-variation-settings: 'FORM' 100 }
+			}
+			[data-font="Whole Part"] .menu-fonts-item-preview {
+				font-family: "Whole Part";
+				font-variation-settings: "FORM" 20;
+				
+			}
+			[data-font="Whole Part"]:hover .menu-fonts-item-preview {
+				animation: preview-whole-part 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Spring Script";
+				src: url("/assets/fonts/students/vfw24-section1/MaggieXian-SpringScript.ttf");
+				
+			}
+			@keyframes preview-spring-script {
+				0% { font-variation-settings: 'STCH' 0 } 100% { font-variation-settings: 'STCH' 100 }
+			}
+			[data-font="Spring Script"] .menu-fonts-item-preview {
+				font-family: "Spring Script";
+				font-variation-settings: "STCH" 0;
+				
+			}
+			[data-font="Spring Script"]:hover .menu-fonts-item-preview {
+				animation: preview-spring-script 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Twinkle Script";
+				src: url("/assets/fonts/students/vfw24-section1/MaggieXian-TwinkleScript.ttf");
+				
+			}
+			@keyframes preview-twinkle-script {
+				0% { font-variation-settings: 'STAR' 0, 'SIZE' 0, 'ROTA' 0 } 25% { font-variation-settings: 'STAR' 100, 'SIZE' 0, 'ROTA' 0 } 50% { font-variation-settings: 'STAR' 100, 'SIZE' 100, 'ROTA' 0 } 75% { font-variation-settings: 'STAR' 100, 'SIZE' 0, 'ROTA' 0 } 100% { font-variation-settings: 'STAR' 0, 'SIZE' 0, 'ROTA' 0 }
+			}
+			[data-font="Twinkle Script"] .menu-fonts-item-preview {
+				font-family: "Twinkle Script";
+				font-variation-settings: "STAR" 0, "ROTA" 0, "SIZE" 0;
+				
+			}
+			[data-font="Twinkle Script"]:hover .menu-fonts-item-preview {
+				animation: preview-twinkle-script 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Hoyt Script";
+				src: url("/assets/fonts/students/vfw24-section1/PhoenixGao-HoytScript.ttf");
+				
+			}
+			@keyframes preview-hoyt-script {
+				0% { font-variation-settings: 'ital' 0 } 100% { font-variation-settings: 'ital' 100 }
+			}
+			[data-font="Hoyt Script"] .menu-fonts-item-preview {
+				font-family: "Hoyt Script";
+				font-variation-settings: "ital" 0;
+				
+			}
+			[data-font="Hoyt Script"]:hover .menu-fonts-item-preview {
+				animation: preview-hoyt-script 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Quad";
+				src: url("/assets/fonts/students/vfw24-section1/PhoenixGao-Quad.ttf");
+				
+			}
+			@keyframes preview-quad {
+				0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 600 }
+			}
+			[data-font="Quad"] .menu-fonts-item-preview {
+				font-family: "Quad";
+				font-variation-settings: "wght" 0;
+				
+			}
+			[data-font="Quad"]:hover .menu-fonts-item-preview {
+				animation: preview-quad 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Epitaph";
+				src: url("/assets/fonts/students/vfw24-section1/RachelShin-Epitaph.ttf");
+				
+			}
+			@keyframes preview-epitaph {
+				0% { font-variation-settings: 'VINE' 0 } 100% { font-variation-settings: 'VINE' 100 }
+			}
+			[data-font="Epitaph"] .menu-fonts-item-preview {
+				font-family: "Epitaph";
+				font-variation-settings: "VINE" 0;
+				
+			}
+			[data-font="Epitaph"]:hover .menu-fonts-item-preview {
+				animation: preview-epitaph 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Hmm";
+				src: url("/assets/fonts/students/vfw24-section1/RachelShin-Hmm.ttf");
+				
+			}
+			@keyframes preview-hmm {
+				0% { font-variation-settings: 'HMMM' 100 } 100% { font-variation-settings: 'HMMM' 0 }
+			}
+			[data-font="Hmm"] .menu-fonts-item-preview {
+				font-family: "Hmm";
+				font-variation-settings: "HMMM" 100;
+				
+			}
+			[data-font="Hmm"]:hover .menu-fonts-item-preview {
+				animation: preview-hmm 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Shinagawa LCD";
+				src: url("/assets/fonts/students/vfw24-section1/RyanHsiao-ShinagawaLCD.ttf");
+				
+			}
+			@keyframes preview-shinagawa-lcd {
+				0% { font-variation-settings: 'wdth' 0, 'BLNK' 0, 'MCRO' 0 } 25% { font-variation-settings: 'wdth' 100, 'BLNK' 0, 'MCRO' 0 } 50% { font-variation-settings: 'wdth' 100, 'BLNK' 100, 'MCRO' 0 } 75% { font-variation-settings: 'wdth' 100, 'BLNK' 0, 'MCRO' 0 } 100% { font-variation-settings: 'wdth' 0, 'BLNK' 0, 'MCRO' 0 }
+			}
+			[data-font="Shinagawa LCD"] .menu-fonts-item-preview {
+				font-family: "Shinagawa LCD";
+				font-variation-settings: "wdth" 0, "MCRO" 0, "BLNK" 0;
+				
+			}
+			[data-font="Shinagawa LCD"]:hover .menu-fonts-item-preview {
+				animation: preview-shinagawa-lcd 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Work Megaphone";
+				src: url("/assets/fonts/students/vfw24-section1/RyanHsiao-WorkMegaphone.ttf");
+				
+			}
+			@keyframes preview-work-megaphone {
+				0% { font-variation-settings: 'RGHT' 0, 'LEFT' 100 } 25% { font-variation-settings: 'RGHT' 100, 'LEFT' 100 } 50% { font-variation-settings: 'RGHT' 100, 'LEFT' 0 } 75% { font-variation-settings: 'RGHT' 0, 'LEFT' 0 } 100% { font-variation-settings: 'RGHT' 0, 'LEFT' 100 }
+			}
+			[data-font="Work Megaphone"] .menu-fonts-item-preview {
+				font-family: "Work Megaphone";
+				font-variation-settings: "RGHT" 0, "LEFT" 100;
+				
+			}
+			[data-font="Work Megaphone"]:hover .menu-fonts-item-preview {
+				animation: preview-work-megaphone 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Twist";
+				src: url("/assets/fonts/students/vfw24-section1/SaachiMehta-Twist.ttf");
+				
+			}
+			@keyframes preview-twist {
+				0% { font-variation-settings: 'TWST' 0 } 100% { font-variation-settings: 'TWST' 200 }
+			}
+			[data-font="Twist"] .menu-fonts-item-preview {
+				font-family: "Twist";
+				font-variation-settings: "TWST" 0;
+				
+			}
+			[data-font="Twist"]:hover .menu-fonts-item-preview {
+				animation: preview-twist 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Extend";
+				src: url("/assets/fonts/students/vfw24-section1/SeoyeonKweon-Extend.ttf");
+				
+			}
+			@keyframes preview-extend {
+				0% { font-variation-settings: 'BOLD' 100 } 100% { font-variation-settings: 'BOLD' 0 }
+			}
+			[data-font="Extend"] .menu-fonts-item-preview {
+				font-family: "Extend";
+				font-variation-settings: "BOLD" 100;
+				
+			}
+			[data-font="Extend"]:hover .menu-fonts-item-preview {
+				animation: preview-extend 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Foamy";
+				src: url("/assets/fonts/students/vfw24-section1/SeoyeonKweon-Foamy.ttf");
+				
+			}
+			@keyframes preview-foamy {
+				0% { font-variation-settings: 'SHAP' 0 } 100% { font-variation-settings: 'SHAP' 200 }
+			}
+			[data-font="Foamy"] .menu-fonts-item-preview {
+				font-family: "Foamy";
+				font-variation-settings: "SHAP" 0;
+				
+			}
+			[data-font="Foamy"]:hover .menu-fonts-item-preview {
+				animation: preview-foamy 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Eclat Serif Variable";
+				src: url("/assets/fonts/students/vfw24-section1/WeichengPeterXu-EclatSerifVariable.ttf");
+				
+			}
+			@keyframes preview-eclat-serif-variable {
+				0% { font-variation-settings: 'ECLT' 0 } 100% { font-variation-settings: 'ECLT' 100 }
+			}
+			[data-font="Eclat Serif Variable"] .menu-fonts-item-preview {
+				font-family: "Eclat Serif Variable";
+				font-variation-settings: "ECLT" 0;
+				
+			}
+			[data-font="Eclat Serif Variable"]:hover .menu-fonts-item-preview {
+				animation: preview-eclat-serif-variable 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Unstable Emotion";
+				src: url("/assets/fonts/students/vfw24-section1/WeichengPeterXu-UnstableEmotion.ttf");
+				
+			}
+			@keyframes preview-unstable-emotion {
+				0% { font-variation-settings: 'EMUS' 0 } 100% { font-variation-settings: 'EMUS' 100 }
+			}
+			[data-font="Unstable Emotion"] .menu-fonts-item-preview {
+				font-family: "Unstable Emotion";
+				font-variation-settings: "EMUS" 0;
+				
+			}
+			[data-font="Unstable Emotion"]:hover .menu-fonts-item-preview {
+				animation: preview-unstable-emotion 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Meerkat";
+				src: url("/assets/fonts/students/vfw24-section1/ZairanLiu-Meerkat.ttf");
+				
+			}
+			@keyframes preview-meerkat {
+				0% { font-variation-settings: 'ALRT' 0 } 100% { font-variation-settings: 'ALRT' 100 }
+			}
+			[data-font="Meerkat"] .menu-fonts-item-preview {
+				font-family: "Meerkat";
+				font-variation-settings: "ALRT" 0;
+				
+			}
+			[data-font="Meerkat"]:hover .menu-fonts-item-preview {
+				animation: preview-meerkat 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Zairans Pixel Font";
+				src: url("/assets/fonts/students/vfw24-section1/ZairanLiu-ZairansPixelFont.ttf");
+				
+			}
+			@keyframes preview-zairans-pixel-font {
+				0% { font-variation-settings: 'PSNG' 0, 'HDFT' 0 } 25% { font-variation-settings: 'PSNG' 100, 'HDFT' 0 } 50% { font-variation-settings: 'PSNG' 100, 'HDFT' 100 } 75% { font-variation-settings: 'PSNG' 0, 'HDFT' 100 } 100% { font-variation-settings: 'PSNG' 0, 'HDFT' 0 }
+			}
+			[data-font="Zairans Pixel Font"] .menu-fonts-item-preview {
+				font-family: "Zairans Pixel Font";
+				font-variation-settings: "PSNG" 0, "HDFT" 0;
+				
+			}
+			[data-font="Zairans Pixel Font"]:hover .menu-fonts-item-preview {
+				animation: preview-zairans-pixel-font 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Fitz Variable Inktrap";
+				src: url("/assets/fonts/students/vfw23-section3/BrookeShary-FitzVariableInktrap.ttf");
+				
+			}
+			@keyframes preview-fitz-variable-inktrap {
+				0% { font-variation-settings: 'INKY' 0 } 100% { font-variation-settings: 'INKY' 400 }
+			}
+			[data-font="Fitz Variable Inktrap"] .menu-fonts-item-preview {
+				font-family: "Fitz Variable Inktrap";
+				font-variation-settings: "INKY" 0;
+				transform: scale(1.25);
+			}
+			[data-font="Fitz Variable Inktrap"]:hover .menu-fonts-item-preview {
+				animation: preview-fitz-variable-inktrap 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "JagFig";
+				src: url("/assets/fonts/students/vfw23-section3/DoheeKim-JagFig.ttf");
+				
+			}
+			@keyframes preview-jagfig {
+				0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 1000 }
+			}
+			[data-font="JagFig"] .menu-fonts-item-preview {
+				font-family: "JagFig";
+				font-variation-settings: "wght" 0;
+				
+			}
+			[data-font="JagFig"]:hover .menu-fonts-item-preview {
+				animation: preview-jagfig 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "See You At The Pool";
+				src: url("/assets/fonts/students/vfw23-section3/KateBrown-SeeYouAtThePool.ttf");
+				
+			}
+			@keyframes preview-see-you-at-the-pool {
+				0% { font-variation-settings: 'HALF' 0 } 100% { font-variation-settings: 'HALF' 100 }
+			}
+			[data-font="See You At The Pool"] .menu-fonts-item-preview {
+				font-family: "See You At The Pool";
+				font-variation-settings: "HALF" 0;
+				
+			}
+			[data-font="See You At The Pool"]:hover .menu-fonts-item-preview {
+				animation: preview-see-you-at-the-pool 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Inkwater";
+				src: url("/assets/fonts/students/vfw23-section3/LeslieBerumen-Inkwater.ttf");
+				
+			}
+			@keyframes preview-inkwater {
+				0% { font-variation-settings: 'POOL' 0 } 100% { font-variation-settings: 'POOL' 100 }
+			}
+			[data-font="Inkwater"] .menu-fonts-item-preview {
+				font-family: "Inkwater";
+				font-variation-settings: "POOL" 0;
+				
+			}
+			[data-font="Inkwater"]:hover .menu-fonts-item-preview {
+				animation: preview-inkwater 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Jost Split Ends";
+				src: url("/assets/fonts/students/vfw23-section3/MichelleBelgrod-JostSplitEnds.ttf");
+				
+			}
+			@keyframes preview-jost-split-ends {
+				0% { font-variation-settings: 'SPLT' 500 } 100% { font-variation-settings: 'SPLT' 0 }
+			}
+			[data-font="Jost Split Ends"] .menu-fonts-item-preview {
+				font-family: "Jost Split Ends";
+				font-variation-settings: "SPLT" 500;
+				
+			}
+			[data-font="Jost Split Ends"]:hover .menu-fonts-item-preview {
+				animation: preview-jost-split-ends 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Gates";
+				src: url("/assets/fonts/students/vfw23-section3/NicoleBan-Gates.ttf");
+				
+			}
+			@keyframes preview-gates {
+				0% { font-variation-settings: 'GATE' 0 } 100% { font-variation-settings: 'GATE' 100 }
+			}
+			[data-font="Gates"] .menu-fonts-item-preview {
+				font-family: "Gates";
+				font-variation-settings: "GATE" 0;
+				
+			}
+			[data-font="Gates"]:hover .menu-fonts-item-preview {
+				animation: preview-gates 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "NEW LATIN";
+				src: url("/assets/fonts/students/vfw23-section3/RyanYan-NEWLATIN.ttf");
+				
+			}
+			@keyframes preview-new-latin {
+				0% { font-variation-settings: 'LANG' 0 } 100% { font-variation-settings: 'LANG' 100 }
+			}
+			[data-font="NEW LATIN"] .menu-fonts-item-preview {
+				font-family: "NEW LATIN";
+				font-variation-settings: "LANG" 0;
+				
+			}
+			[data-font="NEW LATIN"]:hover .menu-fonts-item-preview {
+				animation: preview-new-latin 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Wounded Type";
+				src: url("/assets/fonts/students/vfw23-section3/ShiyueWang-WoundedType.ttf");
+				
+			}
+			@keyframes preview-wounded-type {
+				0% { font-variation-settings: 'DIST' 0 } 100% { font-variation-settings: 'DIST' 100 }
+			}
+			[data-font="Wounded Type"] .menu-fonts-item-preview {
+				font-family: "Wounded Type";
+				font-variation-settings: "DIST" 0;
+				
+			}
+			[data-font="Wounded Type"]:hover .menu-fonts-item-preview {
+				animation: preview-wounded-type 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "West Wind";
+				src: url("/assets/fonts/students/vfw23-section3/SeunghyunCho-WestWinds.ttf");
+				
+			}
+			@keyframes preview-west-wind {
+				0% { font-variation-settings: 'WIND' 0 } 100% { font-variation-settings: 'WIND' 1000 }
+			}
+			[data-font="West Wind"] .menu-fonts-item-preview {
+				font-family: "West Wind";
+				font-variation-settings: "WIND" 0;
+				
+			}
+			[data-font="West Wind"]:hover .menu-fonts-item-preview {
+				animation: preview-west-wind 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Lava";
+				src: url("/assets/fonts/students/vfw23-section2/VictoriaLiang-Lava.ttf");
+				
+			}
+			@keyframes preview-lava {
+				0% { font-variation-settings: 'DIST' 500 } 100% { font-variation-settings: 'DIST' 100 }
+			}
+			[data-font="Lava"] .menu-fonts-item-preview {
+				font-family: "Lava";
+				font-variation-settings: "DIST" 500;
+				
+			}
+			[data-font="Lava"]:hover .menu-fonts-item-preview {
+				animation: preview-lava 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Macaroni";
+				src: url("/assets/fonts/students/vfw23-section2/TrumanLesak-Macaroni.ttf");
+				
+			}
+			@keyframes preview-macaroni {
+				0% { font-variation-settings: 'BEND' 0 } 100% { font-variation-settings: 'BEND' 100 }
+			}
+			[data-font="Macaroni"] .menu-fonts-item-preview {
+				font-family: "Macaroni";
+				font-variation-settings: "BEND" 0;
+				
+			}
+			[data-font="Macaroni"]:hover .menu-fonts-item-preview {
+				animation: preview-macaroni 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Star Font";
+				src: url("/assets/fonts/students/vfw23-section2/SharleneDeng-StarFont.ttf");
+				
+			}
+			@keyframes preview-star-font {
+				0% { font-variation-settings: 'STAR' 10 } 100% { font-variation-settings: 'STAR' 75 }
+			}
+			[data-font="Star Font"] .menu-fonts-item-preview {
+				font-family: "Star Font";
+				font-variation-settings: "STAR" 10;
+				
+			}
+			[data-font="Star Font"]:hover .menu-fonts-item-preview {
+				animation: preview-star-font 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Emo Type";
+				src: url("/assets/fonts/students/vfw23-section2/MehekVohra-EmoType.ttf");
+				
+			}
+			@keyframes preview-emo-type {
+				0% { font-variation-settings: 'VOLM' 0, 'EMOT' 0 } 25% { font-variation-settings: 'VOLM' 100, 'EMOT' 0 } 50% { font-variation-settings: 'VOLM' 100, 'EMOT' 100 } 75% { font-variation-settings: 'VOLM' 0, 'EMOT' 100 } 100% { font-variation-settings: 'VOLM' 0, 'EMOT' 0 }
+			}
+			[data-font="Emo Type"] .menu-fonts-item-preview {
+				font-family: "Emo Type";
+				font-variation-settings: "VOLM" 0, "EMOT" 0;
+				
+			}
+			[data-font="Emo Type"]:hover .menu-fonts-item-preview {
+				animation: preview-emo-type 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "New Ivy";
+				src: url("/assets/fonts/students/vfw23-section2/MaxBeidler-NewIvy.ttf");
+				
+			}
+			@keyframes preview-new-ivy {
+				0% { font-variation-settings: 'OFST' 0 } 100% { font-variation-settings: 'OFST' 100 }
+			}
+			[data-font="New Ivy"] .menu-fonts-item-preview {
+				font-family: "New Ivy";
+				font-variation-settings: "OFST" 0;
+				
+			}
+			[data-font="New Ivy"]:hover .menu-fonts-item-preview {
+				animation: preview-new-ivy 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "XO Puzzles";
+				src: url("/assets/fonts/students/vfw23-section2/LiHuang-XOPuzzles.ttf");
+				
+			}
+			@keyframes preview-xo-puzzles {
+				0% { font-variation-settings: 'PUZZ' 200 } 25% { font-variation-settings: 'PUZZ' 400 } 50% { font-variation-settings: 'PUZZ' 200 } 75% { font-variation-settings: 'PUZZ' 0 } 100% { font-variation-settings: 'PUZZ' 200 }
+			}
+			[data-font="XO Puzzles"] .menu-fonts-item-preview {
+				font-family: "XO Puzzles";
+				font-variation-settings: "PUZZ" 200;
+				
+			}
+			[data-font="XO Puzzles"]:hover .menu-fonts-item-preview {
+				animation: preview-xo-puzzles 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Popup";
+				src: url("/assets/fonts/students/vfw23-section2/JisuChang-Popup.ttf");
+				
+			}
+			@keyframes preview-popup {
+				0% { font-variation-settings: 'POPP' 100 } 100% { font-variation-settings: 'POPP' 0 }
+			}
+			[data-font="Popup"] .menu-fonts-item-preview {
+				font-family: "Popup";
+				font-variation-settings: "POPP" 100;
+				
+			}
+			[data-font="Popup"]:hover .menu-fonts-item-preview {
+				animation: preview-popup 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "NOAH";
+				src: url("/assets/fonts/students/vfw23-section2/HelenPeng-NOAH.ttf");
+				
+			}
+			@keyframes preview-noah {
+				0% { font-variation-settings: 'wght' 100 } 100% { font-variation-settings: 'wght' 50 }
+			}
+			[data-font="NOAH"] .menu-fonts-item-preview {
+				font-family: "NOAH";
+				font-variation-settings: "wght" 100;
+				
+			}
+			[data-font="NOAH"]:hover .menu-fonts-item-preview {
+				animation: preview-noah 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Whats The Point";
+				src: url("/assets/fonts/students/vfw23-section2/HarshalDuddalwar-WhatsThePoint.ttf");
+				
+			}
+			@keyframes preview-whats-the-point {
+				0% { font-variation-settings: 'REGU' 0 } 100% { font-variation-settings: 'REGU' 100 }
+			}
+			[data-font="Whats The Point"] .menu-fonts-item-preview {
+				font-family: "Whats The Point";
+				font-variation-settings: "REGU" 0;
+				
+			}
+			[data-font="Whats The Point"]:hover .menu-fonts-item-preview {
+				animation: preview-whats-the-point 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "NATO Alphabet";
+				src: url("/assets/fonts/students/vfw23-section2/ChristineWang-NATOAlphabet.ttf");
+				
+			}
+			@keyframes preview-nato-alphabet {
+				0% { font-variation-settings: 'ANIM' 0 } 100% { font-variation-settings: 'ANIM' 100 }
+			}
+			[data-font="NATO Alphabet"] .menu-fonts-item-preview {
+				font-family: "NATO Alphabet";
+				font-variation-settings: "ANIM" 0;
+				
+			}
+			[data-font="NATO Alphabet"]:hover .menu-fonts-item-preview {
+				animation: preview-nato-alphabet 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Tetris";
+				src: url("/assets/fonts/students/vfw23-section2/BriannaCheng-Tetris.ttf");
+				
+			}
+			@keyframes preview-tetris {
+				0% { font-variation-settings: 'PXLR' 0 } 25% { font-variation-settings: 'PXLR' 100 } 75% { font-variation-settings: 'PXLR' -100 } 100% { font-variation-settings: 'PXLR' 0 }
+			}
+			[data-font="Tetris"] .menu-fonts-item-preview {
+				font-family: "Tetris";
+				font-variation-settings: "PXLR" 0;
+				
+			}
+			[data-font="Tetris"]:hover .menu-fonts-item-preview {
+				animation: preview-tetris 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Useless";
+				src: url("/assets/fonts/students/vfw23-section2/AshWenqingMa-Useless.ttf");
+				
+			}
+			@keyframes preview-useless {
+				0% { font-variation-settings: 'HAND' 50 } 25% { font-variation-settings: 'HAND' 100 } 75% { font-variation-settings: 'HAND' 0 } 100% { font-variation-settings: 'HAND' 50 }
+			}
+			[data-font="Useless"] .menu-fonts-item-preview {
+				font-family: "Useless";
+				font-variation-settings: "HAND" 50;
+				
+			}
+			[data-font="Useless"]:hover .menu-fonts-item-preview {
+				animation: preview-useless 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Windy Day";
+				src: url("/assets/fonts/students/vfw23-section2/AshleyKim-WindyDay.ttf");
+				
+			}
+			@keyframes preview-windy-day {
+				0% { font-variation-settings: 'WIND' 0 } 100% { font-variation-settings: 'WIND' 100 }
+			}
+			[data-font="Windy Day"] .menu-fonts-item-preview {
+				font-family: "Windy Day";
+				font-variation-settings: "WIND" 0;
+				
+			}
+			[data-font="Windy Day"]:hover .menu-fonts-item-preview {
+				animation: preview-windy-day 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "FONT1";
+				src: url("/assets/fonts/students/vfw23-section2/AnneMcLean-FONT1.ttf");
+				
+			}
+			@keyframes preview-font1 {
+				0% { font-variation-settings: 'wght' 500 } 100% { font-variation-settings: 'wght' 100 }
+			}
+			[data-font="FONT1"] .menu-fonts-item-preview {
+				font-family: "FONT1";
+				font-variation-settings: "wght" 500;
+				
+			}
+			[data-font="FONT1"]:hover .menu-fonts-item-preview {
+				animation: preview-font1 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Corruption";
+				src: url("/assets/fonts/students/vfw23-section2/AndrewLiu-Corruption.ttf");
+				
+			}
+			@keyframes preview-corruption {
+				0% { font-variation-settings: 'wght' 0, 'CRPT' 0 } 25% { font-variation-settings: 'wght' 100, 'CRPT' 0 } 50% { font-variation-settings: 'wght' 100, 'CRPT' 100 } 75% { font-variation-settings: 'wght' 0, 'CRPT' 100 } 100% { font-variation-settings: 'wght' 0, 'CRPT' 0 }
+			}
+			[data-font="Corruption"] .menu-fonts-item-preview {
+				font-family: "Corruption";
+				font-variation-settings: "wght" 0, "CRPT" 0;
+				
+			}
+			[data-font="Corruption"]:hover .menu-fonts-item-preview {
+				animation: preview-corruption 3s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Scribble Surprise";
+				src: url("/assets/fonts/students/vfw23-section1/RitaWang-ScribbleSurprise.ttf");
+				
+			}
+			@keyframes preview-scribble-surprise {
+				0% { font-variation-settings: 'SHFT' 0 } 100% { font-variation-settings: 'SHFT' 100 }
+			}
+			[data-font="Scribble Surprise"] .menu-fonts-item-preview {
+				font-family: "Scribble Surprise";
+				font-variation-settings: "SHFT" 0;
+				line-height: 1em;
+			}
+			[data-font="Scribble Surprise"]:hover .menu-fonts-item-preview {
+				animation: preview-scribble-surprise 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Spaghetti Sans";
+				src: url("/assets/fonts/students/vfw23-section1/GinaKang-SpaghettiSans.ttf");
+				
+			}
+			@keyframes preview-spaghetti-sans {
+				0% { font-variation-settings: 'SPGH' 0 } 100% { font-variation-settings: 'SPGH' 100 }
+			}
+			[data-font="Spaghetti Sans"] .menu-fonts-item-preview {
+				font-family: "Spaghetti Sans";
+				font-variation-settings: "SPGH" 0;
+				
+			}
+			[data-font="Spaghetti Sans"]:hover .menu-fonts-item-preview {
+				animation: preview-spaghetti-sans 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Gilberto";
+				src: url("/assets/fonts/students/vfw23-section1/CameronAstles-Gilberto.ttf");
+				
+			}
+			@keyframes preview-gilberto {
+				0% { font-variation-settings: 'SMBA' 0 } 100% { font-variation-settings: 'SMBA' 100 }
+			}
+			[data-font="Gilberto"] .menu-fonts-item-preview {
+				font-family: "Gilberto";
+				font-variation-settings: "SMBA" 0;
+				
+			}
+			[data-font="Gilberto"]:hover .menu-fonts-item-preview {
+				animation: preview-gilberto 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Fungus";
+				src: url("/assets/fonts/students/vfw23-section1/PlatoPeng-Fungus.ttf");
+				
+			}
+			@keyframes preview-fungus {
+				0% { font-variation-settings: 'GROW' 100 } 100% { font-variation-settings: 'GROW' 0 }
+			}
+			[data-font="Fungus"] .menu-fonts-item-preview {
+				font-family: "Fungus";
+				font-variation-settings: "GROW" 100;
+				
+			}
+			[data-font="Fungus"]:hover .menu-fonts-item-preview {
+				animation: preview-fungus 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Snail";
+				src: url("/assets/fonts/students/vfw24-section3/IsabelLee-Snail.ttf");
+				
+			}
+			@keyframes preview-snail {
+				0% { font-variation-settings: 'ROLL' 0 } 100% { font-variation-settings: 'ROLL' 100 }
+			}
+			[data-font="Snail"] .menu-fonts-item-preview {
+				font-family: "Snail";
+				font-variation-settings: "ROLL" 0;
+				transform: scale(1.5);
+			}
+			[data-font="Snail"]:hover .menu-fonts-item-preview {
+				animation: preview-snail 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Willow";
+				src: url("/assets/fonts/students/vfw24-section3/CynthiaWang-Willow.ttf");
+				
+			}
+			@keyframes preview-willow {
+				0% { font-variation-settings: 'wght' 700 } 100% { font-variation-settings: 'wght' 200 }
+			}
+			[data-font="Willow"] .menu-fonts-item-preview {
+				font-family: "Willow";
+				font-variation-settings: "wght" 700;
+				
+			}
+			[data-font="Willow"]:hover .menu-fonts-item-preview {
+				animation: preview-willow 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Fractured";
+				src: url("/assets/fonts/students/vfw24-section3/CocoLi-Fractured.ttf");
+				
+			}
+			@keyframes preview-fractured {
+				0% { font-variation-settings: 'FRAC' 100 } 100% { font-variation-settings: 'FRAC' 0 }
+			}
+			[data-font="Fractured"] .menu-fonts-item-preview {
+				font-family: "Fractured";
+				font-variation-settings: "FRAC" 100;
+				
+			}
+			[data-font="Fractured"]:hover .menu-fonts-item-preview {
+				animation: preview-fractured 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Valentine";
+				src: url("/assets/fonts/students/vfw24-section3/AveryBrowne-Valentine.ttf");
+				
+			}
+			@keyframes preview-valentine {
+				0% { font-variation-settings: 'XXXX' 0 } 100% { font-variation-settings: 'XXXX' 200 }
+			}
+			[data-font="Valentine"] .menu-fonts-item-preview {
+				font-family: "Valentine";
+				font-variation-settings: "XXXX" 0;
+				
+			}
+			[data-font="Valentine"]:hover .menu-fonts-item-preview {
+				animation: preview-valentine 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Thousand Cloud";
+				src: url("/assets/fonts/students/vfw24-section3/AnhNguyen-ThousandCloud.ttf");
+				
+			}
+			@keyframes preview-thousand-cloud {
+				0% { font-variation-settings: 'BLED' 200 } 100% { font-variation-settings: 'BLED' 0 }
+			}
+			[data-font="Thousand Cloud"] .menu-fonts-item-preview {
+				font-family: "Thousand Cloud";
+				font-variation-settings: "BLED" 200;
+				
+			}
+			[data-font="Thousand Cloud"]:hover .menu-fonts-item-preview {
+				animation: preview-thousand-cloud 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Samsara";
+				src: url("/assets/fonts/students/vfw24-section3/SelinaKehuanWu-Samsara.ttf");
+				
+			}
+			@keyframes preview-samsara {
+				0% { font-variation-settings: 'ELGC' 0 } 100% { font-variation-settings: 'ELGC' 1000 }
+			}
+			[data-font="Samsara"] .menu-fonts-item-preview {
+				font-family: "Samsara";
+				font-variation-settings: "ELGC" 0;
+				
+			}
+			[data-font="Samsara"]:hover .menu-fonts-item-preview {
+				animation: preview-samsara 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Shard";
+				src: url("/assets/fonts/students/vfw24-section3/NatalieHo-Shard.ttf");
+				
+			}
+			@keyframes preview-shard {
+				0% { font-variation-settings: 'CURV' 0 } 100% { font-variation-settings: 'CURV' 1000 }
+			}
+			[data-font="Shard"] .menu-fonts-item-preview {
+				font-family: "Shard";
+				font-variation-settings: "CURV" 0;
+				
+			}
+			[data-font="Shard"]:hover .menu-fonts-item-preview {
+				animation: preview-shard 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Spores";
+				src: url("/assets/fonts/students/vfw24-section3/AllieHeffner-Spores.ttf");
+				
+			}
+			@keyframes preview-spores {
+				0% { font-variation-settings: 'SHFT' 0 } 100% { font-variation-settings: 'SHFT' 100 }
+			}
+			[data-font="Spores"] .menu-fonts-item-preview {
+				font-family: "Spores";
+				font-variation-settings: "SHFT" 0;
+				
+			}
+			[data-font="Spores"]:hover .menu-fonts-item-preview {
+				animation: preview-spores 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Sharp Pixel";
+				src: url("/assets/fonts/students/vfw24-section3/VioleitJin-SharpPixel.ttf");
+				
+			}
+			@keyframes preview-sharp-pixel {
+				0% { font-variation-settings: 'SHRP' 0 } 100% { font-variation-settings: 'SHRP' 100 }
+			}
+			[data-font="Sharp Pixel"] .menu-fonts-item-preview {
+				font-family: "Sharp Pixel";
+				font-variation-settings: "SHAP" 0;
+				
+			}
+			[data-font="Sharp Pixel"]:hover .menu-fonts-item-preview {
+				animation: preview-sharp-pixel 1s infinite ease-in-out alternate;
+			}
+		
+			@font-face {
+				font-family: "Authentic Remixed";
 				src: url("/assets/fonts/tmt/TMT-AUTHENTICRemixedVF.ttf");
 				
 			}
 			@keyframes preview-authentic-remixed {
 				0% { font-variation-settings: 'XAXI' 0, 'YAXI' 0; } 20% { font-variation-settings: 'XAXI' 100, 'YAXI' 10; } 40% { font-variation-settings: 'XAXI' -100, 'YAXI' 100; } 60% { font-variation-settings: 'XAXI' -100, 'YAXI' -100; } 80% { font-variation-settings: 'XAXI' 100, 'YAXI' -100; } 100% { font-variation-settings: 'XAXI' 0, 'YAXI' 0; }
 			}
-			[data-font="authentic-remixed"] .menu-fonts-item-preview {
-				font-family: "authentic-remixed";
+			[data-font="Authentic Remixed"] .menu-fonts-item-preview {
+				font-family: "Authentic Remixed";
 				font-variation-settings: "XAXI" 0, "YAXI" 0;
 				
 			}
-			[data-font="authentic-remixed"]:hover .menu-fonts-item-preview {
+			[data-font="Authentic Remixed"]:hover .menu-fonts-item-preview {
 				animation: preview-authentic-remixed 2s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "avara-burst";
+				font-family: "Avara Burst";
 				src: url("/assets/fonts/tmt/TMT-AvaraBurstVF.ttf");
 				
 			}
 			@keyframes preview-avara-burst {
 				0% { font-variation-settings: 'BRST' 0; } 17% { font-variation-settings: 'BRST' 1; } 34% { font-variation-settings: 'BRST' 0; } 100% { font-variation-settings: 'BRST' 3; }
 			}
-			[data-font="avara-burst"] .menu-fonts-item-preview {
-				font-family: "avara-burst";
+			[data-font="Avara Burst"] .menu-fonts-item-preview {
+				font-family: "Avara Burst";
 				font-variation-settings: "BRST" 0;
 				
 			}
-			[data-font="avara-burst"]:hover .menu-fonts-item-preview {
+			[data-font="Avara Burst"]:hover .menu-fonts-item-preview {
 				animation: preview-avara-burst 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "bashful";
+				font-family: "Bashful";
 				src: url("/assets/fonts/tmt/TMT-BashfulVF.ttf");
 				
 			}
 			@keyframes preview-bashful {
 				0% { font-variation-settings: 'BASH' 0; } 100% { font-variation-settings: 'BASH' 100; }
 			}
-			[data-font="bashful"] .menu-fonts-item-preview {
-				font-family: "bashful";
+			[data-font="Bashful"] .menu-fonts-item-preview {
+				font-family: "Bashful";
 				font-variation-settings: "BASH" 0;
 				
 			}
-			[data-font="bashful"]:hover .menu-fonts-item-preview {
+			[data-font="Bashful"]:hover .menu-fonts-item-preview {
 				animation: preview-bashful 1s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "caffeine";
+				font-family: "Caffeine";
 				src: url("/assets/fonts/tmt/TMT-CaffeineVF.ttf");
 				
 			}
 			@keyframes preview-caffeine {
 				0% { font-variation-settings: 'SCRI' 0, 'SCRA' 0; } 20% { font-variation-settings: 'SCRI' 0, 'SCRA' 50; } 40% { font-variation-settings: 'SCRI' 100, 'SCRA' 0; } 60% { font-variation-settings: 'SCRI' 75, 'SCRA' 50; } 80% { font-variation-settings: 'SCRI' 25, 'SCRA' 100; } 100% { font-variation-settings: 'SCRI' 50, 'SCRA' 0; }
 			}
-			[data-font="caffeine"] .menu-fonts-item-preview {
-				font-family: "caffeine";
+			[data-font="Caffeine"] .menu-fonts-item-preview {
+				font-family: "Caffeine";
 				font-variation-settings: "SCRI" 0, "SCRA" 0;
 				
 			}
-			[data-font="caffeine"]:hover .menu-fonts-item-preview {
+			[data-font="Caffeine"]:hover .menu-fonts-item-preview {
 				animation: preview-caffeine 1s infinite steps(1);
 			}
 		
 			@font-face {
-				font-family: "dreidel";
+				font-family: "Dreidel";
 				src: url("/assets/fonts/tmt/TMT-DreidelVF.ttf");
 				
 			}
 			@keyframes preview-dreidel {
 				0% { font-variation-settings: 'SPIN' -45; } 100% { font-variation-settings: 'SPIN' 405; }
 			}
-			[data-font="dreidel"] .menu-fonts-item-preview {
-				font-family: "dreidel";
+			[data-font="Dreidel"] .menu-fonts-item-preview {
+				font-family: "Dreidel";
 				font-variation-settings: "SPIN" -45;
 				
 			}
-			[data-font="dreidel"]:hover .menu-fonts-item-preview {
+			[data-font="Dreidel"]:hover .menu-fonts-item-preview {
 				animation: preview-dreidel 2s infinite ease-in-out;
 			}
 		
 			@font-face {
-				font-family: "limkin";
+				font-family: "Limkin";
 				src: url("/assets/fonts/tmt/TMT-LimkinVF.ttf");
 				font-weight: 100 900;
 			}
 			@keyframes preview-limkin {
 				0% { font-variation-settings: 'wght' 500, 'SRFF' 100; } 100% { font-variation-settings: 'wght' 500, 'SRFF' 0; }
 			}
-			[data-font="limkin"] .menu-fonts-item-preview {
-				font-family: "limkin";
+			[data-font="Limkin"] .menu-fonts-item-preview {
+				font-family: "Limkin";
 				font-variation-settings: "wght" 500, "SRFF" 100;
 				
 			}
-			[data-font="limkin"]:hover .menu-fonts-item-preview {
+			[data-font="Limkin"]:hover .menu-fonts-item-preview {
 				animation: preview-limkin 1s infinite alternate ease-in-out;
 			}
 		
 			@font-face {
-				font-family: "limkin-pixel";
+				font-family: "Limkin Pixel";
 				src: url("/assets/fonts/tmt/TMT-LimkinPixelVF.ttf");
 				font-weight: 100 900;
 			}
 			@keyframes preview-limkin-pixel {
 				0% { font-variation-settings: 'wght' 500; } 25% { font-variation-settings: 'wght' 100; } 50% { font-variation-settings: 'wght' 500; } 75% { font-variation-settings: 'wght' 900; } 100% { font-variation-settings: 'wght' 500; }
 			}
-			[data-font="limkin-pixel"] .menu-fonts-item-preview {
-				font-family: "limkin-pixel";
+			[data-font="Limkin Pixel"] .menu-fonts-item-preview {
+				font-family: "Limkin Pixel";
 				font-variation-settings: "wght" 500;
 				
 			}
-			[data-font="limkin-pixel"]:hover .menu-fonts-item-preview {
+			[data-font="Limkin Pixel"]:hover .menu-fonts-item-preview {
 				animation: preview-limkin-pixel 3s infinite ease-in-out;
 			}
 		
 			@font-face {
-				font-family: "mini-mochi";
+				font-family: "Mini Mochi";
 				src: url("/assets/fonts/tmt/TMT-MiniMochiVF.ttf");
 				
 			}
 			@keyframes preview-mini-mochi {
 				0% { font-variation-settings: 'STCH' 50, 'FLAV' 0, 'SLCE' 0; } 17% { font-variation-settings: 'STCH' 100, 'FLAV' 0, 'SLCE' 0; } 34% { font-variation-settings: 'STCH' 0, 'FLAV' 0, 'SLCE' 0; } 51% { font-variation-settings: 'STCH' 100, 'FLAV' 100, 'SLCE' 0; } 68% { font-variation-settings: 'STCH' 0, 'FLAV' 100, 'SLCE' 0; } 85% { font-variation-settings: 'STCH' 100, 'FLAV' 100, 'SLCE' 100; } 100% { font-variation-settings: 'STCH' 0, 'FLAV' 100, 'SLCE' 100; }
 			}
-			[data-font="mini-mochi"] .menu-fonts-item-preview {
-				font-family: "mini-mochi";
+			[data-font="Mini Mochi"] .menu-fonts-item-preview {
+				font-family: "Mini Mochi";
 				font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
 				
 			}
-			[data-font="mini-mochi"]:hover .menu-fonts-item-preview {
+			[data-font="Mini Mochi"]:hover .menu-fonts-item-preview {
 				animation: preview-mini-mochi 4s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "music-box";
+				font-family: "Music Box";
 				src: url("/assets/fonts/tmt/TMT-MusicBoxVF.ttf");
 				
 			}
 			@keyframes preview-music-box {
 				0% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; } 25% { font-variation-settings: 'FREQ' 100, 'AMPL' 50; } 50% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; } 75% { font-variation-settings: 'FREQ' -100, 'AMPL' 50; } 100% { font-variation-settings: 'FREQ' 0, 'AMPL' 50; }
 			}
-			[data-font="music-box"] .menu-fonts-item-preview {
-				font-family: "music-box";
+			[data-font="Music Box"] .menu-fonts-item-preview {
+				font-family: "Music Box";
 				font-variation-settings: "FREQ" 0, "AMPL" 50;
 				
 			}
-			[data-font="music-box"]:hover .menu-fonts-item-preview {
+			[data-font="Music Box"]:hover .menu-fonts-item-preview {
 				animation: preview-music-box 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
 			}
 		
 			@font-face {
-				font-family: "powerpack";
+				font-family: "PowerPack";
 				src: url("/assets/fonts/tmt/TMT-PowerPackVF.ttf");
 				
 			}
 			@keyframes preview-powerpack {
 				0% { font-variation-settings: 'CHRG' 0, 'POWR' 0; } 50% { font-variation-settings: 'CHRG' 0, 'POWR' 100; } 100% { font-variation-settings: 'CHRG' 100, 'POWR' 100; }
 			}
-			[data-font="powerpack"] .menu-fonts-item-preview {
-				font-family: "powerpack";
+			[data-font="PowerPack"] .menu-fonts-item-preview {
+				font-family: "PowerPack";
 				font-variation-settings: "CHRG" 0, "POWR" 0;
 				
 			}
-			[data-font="powerpack"]:hover .menu-fonts-item-preview {
+			[data-font="PowerPack"]:hover .menu-fonts-item-preview {
 				animation: preview-powerpack 2s infinite ease-in-out alternate;
 			}
 		
 			@font-face {
-				font-family: "that-then-this";
+				font-family: "That Then This";
 				src: url("/assets/fonts/tmt/TMT-ThatThenThisVF.ttf");
 				
 			}
 			@keyframes preview-that-then-this {
 				0% { font-variation-settings: 'THAT' 0, 'THIS' 0; } 25% { font-variation-settings: 'THAT' 0, 'THIS' 100; } 50% { font-variation-settings: 'THAT' 100, 'THIS' 100; } 75% { font-variation-settings: 'THAT' 100, 'THIS' 0; } 100% { font-variation-settings: 'THAT' 0, 'THIS' 0; }
 			}
-			[data-font="that-then-this"] .menu-fonts-item-preview {
-				font-family: "that-then-this";
+			[data-font="That Then This"] .menu-fonts-item-preview {
+				font-family: "That Then This";
 				font-variation-settings: "THAT" 0, "THIS" 0;
 				
 			}
-			[data-font="that-then-this"]:hover .menu-fonts-item-preview {
+			[data-font="That Then This"]:hover .menu-fonts-item-preview {
 				animation: preview-that-then-this 2s infinite ease-in-out;
 			}
 		
 			@font-face {
-				font-family: "work-sans-galapagos";
+				font-family: "Work Sans Galapagos";
 				src: url("/assets/fonts/tmt/TMT-WorkSansGalapagosVF.ttf");
 				font-weight: 100 900;
 			}
 			@keyframes preview-work-sans-galapagos {
 				0% { font-variation-settings: 'wght' 500, 'SHLL' 100; } 17% { font-variation-settings: 'wght' 500, 'SHLL' 0; } 34% { font-variation-settings: 'wght' 900, 'SHLL' 100; } 51% { font-variation-settings: 'wght' 900, 'SHLL' 0; } 68% { font-variation-settings: 'wght' 100, 'SHLL' 100; } 85% { font-variation-settings: 'wght' 100, 'SHLL' 0; } 100% { font-variation-settings: 'wght' 500, 'SHLL' 100; }
 			}
-			[data-font="work-sans-galapagos"] .menu-fonts-item-preview {
-				font-family: "work-sans-galapagos";
+			[data-font="Work Sans Galapagos"] .menu-fonts-item-preview {
+				font-family: "Work Sans Galapagos";
 				font-variation-settings: "wght" 500, "SHLL" 100;
 				font-feature-settings: 'ss01' 1, 'ss06' 1;
 			}
-			[data-font="work-sans-galapagos"]:hover .menu-fonts-item-preview {
+			[data-font="Work Sans Galapagos"]:hover .menu-fonts-item-preview {
 				animation: preview-work-sans-galapagos 5s infinite ease-in-out;
 			}
 		

@@ -1,5 +1,1945 @@
 {
-	"CynthiaWang-Willow": {
+	"Pet": {
+		"name": "Pet",
+		"designer": "Violeit Jin",
+		"preview-text": "abc",
+		"preview-animation": "0% { font-variation-settings: 'GIIF' 0, 'SHAP' 0 } 100% { font-variation-settings: 'GIIF' 100, 'SHAP' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/VioleitJin-Pet.ttf",
+		"axes": {
+			"GIIF": {
+				"name": "Gif",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Decode": {
+		"name": "Decode",
+		"designer": "Natalie Ho",
+		"preview-text": "message",
+		"preview-animation": "0% { font-variation-settings: 'DCOD' 1000 } 100% { font-variation-settings: 'DCOD' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/SelinaKehuanWu-Decode.ttf",
+		"axes": {
+			"DCOD": {
+				"name": "Decode",
+				"min": 0,
+				"default": 1000,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Traffic": {
+		"name": "Traffic",
+		"designer": "Natalie Ho",
+		"preview-text": "cars",
+		"preview-animation": "0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/NatalieHo-Traffic.ttf",
+		"axes": {
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Garden": {
+		"name": "Garden",
+		"designer": "Nadine Macapagal",
+		"preview-text": "bleed",
+		"preview-animation": "0% { font-variation-settings: 'FLOW' 0 } 100% { font-variation-settings: 'FLOW' 1000 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/NadineMacapagal-Garden.ttf",
+		"axes": {
+			"FLOW": {
+				"name": "Flower",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Barkada": {
+		"name": "Barkada",
+		"designer": "Nadine Macapagal",
+		"preview-text": "bleed",
+		"preview-animation": "0% { font-variation-settings: 'STRK' 0 } 100% { font-variation-settings: 'STRK' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/NadineMacapagal-Barkada.ttf",
+		"axes": {
+			"STRK": {
+				"name": "Stroke",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Lubbly": {
+		"name": "Lubbly",
+		"designer": "Isabel Lee",
+		"preview-text": "smooch",
+		"preview-animation": "0% { font-variation-settings: 'LUVV' 0 } 100% { font-variation-settings: 'LUVV' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/IsabelLee-Lubbly.ttf",
+		"axes": {
+			"LUVV": {
+				"name": "LUV",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Gabis Pixel Font": {
+		"name": "Gabi’s Pixel Font",
+		"designer": "Gabi Harkless",
+		"preview-text": "swirly",
+		"preview-animation": "0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 1000 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/GabiHarkless-GabisPixelFont.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Lawnmower": {
+		"name": "Lawnmower",
+		"designer": "Enz Pan",
+		"preview-text": "GRASS",
+		"preview-animation": "0% { font-variation-settings: 'GROW' 1000 } 100% { font-variation-settings: 'GROW' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/EnzPan-Lawnmower.ttf",
+		"axes": {
+			"GROW": {
+				"name": "Growth",
+				"min": 0,
+				"default": 1000,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "vector, remixed"
+	},
+	"Pixel Pastry": {
+		"name": "Pixel Pastry",
+		"designer": "Cynthia Wang",
+		"preview-text": "danish",
+		"preview-animation": "0% { font-variation-settings: 'SHAP' 0 } 100% { font-variation-settings: 'SHAP' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/CynthiaWang-PixelPastry.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Bamboo": {
+		"name": "Bamboo",
+		"designer": "Coco Li",
+		"preview-text": "koala",
+		"preview-animation": "0% { font-variation-settings: 'COCO' 0 } 100% { font-variation-settings: 'COCO' 1000 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/CocoLi-Bamboo.ttf",
+		"axes": {
+			"COCO": {
+				"name": "Coco",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Curly Fry": {
+		"name": "Curly Fry",
+		"designer": "Avery Browne",
+		"preview-text": "curlz",
+		"preview-animation": "0% { font-variation-settings: 'MEOW' 0 } 100% { font-variation-settings: 'MEOW' 1000 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/AveryBrowne-CurlyFry.ttf",
+		"axes": {
+			"MEOW": {
+				"name": "Meow",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Backward": {
+		"name": "Backward",
+		"designer": "Anh Nguyen",
+		"preview-text": "boule",
+		"preview-animation": "0% { font-variation-settings: 'POSI' 0, 'SHAP' 0 } 100% { font-variation-settings: 'POSI' 100, 'SHAP' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/AnhNguyen-Backward.ttf",
+		"axes": {
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Allies Pixel Font": {
+		"name": "Allie’s Pixel Font",
+		"designer": "Allie Heffner",
+		"preview-text": "flippy",
+		"preview-animation": "0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section3/AllieHeffner-AlliesPixelFont.ttf",
+		"axes": {
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Funky Serif": {
+		"name": "Funky Serif",
+		"designer": "Ivy Zhang",
+		"preview-text": "bones",
+		"preview-animation": "0% { font-variation-settings: 'SRFF' 0 } 100% { font-variation-settings: 'SRFF' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section1/IvyZhang-FunkySerif.ttf",
+		"axes": {
+			"SRFF": {
+				"name": "Serif",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, remixed"
+	},
+	"Nocturnal Space Invaders": {
+		"name": "Nocturnal Space Invaders",
+		"designer": "Kryeol Chen",
+		"preview-text": "invade",
+		"preview-animation": "0% { font-variation-settings: 'DIVE' 0, 'LINE' 0 } 100% { font-variation-settings: 'DIVE' 100, 'LINE' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section1/KryeolChen-NocturnalSpaceInvaders.ttf",
+		"axes": {
+			"DIVE": {
+				"name": "Day&Night",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"LINE": {
+				"name": "Iris",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Clintons Pixel Font": {
+		"name": "Clinton’s Pixel Font",
+		"designer": "Clinton Van Arnam",
+		"preview-text": "wave",
+		"preview-animation": "0% { font-variation-settings: 'SINE' 0, 'NNSE' 0 } 100% { font-variation-settings: 'SINE' 100, 'NNSE' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/ClintonVanArnam-ClintonsPixelFont.ttf",
+		"axes": {
+			"SINE": {
+				"name": "Sine Interruption",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"NNSE": {
+				"name": "Noise Interruption",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Optical": {
+		"name": "Optical",
+		"designer": "Clinton Van Arnam",
+		"preview-text": "ABC",
+		"preview-animation": "0% { font-variation-settings: 'DRCT' 0, 'CRZY' 0 } 100% { font-variation-settings: 'DRCT' 100, 'CRZY' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "transform: scale(1.5);",
+		"file": "students/vfw24-section2/ClintonVanArnam-Optical.ttf",
+		"axes": {
+			"DRCT": {
+				"name": "Direction",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"CRZY": {
+				"name": "Crazy",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Rain": {
+		"name": "Rain",
+		"designer": "Hannah Jeong",
+		"preview-text": "drops",
+		"preview-animation": "0% { font-variation-settings: 'RAIN' 0 } 100% { font-variation-settings: 'RAIN' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/HannahJeong-Rain.ttf",
+		"axes": {
+			"RAIN": {
+				"name": "Rain",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Work In Progress": {
+		"name": "Work In Progress",
+		"designer": "Hannah Jeong",
+		"preview-text": "peeling",
+		"preview-animation": "0% { font-variation-settings: 'PROC' 0, 'wght' 0 } 100% { font-variation-settings: 'PROC' 100, 'wght' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/HannahJeong-WorkInProgress.ttf",
+		"axes": {
+			"PROC": {
+				"name": "Proc",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"wght": {
+				"name": "Weight",
+				"min": -100,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "Based on Manifont Grotesk by Alexandre Liziard and Etienne Ozeary",
+		"tags": "vector, remixed"
+	},
+	"Textile Pixel": {
+		"name": "Textile Pixel",
+		"designer": "Hyunmin Kim",
+		"preview-text": "weave",
+		"preview-animation": "0% { font-variation-settings: 'SHAP' 0, 'wght' 0 } 100% { font-variation-settings: 'SHAP' 100, 'wght' 50 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/HyunminKim-TextilePixel.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": -100,
+				"default": 0,
+				"max": 100
+			},
+			"wght": {
+				"name": "Weight",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Binel": {
+		"name": "Binel",
+		"designer": "Jasmine Shen",
+		"preview-text": "engulf",
+		"preview-animation": "0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/JasmineShen-Binel.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Jasmines Pixel Font": {
+		"name": "Jasmine’s Pixel Font",
+		"designer": "Jasmine Shen",
+		"preview-text": "regal",
+		"preview-animation": "0% { font-variation-settings: 'BLOR' 0 } 100% { font-variation-settings: 'BLOR' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/JasmineShen-JasminesPixelFont.ttf",
+		"axes": {
+			"BLOR": {
+				"name": "FLOB",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Balloooooon": {
+		"name": "Balloooooon",
+		"designer": "Jay Lee",
+		"preview-text": "inflate",
+		"preview-animation": "0% { font-variation-settings: 'BLOT' 0 } 100% { font-variation-settings: 'BLOT' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/JayLee-Balloooooon.ttf",
+		"axes": {
+			"BLOT": {
+				"name": "Bloat",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Boing": {
+		"name": "Boing",
+		"designer": "Jay Lee",
+		"preview-text": "bouncy",
+		"preview-animation": "0% { font-variation-settings: 'POSI' 0, 'SHAP' 0 } 100% { font-variation-settings: 'POSI' 100, 'SHAP' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/JayLee-Boing.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Sprout": {
+		"name": "Sprout",
+		"designer": "Joyce Li",
+		"preview-text": "nature",
+		"preview-animation": "0% { font-variation-settings: 'WATR' 0 } 100% { font-variation-settings: 'WATR' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/JoyceLi-Sprout.ttf",
+		"axes": {
+			"WATR": {
+				"name": "Water",
+				"min": -100,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Tension": {
+		"name": "Tension",
+		"designer": "Joyce Li",
+		"preview-text": "stress",
+		"preview-animation": "0% { font-variation-settings: 'RLSE' 0 } 100% { font-variation-settings: 'RLSE' 200 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/JoyceLi-Tension.ttf",
+		"axes": {
+			"RLSE": {
+				"name": "Release",
+				"min": 0,
+				"default": 0,
+				"max": 200
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Inkflow": {
+		"name": "Inkflow",
+		"designer": "Kevin Liao",
+		"preview-text": "style",
+		"preview-animation": "0% { font-variation-settings: 'SRFF' 0 } 100% { font-variation-settings: 'SRFF' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/KevinLiao-Inkflow.ttf",
+		"axes": {
+			"SRFF": {
+				"name": "Serif",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector"
+	},
+	"Trees Animiert": {
+		"name": "Trees Animiert",
+		"designer": "Luisa Heindl",
+		"preview-text": "acorn",
+		"preview-animation": "0% { font-variation-settings: 'ANIM' 0 } 100% { font-variation-settings: 'ANIM' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/LuisaHeindl-TreesAnimiert.ttf",
+		"axes": {
+			"ANIM": {
+				"name": "Animation",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Turquoise": {
+		"name": "Turquoise",
+		"designer": "Luisa Heindl",
+		"preview-text": "stretch",
+		"preview-animation": "0% { font-variation-settings: 'wdth' 0 } 100% { font-variation-settings: 'wdth' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/LuisaHeindl-Turquoise.ttf",
+		"axes": {
+			"wdth": {
+				"name": "Width",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Fundamental": {
+		"name": "Fundamental",
+		"designer": "Minya Larkin",
+		"preview-text": "science",
+		"preview-animation": "0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/MinyaLarkin-Fundamental.ttf",
+		"axes": {
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Superposition": {
+		"name": "Superposition",
+		"designer": "Minya Larkin",
+		"preview-text": "ancient",
+		"preview-animation": "0% { font-variation-settings: 'TNGL' 0 } 100% { font-variation-settings: 'TNGL' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/MinyaLarkin-Superposition.ttf",
+		"axes": {
+			"TNGL": {
+				"name": "Triangleness",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Circuit": {
+		"name": "Circuit",
+		"designer": "Noah Chalfant",
+		"preview-text": "flow",
+		"preview-animation": "0% { font-variation-settings: 'ELEC' 0 } 100% { font-variation-settings: 'ELEC' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/NoahChalfant-Circuit.ttf",
+		"axes": {
+			"ELEC": {
+				"name": "Electricity",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector"
+	},
+	"Noahs Pixel Font": {
+		"name": "Noah’s Pixel Font",
+		"designer": "Noah Chalfant",
+		"preview-text": "reverse",
+		"preview-animation": "0% { font-variation-settings: 'DOTS' 0 } 100% { font-variation-settings: 'DOTS' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/NoahChalfant-NoahsPixelFont.ttf",
+		"axes": {
+			"DOTS": {
+				"name": "Dots",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Eyeguy": {
+		"name": "Eyeguy",
+		"designer": "Sishu Wu",
+		"preview-text": "i see u",
+		"preview-animation": "0% { font-variation-settings: 'OPEN' 0 } 100% { font-variation-settings: 'OPEN' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/SishuWu-Eyeguy.ttf",
+		"axes": {
+			"OPEN": {
+				"name": "Open",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Sishus Pixel Font": {
+		"name": "Sishu’s Pixel Font",
+		"designer": "Sishu Wu",
+		"preview-text": "grow up",
+		"preview-animation": "0% { font-variation-settings: 'SIZE' 0 } 100% { font-variation-settings: 'SIZE' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/SishuWu-SishusPixelFont.ttf",
+		"axes": {
+			"SIZE": {
+				"name": "Size",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Hula Hoop": {
+		"name": "Hula Hoop",
+		"designer": "Tonia Zhang",
+		"preview-text": "loopy",
+		"preview-animation": "0% { font-variation-settings: 'HULA' 0 } 100% { font-variation-settings: 'HULA' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section2/ToniaZhang-HulaHoop.ttf",
+		"axes": {
+			"HULA": {
+				"name": "Hula",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Andreas Pixel Font": {
+		"name": "Andrea’s Pixel Font",
+		"designer": "Glikeriya Shotanova",
+		"preview-text": "wide",
+		"preview-animation": "0% { font-variation-settings: 'SHAP' 0 } 100% { font-variation-settings: 'SHAP' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/AndreaMato-AndreasPixelFont.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Floorplan": {
+		"name": "Floorplan",
+		"designer": "Glikeriya Shotanova",
+		"preview-text": "home",
+		"preview-animation": "0% { font-variation-settings: 'PLAN' 0 } 100% { font-variation-settings: 'PLAN' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/GlikeriyaShotanova-Floorplan.ttf",
+		"axes": {
+			"PLAN": {
+				"name": "Plan",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "Based on New Edge 666 by Charlotte Rohde",
+		"tags": "vector, remixed"
+	},
+	"Wacky Tape": {
+		"name": "Wacky Tape",
+		"designer": "Glikeriya Shotanova",
+		"preview-text": "spiked",
+		"preview-animation": "0% { font-variation-settings: 'SHAP' 0, 'POSI' 0 } 100% { font-variation-settings: 'SHAP' 200, 'POSI' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/GlikeriyaShotanova-WackyTape.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 300
+			},
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"CakeCake": {
+		"name": "CakeCake",
+		"designer": "Jiayi Li",
+		"preview-text": "yummy",
+		"preview-animation": "0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 300 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/JiayiLi-CakeCake.ttf",
+		"axes": {
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 300
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"I_I": {
+		"name": "I_I",
+		"designer": "Jiayi Li",
+		"preview-text": "owo",
+		"preview-animation": "0% { font-variation-settings: 'SHAP' 0 } 100% { font-variation-settings: 'SHAP' 200 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/JiayiLi-I_I.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 200
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"CHUCU CHUCU": {
+		"name": "CHUCU CHUCU",
+		"designer": "Jo Zixuan",
+		"preview-text": "chucu",
+		"preview-animation": "0% { font-variation-settings: 'SHAP' 0, 'EXPA' 0, 'STCH' 0 } 25% { font-variation-settings: 'SHAP' 200, 'EXPA' 0, 'STCH' 0 } 50% { font-variation-settings: 'SHAP' 200, 'EXPA' 100, 'STCH' 0 } 75% { font-variation-settings: 'SHAP' 200, 'EXPA' 0, 'STCH' 0 } 100% { font-variation-settings: 'SHAP' 0, 'EXPA' 0, 'STCH' 0 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/JoZixuan-CHUCUCHUCU.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 200
+			},
+			"EXPA": {
+				"name": "Expand",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"STCH": {
+				"name": "Stretch",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Hexagon": {
+		"name": "Hexagon",
+		"designer": "Jo Zixuan",
+		"preview-text": "beehive",
+		"preview-animation": "0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 800 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/JoZixuan-Hexagon.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 0,
+				"default": 0,
+				"max": 800
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Cherry Furry": {
+		"name": "Cherry Furry",
+		"designer": "Lea Seo",
+		"preview-text": "sweetie",
+		"preview-animation": "0% { font-variation-settings: 'SHAP' 0, 'POSI' 0 } 100% { font-variation-settings: 'SHAP' 100, 'POSI' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/LeaSeo-CherryFurry.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Masking Tape Ribbon": {
+		"name": "Masking Tape Ribbon",
+		"designer": "Lea Seo",
+		"preview-text": "gifts",
+		"preview-animation": "0% { font-variation-settings: 'RIBB' 0 } 100% { font-variation-settings: 'RIBB' 700 }",
+		"preview-css": "1.5s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/LeaSeo-MaskingTapeRibbon.ttf",
+		"axes": {
+			"RIBB": {
+				"name": "Ribbon",
+				"min": 0,
+				"default": 0,
+				"max": 700
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Abacus": {
+		"name": "Abacus",
+		"designer": "Lydia Chodosh",
+		"preview-text": "maths",
+		"preview-animation": "0% { font-variation-settings: 'POSI' 0 } 100% { font-variation-settings: 'POSI' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/LydiaChodosh-Abacus.ttf",
+		"axes": {
+			"POSI": {
+				"name": "Position",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Whole Part": {
+		"name": "Whole Part",
+		"designer": "Lydia Chodosh",
+		"preview-text": "Between",
+		"preview-animation": "0% { font-variation-settings: 'FORM' 20 } 100% { font-variation-settings: 'FORM' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/LydiaChodosh-WholePart.ttf",
+		"axes": {
+			"FORM": {
+				"name": "Reform",
+				"min": 0,
+				"default": 20,
+				"max": 100
+			}
+		},
+		"credit": "Based on Averia by Dan Sayers",
+		"tags": "vector, remixed"
+	},
+	"Spring Script": {
+		"name": "Spring Script",
+		"designer": "Maggie Xian",
+		"preview-text": "weee",
+		"preview-animation": "0% { font-variation-settings: 'STCH' 0 } 100% { font-variation-settings: 'STCH' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/MaggieXian-SpringScript.ttf",
+		"axes": {
+			"STCH": {
+				"name": "Stretch",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Twinkle Script": {
+		"name": "Twinkle Script",
+		"designer": "Maggie Xian",
+		"preview-text": "shine",
+		"preview-animation": "0% { font-variation-settings: 'STAR' 0, 'SIZE' 0, 'ROTA' 0 } 25% { font-variation-settings: 'STAR' 100, 'SIZE' 0, 'ROTA' 0 } 50% { font-variation-settings: 'STAR' 100, 'SIZE' 100, 'ROTA' 0 } 75% { font-variation-settings: 'STAR' 100, 'SIZE' 0, 'ROTA' 0 } 100% { font-variation-settings: 'STAR' 0, 'SIZE' 0, 'ROTA' 0 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/MaggieXian-TwinkleScript.ttf",
+		"axes": {
+			"STAR": {
+				"name": "Star",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"ROTA": {
+				"name": "Rotation",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"SIZE": {
+				"name": "size",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Hoyt Script": {
+		"name": "Hoyt Script",
+		"designer": "Phoenix Gao",
+		"preview-text": "Sincerely",
+		"preview-animation": "0% { font-variation-settings: 'ital' 0 } 100% { font-variation-settings: 'ital' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/PhoenixGao-HoytScript.ttf",
+		"axes": {
+			"ital": {
+				"name": "Italic",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Quad": {
+		"name": "Quad",
+		"designer": "Phoenix Gao",
+		"preview-text": "square",
+		"preview-animation": "0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 600 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/PhoenixGao-Quad.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 0,
+				"default": 0,
+				"max": 600
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Epitaph": {
+		"name": "Epitaph",
+		"designer": "Rachel Shin",
+		"preview-text": "decay",
+		"preview-animation": "0% { font-variation-settings: 'VINE' 0 } 100% { font-variation-settings: 'VINE' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/RachelShin-Epitaph.ttf",
+		"axes": {
+			"VINE": {
+				"name": "Vine",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Hmm": {
+		"name": "Hmm",
+		"designer": "Rachel Shin",
+		"preview-text": "what",
+		"preview-animation": "0% { font-variation-settings: 'HMMM' 100 } 100% { font-variation-settings: 'HMMM' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/RachelShin-Hmm.ttf",
+		"axes": {
+			"HMMM": {
+				"name": "Hmmness",
+				"min": 0,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "Based on Geist Sans by Andrés Briganti",
+		"tags": "vector, remixed"
+	},
+	"Shinagawa LCD": {
+		"name": "Shinagawa LCD",
+		"designer": "Ryan Hsiao",
+		"preview-text": "neon",
+		"preview-animation": "0% { font-variation-settings: 'wdth' 0, 'BLNK' 0, 'MCRO' 0 } 25% { font-variation-settings: 'wdth' 100, 'BLNK' 0, 'MCRO' 0 } 50% { font-variation-settings: 'wdth' 100, 'BLNK' 100, 'MCRO' 0 } 75% { font-variation-settings: 'wdth' 100, 'BLNK' 0, 'MCRO' 0 } 100% { font-variation-settings: 'wdth' 0, 'BLNK' 0, 'MCRO' 0 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/RyanHsiao-ShinagawaLCD.ttf",
+		"axes": {
+			"wdth": {
+				"name": "Width",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"MCRO": {
+				"name": "Macron",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"BLNK": {
+				"name": "Blink",
+				"min": 0,
+				"default": 0,
+				"max": 200
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Work Megaphone": {
+		"name": "Work Megaphone",
+		"designer": "Ryan Hsiao",
+		"preview-text": "SHOUT",
+		"preview-animation": "0% { font-variation-settings: 'RGHT' 0, 'LEFT' 100 } 25% { font-variation-settings: 'RGHT' 100, 'LEFT' 100 } 50% { font-variation-settings: 'RGHT' 100, 'LEFT' 0 } 75% { font-variation-settings: 'RGHT' 0, 'LEFT' 0 } 100% { font-variation-settings: 'RGHT' 0, 'LEFT' 100 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/RyanHsiao-WorkMegaphone.ttf",
+		"axes": {
+			"RGHT": {
+				"name": "Right",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"LEFT": {
+				"name": "Left",
+				"min": 0,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "Based on Work Sans by Wei Huang",
+		"tags": "vector, remixed"
+	},
+	"Twist": {
+		"name": "Twist",
+		"designer": "Saachi Mehta",
+		"preview-text": "spin",
+		"preview-animation": "0% { font-variation-settings: 'TWST' 0 } 100% { font-variation-settings: 'TWST' 200 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/SaachiMehta-Twist.ttf",
+		"axes": {
+			"TWST": {
+				"name": "Twist",
+				"min": 0,
+				"default": 0,
+				"max": 200
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Extend": {
+		"name": "Extend!",
+		"designer": "Seoyeon Kweon",
+		"preview-text": "side",
+		"preview-animation": "0% { font-variation-settings: 'BOLD' 100 } 100% { font-variation-settings: 'BOLD' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/SeoyeonKweon-Extend.ttf",
+		"axes": {
+			"BOLD": {
+				"name": "BOLD",
+				"min": 0,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "Based on GT Cinetype by Mauro Paolozzi and Rafael Koch",
+		"tags": "vector, remixed"
+	},
+	"Foamy": {
+		"name": "Foamy",
+		"designer": "Seoyeon Kweon",
+		"preview-text": "suds",
+		"preview-animation": "0% { font-variation-settings: 'SHAP' 0 } 100% { font-variation-settings: 'SHAP' 200 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/SeoyeonKweon-Foamy.ttf",
+		"axes": {
+			"SHAP": {
+				"name": "Shape",
+				"min": 0,
+				"default": 0,
+				"max": 200
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Eclat Serif Variable": {
+		"name": "Éclat Serif Variable",
+		"designer": "Weicheng Peter Xu",
+		"preview-text": "Fancy",
+		"preview-animation": "0% { font-variation-settings: 'ECLT' 0 } 100% { font-variation-settings: 'ECLT' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/WeichengPeterXu-EclatSerifVariable.ttf",
+		"axes": {
+			"ECLT": {
+				"name": "É",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "Based on Libre Baskerville by Pablo Impallari",
+		"tags": "vector, remixed"
+	},
+	"Unstable Emotion": {
+		"name": "Unstable Emotion",
+		"designer": "Weicheng Peter Xu",
+		"preview-text": "peter",
+		"preview-animation": "0% { font-variation-settings: 'EMUS' 0 } 100% { font-variation-settings: 'EMUS' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/WeichengPeterXu-UnstableEmotion.ttf",
+		"axes": {
+			"EMUS": {
+				"name": "Emotion",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Meerkat": {
+		"name": "Meerkat",
+		"designer": "Zairan Liu",
+		"preview-text": "Peek",
+		"preview-animation": "0% { font-variation-settings: 'ALRT' 0 } 100% { font-variation-settings: 'ALRT' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/ZairanLiu-Meerkat.ttf",
+		"axes": {
+			"ALRT": {
+				"name": "Alert",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Zairans Pixel Font": {
+		"name": "Zairan’s Pixel Font",
+		"designer": "Zairan Liu",
+		"preview-text": "empty",
+		"preview-animation": "0% { font-variation-settings: 'PSNG' 0, 'HDFT' 0 } 25% { font-variation-settings: 'PSNG' 100, 'HDFT' 0 } 50% { font-variation-settings: 'PSNG' 100, 'HDFT' 100 } 75% { font-variation-settings: 'PSNG' 0, 'HDFT' 100 } 100% { font-variation-settings: 'PSNG' 0, 'HDFT' 0 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw24-section1/ZairanLiu-ZairansPixelFont.ttf",
+		"axes": {
+			"PSNG": {
+				"name": "positive/negative",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"HDFT": {
+				"name": "head/feet",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Fitz Variable Inktrap": {
+		"name": "Fitz Variable Inktrap",
+		"designer": "Brooke Shary",
+		"preview-text": "inky",
+		"preview-animation": "0% { font-variation-settings: 'INKY' 0 } 100% { font-variation-settings: 'INKY' 400 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "transform: scale(1.25);",
+		"file": "students/vfw23-section3/BrookeShary-FitzVariableInktrap.ttf",
+		"axes": {
+			"INKY": {
+				"name": "Inktrap",
+				"min": 0,
+				"default": 0,
+				"max": 400
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"JagFig": {
+		"name": "JagFig",
+		"designer": "Dohee Kim",
+		"preview-text": "splinter",
+		"preview-animation": "0% { font-variation-settings: 'wght' 0 } 100% { font-variation-settings: 'wght' 1000 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section3/DoheeKim-JagFig.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"See You At The Pool": {
+		"name": "See You At The Pool",
+		"designer": "Kate Brown",
+		"preview-text": "Wavy",
+		"preview-animation": "0% { font-variation-settings: 'HALF' 0 } 100% { font-variation-settings: 'HALF' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section3/KateBrown-SeeYouAtThePool.ttf",
+		"axes": {
+			"HALF": {
+				"name": "Half",
+				"min": 0,
+				"default": 0,
+				"max": 250
+			}
+		},
+		"credit": "Based on Arena by Jonathan Maghen",
+		"tags": "vector, remixed"
+	},
+	"Inkwater": {
+		"name": "Inkwater",
+		"designer": "Leslie Berumen",
+		"preview-text": "evaporate",
+		"preview-animation": "0% { font-variation-settings: 'POOL' 0 } 100% { font-variation-settings: 'POOL' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section3/LeslieBerumen-Inkwater.ttf",
+		"axes": {
+			"POOL": {
+				"name": "Pooling",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Jost Split Ends": {
+		"name": "Jost Split Ends",
+		"designer": "Michelle Belgrod",
+		"preview-text": "FRIZZY",
+		"preview-animation": "0% { font-variation-settings: 'SPLT' 500 } 100% { font-variation-settings: 'SPLT' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section3/MichelleBelgrod-JostSplitEnds.ttf",
+		"axes": {
+			"SPLT": {
+				"name": "Split Ends",
+				"min": 0,
+				"default": 500,
+				"max": 500
+			}
+		},
+		"credit": "Based on Jost* by Owen Earl",
+		"tags": "vector, remixed"
+	},
+	"Gates": {
+		"name": "Gates",
+		"designer": "Nicole Ban",
+		"preview-text": "spiral",
+		"preview-animation": "0% { font-variation-settings: 'GATE' 0 } 100% { font-variation-settings: 'GATE' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section3/NicoleBan-Gates.ttf",
+		"axes": {
+			"GATE": {
+				"name": "Gate",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"NEW LATIN": {
+		"name": "NEW LATIN",
+		"designer": "Ryan Yan",
+		"preview-text": "Omega",
+		"preview-animation": "0% { font-variation-settings: 'LANG' 0 } 100% { font-variation-settings: 'LANG' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section3/RyanYan-NEWLATIN.ttf",
+		"axes": {
+			"LANG": {
+				"name": "Language",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "Based on Arial by Robin Nicholas and Patricia Saunders",
+		"tags": "vector, remixed"
+	},
+	"Wounded Type": {
+		"name": "Wounded Type",
+		"designer": "Shiyue Wang",
+		"preview-text": "injury",
+		"preview-animation": "0% { font-variation-settings: 'DIST' 0 } 100% { font-variation-settings: 'DIST' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section3/ShiyueWang-WoundedType.ttf",
+		"axes": {
+			"DIST": {
+				"name": "Distortion",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"West Wind": {
+		"name": "West Wind",
+		"designer": "Seunghyun Cho",
+		"preview-text": "gusts",
+		"preview-animation": "0% { font-variation-settings: 'WIND' 0 } 100% { font-variation-settings: 'WIND' 1000 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section3/SeunghyunCho-WestWinds.ttf",
+		"axes": {
+			"WIND": {
+				"name": "Wind",
+				"min": 0,
+				"default": 0,
+				"max": 1000
+			}
+		},
+		"credit": "Based on Balkind by Eka Hermawan",
+		"tags": "vector, remixed"
+	},
+	"Lava": {
+		"name": "Lava",
+		"designer": "Victoria Liang",
+		"preview-text": "magma",
+		"preview-animation": "0% { font-variation-settings: 'DIST' 500 } 100% { font-variation-settings: 'DIST' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/VictoriaLiang-Lava.ttf",
+		"axes": {
+			"DIST": {
+				"name": "Distortion",
+				"min": 100,
+				"default": 500,
+				"max": 500
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Macaroni": {
+		"name": "Macaroni",
+		"designer": "Truman Lesak",
+		"preview-text": "uncooked",
+		"preview-animation": "0% { font-variation-settings: 'BEND' 0 } 100% { font-variation-settings: 'BEND' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/TrumanLesak-Macaroni.ttf",
+		"axes": {
+			"BEND": {
+				"name": "Bend",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Star Font": {
+		"name": "Star Font",
+		"designer": "Sharlene Deng",
+		"preview-text": "starry",
+		"preview-animation": "0% { font-variation-settings: 'STAR' 10 } 100% { font-variation-settings: 'STAR' 75 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/SharleneDeng-StarFont.ttf",
+		"axes": {
+			"STAR": {
+				"name": "Star",
+				"min": 0,
+				"default": 10,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Emo Type": {
+		"name": "Emo Type",
+		"designer": "Mehek Vohra",
+		"preview-text": "emotional",
+		"preview-animation": "0% { font-variation-settings: 'VOLM' 0, 'EMOT' 0 } 25% { font-variation-settings: 'VOLM' 100, 'EMOT' 0 } 50% { font-variation-settings: 'VOLM' 100, 'EMOT' 100 } 75% { font-variation-settings: 'VOLM' 0, 'EMOT' 100 } 100% { font-variation-settings: 'VOLM' 0, 'EMOT' 0 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/MehekVohra-EmoType.ttf",
+		"axes": {
+			"VOLM": {
+				"name": "Volume",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"EMOT": {
+				"name": "Emotion",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "Based on Inter by Rasmus Andersson",
+		"tags": "vector, remixed"
+	},
+	"New Ivy": {
+		"name": "New Ivy",
+		"designer": "Max Beidler",
+		"preview-text": "vines",
+		"preview-animation": "0% { font-variation-settings: 'OFST' 0 } 100% { font-variation-settings: 'OFST' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/MaxBeidler-NewIvy.ttf",
+		"axes": {
+			"OFST": {
+				"name": "Offset",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"XO Puzzles": {
+		"name": "XO Puzzles",
+		"designer": "Li Huang",
+		"preview-text": "piece",
+		"preview-animation": "0% { font-variation-settings: 'PUZZ' 200 } 25% { font-variation-settings: 'PUZZ' 400 } 50% { font-variation-settings: 'PUZZ' 200 } 75% { font-variation-settings: 'PUZZ' 0 } 100% { font-variation-settings: 'PUZZ' 200 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/LiHuang-XOPuzzles.ttf",
+		"axes": {
+			"PUZZ": {
+				"name": "Puzzle",
+				"min": 0,
+				"default": 200,
+				"max": 400
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Popup": {
+		"name": "Popup",
+		"designer": "Jisu Chang",
+		"preview-text": "isometric",
+		"preview-animation": "0% { font-variation-settings: 'POPP' 100 } 100% { font-variation-settings: 'POPP' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/JisuChang-Popup.ttf",
+		"axes": {
+			"POPP": {
+				"name": "Popup",
+				"min": 0,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"NOAH": {
+		"name": "NOAH",
+		"designer": "Helen Peng",
+		"preview-text": "inky",
+		"preview-animation": "0% { font-variation-settings: 'wght' 100 } 100% { font-variation-settings: 'wght' 50 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/HelenPeng-NOAH.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 50,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Whats The Point": {
+		"name": "What’s The Point",
+		"designer": "Harshal Duddalwar",
+		"preview-text": "Hello",
+		"preview-animation": "0% { font-variation-settings: 'REGU' 0 } 100% { font-variation-settings: 'REGU' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/HarshalDuddalwar-WhatsThePoint.ttf",
+		"axes": {
+			"REGU": {
+				"name": "Regularity",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"NATO Alphabet": {
+		"name": "NATO Alphabet",
+		"designer": "Christine Wang",
+		"preview-text": "Alpha",
+		"preview-animation": "0% { font-variation-settings: 'ANIM' 0 } 100% { font-variation-settings: 'ANIM' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/ChristineWang-NATOAlphabet.ttf",
+		"axes": {
+			"ANIM": {
+				"name": "Animation",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Tetris": {
+		"name": "Tetris",
+		"designer": "Brianna Cheng",
+		"preview-text": "Lines",
+		"preview-animation": "0% { font-variation-settings: 'PXLR' 0 } 25% { font-variation-settings: 'PXLR' 100 } 75% { font-variation-settings: 'PXLR' -100 } 100% { font-variation-settings: 'PXLR' 0 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/BriannaCheng-Tetris.ttf",
+		"axes": {
+			"PXLR": {
+				"name": "Pixelator",
+				"min": -100,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Useless": {
+		"name": "Useless",
+		"designer": "Ash Wenqing Ma",
+		"preview-text": "No Pixels",
+		"preview-animation": "0% { font-variation-settings: 'HAND' 50 } 25% { font-variation-settings: 'HAND' 100 } 75% { font-variation-settings: 'HAND' 0 } 100% { font-variation-settings: 'HAND' 50 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/AshWenqingMa-Useless.ttf",
+		"axes": {
+			"HAND": {
+				"name": "Hand",
+				"min": 0,
+				"default": 50,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Windy Day": {
+		"name": "Windy Day",
+		"designer": "Ashley Kim",
+		"preview-text": "Breezy",
+		"preview-animation": "0% { font-variation-settings: 'WIND' 0 } 100% { font-variation-settings: 'WIND' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/AshleyKim-WindyDay.ttf",
+		"axes": {
+			"WIND": {
+				"name": "Wind",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"FONT1": {
+		"name": "FONT1",
+		"designer": "Annie McLean",
+		"preview-text": "Thinner",
+		"preview-animation": "0% { font-variation-settings: 'wght' 500 } 100% { font-variation-settings: 'wght' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/AnneMcLean-FONT1.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 100,
+				"default": 500,
+				"max": 500
+			}
+		},
+		"credit": "",
+		"tags": "vector"
+	},
+	"Corruption": {
+		"name": "Corruption",
+		"designer": "Andrew Liu",
+		"preview-text": "data error",
+		"preview-animation": "0% { font-variation-settings: 'wght' 0, 'CRPT' 0 } 25% { font-variation-settings: 'wght' 100, 'CRPT' 0 } 50% { font-variation-settings: 'wght' 100, 'CRPT' 100 } 75% { font-variation-settings: 'wght' 0, 'CRPT' 100 } 100% { font-variation-settings: 'wght' 0, 'CRPT' 0 }",
+		"preview-css": "3s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section2/AndrewLiu-Corruption.ttf",
+		"axes": {
+			"wght": {
+				"name": "Weight",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			},
+			"CRPT": {
+				"name": "Corruption",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Scribble Surprise": {
+		"name": "Scribble Surprise",
+		"designer": "Gina Kang",
+		"preview-text": "abcdef<br>ghijkl<br>mnopqr",
+		"preview-animation": "0% { font-variation-settings: 'SHFT' 0 } 100% { font-variation-settings: 'SHFT' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "line-height: 1em;",
+		"file": "students/vfw23-section1/RitaWang-ScribbleSurprise.ttf",
+		"axes": {
+			"SHFT": {
+				"name": "Shift!",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "pixel, original"
+	},
+	"Spaghetti Sans": {
+		"name": "Spaghetti Sans",
+		"designer": "Gina Kang",
+		"preview-text": "noodles",
+		"preview-animation": "0% { font-variation-settings: 'SPGH' 0 } 100% { font-variation-settings: 'SPGH' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section1/GinaKang-SpaghettiSans.ttf",
+		"axes": {
+			"SPGH": {
+				"name": "Spaghetti",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Gilberto": {
+		"name": "Gilberto",
+		"designer": "Cameron Astles",
+		"preview-text": "dancer",
+		"preview-animation": "0% { font-variation-settings: 'SMBA' 0 } 100% { font-variation-settings: 'SMBA' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section1/CameronAstles-Gilberto.ttf",
+		"axes": {
+			"SMBA": {
+				"name": "Samba",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Fungus": {
+		"name": "Fungus",
+		"designer": "Plato Peng",
+		"preview-text": "growing",
+		"preview-animation": "0% { font-variation-settings: 'GROW' 100 } 100% { font-variation-settings: 'GROW' 0 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "",
+		"file": "students/vfw23-section1/PlatoPeng-Fungus.ttf",
+		"axes": {
+			"GROW": {
+				"name": "Grow",
+				"min": 0,
+				"default": 100,
+				"max": 100
+			}
+		},
+		"credit": "Based on Kumbh Sans by Saurabh Sharma",
+		"tags": "vector, remixed"
+	},
+	"Snail": {
+		"name": "Snail",
+		"designer": "Isabel Lee",
+		"preview-text": "goop",
+		"preview-animation": "0% { font-variation-settings: 'ROLL' 0 } 100% { font-variation-settings: 'ROLL' 100 }",
+		"preview-css": "1s infinite ease-in-out alternate",
+		"weight-css": "",
+		"special-css": "transform: scale(1.5);",
+		"file": "students/vfw24-section3/IsabelLee-Snail.ttf",
+		"axes": {
+			"ROLL": {
+				"name": "Roll",
+				"min": 0,
+				"default": 0,
+				"max": 100
+			}
+		},
+		"credit": "",
+		"tags": "vector, original"
+	},
+	"Willow": {
 		"name": "Willow",
 		"designer": "Cynthia Wang",
 		"preview-text": "branch",
@@ -19,7 +1959,7 @@
 		"credit": "",
 		"tags": "vector, original"
 	},
-	"CocoLi-Fractured": {
+	"Fractured": {
 		"name": "Fractured",
 		"designer": "Coco Li",
 		"preview-text": "Cut Up",
@@ -39,9 +1979,9 @@
 		"credit": "Based on Amiamie by Mirat Masson",
 		"tags": "vector, remixed"
 	},
-	"AveryBrowne-Valentine": {
+	"Valentine": {
 		"name": "Valentine",
-		"designer": "Avery Brown",
+		"designer": "Avery Browne",
 		"preview-text": "friendly",
 		"preview-animation": "0% { font-variation-settings: 'XXXX' 0 } 100% { font-variation-settings: 'XXXX' 200 }",
 		"preview-css": "1s infinite ease-in-out alternate",
@@ -59,7 +1999,7 @@
 		"credit": "",
 		"tags": "vector, original"
 	},
-	"AnhNguyen-ThousandCloud": {
+	"Thousand Cloud": {
 		"name": "Thousand Cloud",
 		"designer": "Anh Nguyen",
 		"preview-text": "Misty",
@@ -79,7 +2019,7 @@
 		"credit": "",
 		"tags": "vector, original"
 	},
-	"SelinaKehuanWu-Samsara": {
+	"Samsara": {
 		"name": "Samsara",
 		"designer": "Selina Kehuan Wu",
 		"preview-text": "Elegance",
@@ -99,9 +2039,9 @@
 		"credit": "",
 		"tags": "vector, original"
 	},
-	"NatalieHo-Shard": {
+	"Shard": {
 		"name": "Shard",
-		"designer": "Allie Heffner",
+		"designer": "Natalie Ho",
 		"preview-text": "Shatter",
 		"preview-animation": "0% { font-variation-settings: 'CURV' 0 } 100% { font-variation-settings: 'CURV' 1000 }",
 		"preview-css": "1s infinite ease-in-out alternate",
@@ -119,7 +2059,7 @@
 		"credit": "",
 		"tags": "vector, original"
 	},
-	"AllieHeffner-Spores": {
+	"Spores": {
 		"name": "Spores",
 		"designer": "Allie Heffner",
 		"preview-text": "Pollinate",
@@ -139,7 +2079,7 @@
 		"credit": "",
 		"tags": "vector, original"
 	},
-	"VioleitJin-SharpPixel": {
+	"Sharp Pixel": {
 		"name": "Sharp Pixel",
 		"designer": "Violeit Jin",
 		"preview-text": "Crush",
@@ -159,7 +2099,7 @@
 		"credit": "",
 		"tags": "vector, original"
 	},
-	"authentic-remixed": {
+	"Authentic Remixed": {
 		"name": "AUTHENTIC Remixed",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Peek",
@@ -185,7 +2125,7 @@
 		"credit": "Based on AUTHENTIC Sans by Christina Janus and Desmond Wong",
 		"tags": "remixed, vector"
 	},
-	"avara-burst": {
+	"Avara Burst": {
 		"name": "Avara Burst",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Fireworks",
@@ -205,7 +2145,7 @@
 		"credit": "Based on Avara by Raphaël Bastide",
 		"tags": "remixed, vector"
 	},
-	"bashful": {
+	"Bashful": {
 		"name": "Bashful",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Hide",
@@ -225,7 +2165,7 @@
 		"credit": "",
 		"tags": "original, vector"
 	},
-	"caffeine": {
+	"Caffeine": {
 		"name": "Caffeine",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Awake",
@@ -251,7 +2191,7 @@
 		"credit": "",
 		"tags": "original, vector"
 	},
-	"dreidel": {
+	"Dreidel": {
 		"name": "Dreidel",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Spin",
@@ -271,7 +2211,7 @@
 		"credit": "",
 		"tags": "original, pixel"
 	},
-	"limkin": {
+	"Limkin": {
 		"name": "Limkin",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Limkin",
@@ -297,7 +2237,7 @@
 		"credit": "",
 		"tags": "original, vector"
 	},
-	"limkin-pixel": {
+	"Limkin Pixel": {
 		"name": "Limkin Pixel",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Retro",
@@ -317,7 +2257,7 @@
 		"credit": "Based on Limkin by Gabriel Drozdov",
 		"tags": "remixed, pixel"
 	},
-	"mini-mochi": {
+	"Mini Mochi": {
 		"name": "Mini Mochi",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Squish",
@@ -349,7 +2289,7 @@
 		"credit": "",
 		"tags": "original, vector"
 	},
-	"music-box": {
+	"Music Box": {
 		"name": "Music Box",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Beat",
@@ -375,7 +2315,7 @@
 		"credit": "",
 		"tags": "original, vector"
 	},
-	"powerpack": {
+	"PowerPack": {
 		"name": "PowerPack",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Charge",
@@ -401,7 +2341,7 @@
 		"credit": "",
 		"tags": "original, pixel"
 	},
-	"that-then-this": {
+	"That Then This": {
 		"name": "That Then This",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Techno",
@@ -427,7 +2367,7 @@
 		"credit": "",
 		"tags": "original, vector"
 	},
-	"work-sans-galapagos": {
+	"Work Sans Galapagos": {
 		"name": "Work Sans Galápagos",
 		"designer": "Gabriel Drozdov",
 		"preview-text": "Island",

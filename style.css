@@ -167,7 +167,7 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 0 20px rgba(0,0,0,.2);
+	box-shadow: var(--box-shadow);
 }
 .intro[data-active="0"] .intro-logo-line {
 	transform: translateY(-100dvh) rotate(-30deg);
@@ -259,7 +259,7 @@ button {
 }
 .intro[data-active="0"] .intro-cta {
 	transform: translateX(-50%) translateY(calc(100% + 20px));
-	transition: transform .2s;
+	transition: transform .2s, background-color 1s;
 }
 .intro-cta-bolt {
 	position: absolute;
@@ -267,7 +267,7 @@ button {
 	height: 10px;
 	border-radius: 50%;
 	background-color: var(--off-black);
-	transition: background-color .2s;
+	transition: background-color 1s;
 }
 .intro-cta-bolt[data-position="0"] {
 	top: 5px;
@@ -288,9 +288,9 @@ button {
 .intro-cta-text {
 	animation: intro-cta 1s steps(1) infinite;
 	font-size: 14px;
-	margin-right: -.1em;
-	letter-spacing: .05em;
+	letter-spacing: .1em;
 	padding-top: .2em;
+	padding-left: .1em;
 	text-transform: uppercase;
 	white-space: nowrap;
 	font-variation-settings: "wght" 650, "SRFF" 0;
@@ -330,6 +330,9 @@ button {
 	height: 40px;
 	background-color: var(--off-black);
 	gap: 5px;
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 100%;
 }
 .nav-section-arrow {
 	border-radius: 15px;
@@ -422,7 +425,9 @@ button {
 	transform: translateY(150%);
 }
 .controls-tabs {
-	display: flex;
+	display: grid;
+	grid-auto-columns: 1fr;
+	grid-auto-flow: column;
 	overflow-x: scroll;
 	max-width: 100%;
 	white-space: nowrap;
@@ -520,15 +525,28 @@ button {
 	height: 100%;
 	padding-top: .2em;
 }
-.controls-menu-text a {
+.controls-menu-text button {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	font-variation-settings: inherit;
+	background-color: unset;
+	border: unset;
+	cursor: pointer;
+	text-decoration: underline;
+}
+.controls-menu-text a,
+.controls-menu-text button {
 	color: var(--primary);
 	transition: color .2s;
 	text-underline-offset: .2em;
 }
-.controls-menu-text a:hover {
+.controls-menu-text a:hover,
+.controls-menu-text button:hover {
 	color: var(--off-white);
 }
-.controls-menu-text a:active {
+.controls-menu-text a:active,
+.controls-menu-text button:active {
 	opacity: .5;
 }
 .controls-menu-item {
@@ -607,11 +625,19 @@ button {
 		gap: 0;
 	}
 	#nav-font {
-		box-shadow: 0 0 10px rgba(0,0,0,.2);
 		z-index: 1;
 	}
 	#nav-instrument {
 		border-radius: 20px;
+	}
+	.instrument-axes {
+		display: flex;
+		gap: 20px;
+		padding: 20px;
+		flex-grow: 1;
+		overflow-x: scroll;
+		width: 100%;
+		justify-content: safe center;
 	}
 }
 
@@ -1203,7 +1229,7 @@ button {
 	flex-direction: column;
 	overflow-y: scroll;
 	max-width: calc(calc(100vw - 160px) / 2);
-	box-shadow: 0 0 20px rgba(0,0,0,.5);
+	box-shadow: var(--box-shadow);
 }
 @media only screen and (max-width: 800px) {
 	.instrument-controls {
@@ -1226,7 +1252,7 @@ button {
 	top: 0;
 	left: 0;
 	border-radius: 20px;
-	box-shadow: 0 0 20px rgba(0,0,0,.5);
+	box-shadow: var(--box-shadow);
 }
 .instrument[data-global="0"] .instrument-controls-global {
 	display: none;
@@ -1252,6 +1278,10 @@ button {
 	justify-content: center;
 	letter-spacing: .05em;
 	margin-bottom: 2px;
+	transition: color .2s;
+}
+.instrument-controls-global:hover .instrument-controls-global-heading {
+	color: var(--off-white);
 }
 
 /* Instrument axes */

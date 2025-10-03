@@ -607,9 +607,10 @@ function sortMenuFonts() {
 		
 		let orderNumber = 0;
 		for (let font of fontOrder) {
-			let item = document.querySelector(`[data-designer="${font}"]`);
-			item.parentElement.style.order = orderNumber;
-			orderNumber++;
+			for (let item of document.querySelectorAll(`[data-designer="${font}"]`)) {
+				item.parentElement.style.order = orderNumber;
+				orderNumber++;
+			}
 		}
 
 	} else if (sortingName == "author-") {
@@ -619,9 +620,10 @@ function sortMenuFonts() {
 		
 		let orderNumber = 0;
 		for (let font of fontOrder) {
-			let item = document.querySelector(`[data-designer="${font}"]`);
-			item.parentElement.style.order = orderNumber;
-			orderNumber++;
+			for (let item of document.querySelectorAll(`[data-designer="${font}"]`)) {
+				item.parentElement.style.order = orderNumber;
+				orderNumber++;
+			}
 		}
 
 	}
@@ -722,7 +724,7 @@ function searchMenuFonts(text) {
 	text = text.toLowerCase();
 	let notEmpty = false;
 	for (let menuFontsItem of document.querySelectorAll('.menu-fonts-item')) {
-		if (menuFontsItem.dataset.font.includes(text) || menuFontsItem.dataset.designer.includes(text)) {
+		if (menuFontsItem.dataset.font.toLowerCase().includes(text) || menuFontsItem.dataset.designer.toLowerCase().includes(text)) {
 			menuFontsItem.parentElement.dataset.search = 1;
 			if (parseInt(menuFontsItem.parentElement.dataset.filter) == 1) {
 				notEmpty = true;
@@ -748,7 +750,7 @@ function sampleMenuFonts(text) {
 		if (text.length > 0) {
 			preview.innerText = text;
 		} else {
-			preview.innerText = menuFontsItem.dataset.default;
+			preview.innerHTML = menuFontsItem.dataset.default;
 		}
 	}
 }
@@ -1008,10 +1010,9 @@ function initAxisSliders(instrument) {
 	}
 
 	// Set volumes according to number of sliders
-	let maxVolume = sliders.length;
 	for (let synthType of monoSynths) {
 		for (let synth of synthType) {
-			synth.volume.value = -18 - sliders.length;
+			synth.volume.value = -24 - sliders.length*1.2;
 		}
 	}
 }
@@ -1640,7 +1641,7 @@ for (let i=0; i<20; i++) {
 			release: 0.05
 		},
 		portamento: 0.1,
-		volume: -18
+		volume: -24
 	}).toDestination();
 
 	triangleSynths.push(new Tone.MonoSynth());
@@ -1655,7 +1656,7 @@ for (let i=0; i<20; i++) {
 			release: 0.05
 		},
 		portamento: 0.1,
-		volume: -18
+		volume: -24
 	}).toDestination();
 
 	squareSynths.push(new Tone.MonoSynth());
@@ -1670,7 +1671,7 @@ for (let i=0; i<20; i++) {
 			release: 0.05
 		},
 		portamento: 0.1,
-		volume: -18
+		volume: -24
 	}).toDestination();
 
 	sawtoothSynths.push(new Tone.MonoSynth());
@@ -1685,7 +1686,7 @@ for (let i=0; i<20; i++) {
 			release: 0.05
 		},
 		portamento: 0.1,
-		volume: -18
+		volume: -24
 	}).toDestination();
 }
 let synthTypes = ['sine', 'triangle', 'square', 'sawtooth'];

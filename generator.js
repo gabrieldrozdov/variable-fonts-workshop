@@ -32,7 +32,7 @@ function generateCSS() {
 				src: url("/assets/fonts/${fontData["file"]}");
 				${fontWeightCSS}
 			}
-			@keyframes preview-${font} {
+			@keyframes preview-${font.toLowerCase().replace(/ /g, '-')} {
 				${fontData["preview-animation"]}
 			}
 			[data-font="${font}"] .menu-fonts-item-preview {
@@ -41,7 +41,7 @@ function generateCSS() {
 				${fontData["special-css"]}
 			}
 			[data-font="${font}"]:hover .menu-fonts-item-preview {
-				animation: preview-${font} ${fontData["preview-css"]};
+				animation: preview-${font.toLowerCase().replace(/ /g, '-')} ${fontData["preview-css"]};
 			}
 		`
 	}
