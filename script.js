@@ -503,8 +503,13 @@ function generateMenuFonts() {
 			credit = `<div class="menu-fonts-item-credit">${fontInfo['credit']}</div>`;
 		}
 
+		let itemTransform = '';
+		if (window.innerWidth > 800) {
+			itemTransform = `translateX(-${Math.round(Math.random()*100+100)}vw) translateY(${Math.round(Math.random()*200-100)}vh) translateZ(0px);`;
+		}
+
 		htmlTemp += `
-			<div class="menu-fonts-item-transform" style="transform: translateX(-${Math.round(Math.random()*100+100)}vw) translateY(${Math.round(Math.random()*200-100)}vh) translateZ(0px);" data-filter="1" data-search="1">
+			<div class="menu-fonts-item-transform" style="transform: ${itemTransform}" data-filter="1" data-search="1">
 				<button class="menu-fonts-item" style="transform: rotate(${Math.round(Math.random()*20-10)}deg);" data-font="${font}" data-designer="${fontInfo["designer"].toLowerCase()}" data-tags ="${fontInfo["tags"]}" data-default="${fontInfo['preview-text']}" onclick="pickFont('${font}'); playPercussion('C2');" onmouseenter="playTomRandom();">
 					${credit}
 					<div class="menu-fonts-item-preview">${fontInfo['preview-text']}</div>
@@ -558,10 +563,12 @@ function closeMenuFonts() {
 	menuFonts.dataset.active = 0;
 
 	// Animation out
-	for (let menuItem of document.querySelectorAll('.menu-fonts-item-transform')) {
-		setTimeout(() => {
-			menuItem.style.transform = `translateX(-${Math.round(Math.random()*50+50)}vw) translateY(${Math.round(Math.random()*200-100)}vh) translateZ(0px)`;
-		}, Math.random()*250)
+	if (window.innerWidth > 800) {
+		for (let menuItem of document.querySelectorAll('.menu-fonts-item-transform')) {
+			setTimeout(() => {
+				menuItem.style.transform = `translateX(-${Math.round(Math.random()*50+50)}vw) translateY(${Math.round(Math.random()*200-100)}vh) translateZ(0px)`;
+			}, Math.random()*250)
+		}
 	}
 }
 function toggleMenuFonts() {
