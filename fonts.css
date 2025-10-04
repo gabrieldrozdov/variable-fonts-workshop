@@ -1501,11 +1501,11 @@
 				
 			}
 			@keyframes preview-gilberto {
-				0% { font-variation-settings: 'SMBA' 0 } 100% { font-variation-settings: 'SMBA' 100 }
+				0% { font-variation-settings: 'SMBA' 100 } 100% { font-variation-settings: 'SMBA' 0 }
 			}
 			[data-font="Gilberto"] .menu-fonts-item-preview {
 				font-family: "Gilberto";
-				font-variation-settings: "SMBA" 0;
+				font-variation-settings: "SMBA" 100;
 				
 			}
 			[data-font="Gilberto"]:hover .menu-fonts-item-preview {

@@ -1883,7 +1883,7 @@
 		"name": "Gilberto",
 		"designer": "Cameron Astles",
 		"preview-text": "dancer",
-		"preview-animation": "0% { font-variation-settings: 'SMBA' 0 } 100% { font-variation-settings: 'SMBA' 100 }",
+		"preview-animation": "0% { font-variation-settings: 'SMBA' 100 } 100% { font-variation-settings: 'SMBA' 0 }",
 		"preview-css": "1s infinite ease-in-out alternate",
 		"weight-css": "",
 		"special-css": "",
@@ -1892,7 +1892,7 @@
 			"SMBA": {
 				"name": "Samba",
 				"min": 0,
-				"default": 0,
+				"default": 100,
 				"max": 100
 			}
 		},

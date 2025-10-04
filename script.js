@@ -248,6 +248,7 @@ let controlsSliders = {
 function initControlsSliders() {
 	for (let slider of document.querySelectorAll('[data-controls-slider]')) {
 		slider.addEventListener('mousedown', (e) => {startControlsSlider(slider, slider.dataset.controlsSlider); updateControlsSlider(e);});
+		slider.addEventListener('touchstart', (e) => {startControlsSlider(slider, slider.dataset.controlsSlider); updateControlsSlider(e);});
 	}
 }
 function resetControlsSliders() {
@@ -279,14 +280,22 @@ let activeControlsSlider, activeControlsSliderTarget;
 function startControlsSlider(element, target) {
 	activeControlsSlider = element;
 	activeControlsSliderTarget = target;
-	document.addEventListener('mousemove', updateControlsSlider);
+	document.addEventListener('mousemove', updateControlsSlider, {passive:false});
 	document.addEventListener('mouseup', endControlsSlider);
+	document.addEventListener("touchmove", updateControlsSlider, {passive:false});
+	document.addEventListener("touchend", endControlsSlider);
 }
 function updateControlsSlider(e) {
+	e.preventDefault();
 	let offsets = activeControlsSlider.getBoundingClientRect();
 
 	// Calculate percentage
-	let percentFill = (e.clientX-offsets.left)/(offsets.right-offsets.left);
+	let percentFill;
+	if (e.touches != null) {
+		percentFill = (e.touches[0].clientX-offsets.left)/(offsets.right-offsets.left);
+	} else {
+		percentFill = (e.clientX-offsets.left)/(offsets.right-offsets.left);
+	}
 	if (percentFill >= 1) {
 		percentFill = 1;
 	} else if (percentFill <= 0) {
@@ -325,6 +334,8 @@ function updateControlsSlider(e) {
 function endControlsSlider() {
 	document.removeEventListener('mousemove', updateControlsSlider);
 	document.removeEventListener('mouseup', endControlsSlider);
+	document.removeEventListener("touchmove", updateControlsSlider);
+	document.removeEventListener("touchend", endControlsSlider);
 }
 
 // Min/max axis cap sliders
@@ -333,6 +344,7 @@ function initControlsAxisSliders() {
 	const controlsVariable = document.querySelector('.controls-menu-content[data-tab="variable"]')
 	for (let slider of controlsVariable.querySelectorAll('[data-controls-axis-slider]')) {
 		slider.addEventListener('mousedown', (e) => {startControlsAxisSlider(slider, slider.dataset.controlsAxisSlider); updateControlsAxisSlider(e);});
+		slider.addEventListener('touchstart', (e) => {startControlsAxisSlider(slider, slider.dataset.controlsAxisSlider); updateControlsAxisSlider(e);});
 	}
 }
 function resetControlsAxisSliders() {
@@ -357,14 +369,22 @@ let activeControlsAxisSlider, activeControlsAxisSliderTarget;
 function startControlsAxisSlider(element, target) {
 	activeControlsAxisSlider = element;
 	activeControlsAxisSliderTarget = target;
-	document.addEventListener('mousemove', updateControlsAxisSlider);
+	document.addEventListener('mousemove', updateControlsAxisSlider, {passive:false});
 	document.addEventListener('mouseup', endControlsAxisSlider);
+	document.addEventListener("touchmove", updateControlsAxisSlider, {passive:false});
+	document.addEventListener("touchend", endControlsAxisSlider);
 }
 function updateControlsAxisSlider(e) {
+	e.preventDefault();
 	let offsets = activeControlsAxisSlider.getBoundingClientRect();
 
 	// Calculate percentage
-	let percentFill = (e.clientX-offsets.left)/(offsets.right-offsets.left);
+	let percentFill;
+	if (e.touches != null) {
+		percentFill = (e.touches[0].clientX-offsets.left)/(offsets.right-offsets.left);
+	} else {
+		percentFill = (e.clientX-offsets.left)/(offsets.right-offsets.left);
+	}
 	if (percentFill >= 1) {
 		percentFill = 1;
 	} else if (percentFill <= 0) {
@@ -404,6 +424,8 @@ function updateControlsAxisSlider(e) {
 function endControlsAxisSlider() {
 	document.removeEventListener('mousemove', updateControlsAxisSlider);
 	document.removeEventListener('mouseup', endControlsAxisSlider);
+	document.removeEventListener("touchmove", updateControlsAxisSlider);
+	document.removeEventListener("touchend", endControlsAxisSlider);
 }
 
 // Mute
@@ -482,7 +504,7 @@ function generateMenuFonts() {
 		}
 
 		htmlTemp += `
-			<div class="menu-fonts-item-transform" style="transform: translate(-${Math.round(Math.random()*100+100)}vw, ${Math.round(Math.random()*200-100)}vh);" data-filter="1" data-search="1">
+			<div class="menu-fonts-item-transform" style="transform: translateX(-${Math.round(Math.random()*100+100)}vw) translateY(${Math.round(Math.random()*200-100)}vh) translateZ(0px);" data-filter="1" data-search="1">
 				<button class="menu-fonts-item" style="transform: rotate(${Math.round(Math.random()*20-10)}deg);" data-font="${font}" data-designer="${fontInfo["designer"].toLowerCase()}" data-tags ="${fontInfo["tags"]}" data-default="${fontInfo['preview-text']}" onclick="pickFont('${font}'); playPercussion('C2');" onmouseenter="playTomRandom();">
 					${credit}
 					<div class="menu-fonts-item-preview">${fontInfo['preview-text']}</div>
@@ -538,7 +560,7 @@ function closeMenuFonts() {
 	// Animation out
 	for (let menuItem of document.querySelectorAll('.menu-fonts-item-transform')) {
 		setTimeout(() => {
-			menuItem.style.transform = `translate(-${Math.round(Math.random()*50+50)}vw, ${Math.round(Math.random()*200-100)}vh)`;
+			menuItem.style.transform = `translateX(-${Math.round(Math.random()*50+50)}vw) translateY(${Math.round(Math.random()*200-100)}vh) translateZ(0px)`;
 		}, Math.random()*250)
 	}
 }
@@ -1007,6 +1029,7 @@ function initAxisSliders(instrument) {
 	let sliders = instrumentDOM.querySelectorAll('[data-axis-slider]');
 	for (let slider of sliders) {
 		slider.addEventListener('mousedown', (e) => {startAxisSlider(slider, slider.dataset.axisSlider); updateAxisSlider(e);});
+		slider.addEventListener('touchstart', (e) => {startAxisSlider(slider, slider.dataset.axisSlider); updateAxisSlider(e);});
 	}
 
 	// Set volumes according to number of sliders
@@ -1044,14 +1067,22 @@ function startAxisSlider(element, target) {
 	activeAxisSliderState = oscillatorSettings[activeAxisSliderTarget]["state"];
 	oscillatorOff(activeAxisSliderTarget);
 
-	document.addEventListener('mousemove', updateAxisSlider);
+	document.addEventListener('mousemove', updateAxisSlider, {passive:false});
 	document.addEventListener('mouseup', endAxisSlider);
+	document.addEventListener("touchmove", updateAxisSlider, {passive:false});
+	document.addEventListener("touchend", endAxisSlider);
 }
 function updateAxisSlider(e) {
+	e.preventDefault();
 	let offsets = activeAxisSlider.getBoundingClientRect();
 
 	// Calculate percentage
-	let percentFill = 1-(e.clientY-offsets.top)/(offsets.bottom-offsets.top);
+	let percentFill;
+	if (e.touches != null) {
+		percentFill = 1-(e.touches[0].clientY-offsets.top)/(offsets.bottom-offsets.top);
+	} else {
+		percentFill = 1-(e.clientY-offsets.top)/(offsets.bottom-offsets.top);
+	}
 	if (percentFill >= 1) {
 		percentFill = 1;
 	} else if (percentFill <= 0) {
@@ -1086,6 +1117,8 @@ function endAxisSlider() {
 	
 	document.removeEventListener('mousemove', updateAxisSlider);
 	document.removeEventListener('mouseup', endAxisSlider);
+	document.removeEventListener("touchmove", updateAxisSlider);
+	document.removeEventListener("touchend", endAxisSlider);
 }
 function setAxisSlider(instrument, axis, percent) {
 	const instrumentDOM = document.querySelector(`#${instrument}`);
@@ -1986,3 +2019,12 @@ function playPercussion(sample) {
 		percussionSampler.triggerAttackRelease(sample, 1);
 	}
 }
+
+// TODO
+// - fix bug where oscillator moves too fast when next font is clicked quickly
+// - make font credit bigger
+// - allow for more speed adjustments and holding down button to change speed easier
+// - fix floating point rounding error when changing axis bounds
+// - fix lock together not updating when dragging first axis
+// - add scrambler instrument (or find way to activate via oscillator?)
+// - add conversator inside of oscillator instrument

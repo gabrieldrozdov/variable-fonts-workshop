@@ -2,6 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	overscroll-behavior: none;
 }
 :root {
 	--red: #FF734D;
@@ -242,7 +243,7 @@ button {
 .intro-cta {
 	position: absolute;
 	bottom: 20px;
-	padding: 10px 40px;
+	padding: 10px 25px;
 	border-radius: 10px;
 	left: 50%;
 	transform: translateX(-50%);
@@ -293,8 +294,8 @@ button {
 	padding-left: .1em;
 	text-transform: uppercase;
 	white-space: nowrap;
-	font-variation-settings: "wght" 650, "SRFF" 0;
-	font-weight: 650;
+	font-variation-settings: "wght" 700, "SRFF" 0;
+	font-weight: 700;
 }
 @keyframes intro-cta {
 	0% { opacity: 1; }
@@ -400,6 +401,8 @@ button {
 .nav-section-info {
 	font-size: 14px;
 	line-height: 1em;
+	padding-top: .2em;
+	margin-top: -.2em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-variation-settings: "wght" 550, "SRFF" 0;
@@ -637,6 +640,7 @@ button {
 		flex-grow: 1;
 		overflow-x: scroll;
 		width: 100%;
+		align-items: start;
 		justify-content: safe center;
 	}
 }
@@ -732,6 +736,7 @@ button {
 	left: 0;
 	width: 100vw;
 	height: 100dvh;
+	will-change: transform;
 	overflow-y: scroll;
 	transition: transform .5s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -940,6 +945,7 @@ button {
 }
 .menu-fonts-item-transform {
 	position: relative;
+	will-change: transform;
 	min-width: 0;
 	transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -950,6 +956,7 @@ button {
 	display: none;
 }
 .menu-fonts-item {
+	will-change: transform, background-color;
 	width: 100%;
 	position: relative;
 	display: flex;
@@ -1079,6 +1086,7 @@ button {
 	width: calc(100vw - 160px);
 	height: calc(100dvh - 160px);
 	display: grid;
+	will-change: transform;
 	grid-template-columns: 1fr min-content;
 	transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
