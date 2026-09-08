@@ -26,6 +26,8 @@ function generateCSS() {
 		}
 
 		// Put everything together
+		// Note: previews are gated behind [data-loaded="1"] so the browser only
+		// downloads a font file once its menu item has been marked as loaded
 		cssCode += `
 			@font-face {
 				font-family: "${font}";
@@ -35,12 +37,12 @@ function generateCSS() {
 			@keyframes preview-${font.toLowerCase().replace(/ /g, '-')} {
 				${fontData["preview-animation"]}
 			}
-			[data-font="${font}"] .menu-fonts-item-preview {
+			[data-font="${font}"][data-loaded="1"] .menu-fonts-item-preview {
 				font-family: "${font}";
 				font-variation-settings: ${defaultCSS};
 				${fontData["special-css"]}
 			}
-			[data-font="${font}"]:hover .menu-fonts-item-preview {
+			[data-font="${font}"][data-loaded="1"]:hover .menu-fonts-item-preview {
 				animation: preview-${font.toLowerCase().replace(/ /g, '-')} ${fontData["preview-css"]};
 			}
 		`

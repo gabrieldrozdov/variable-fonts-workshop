@@ -100,20 +100,22 @@
 		</nav>
 
 		<div class="menu-fonts" data-active="0" data-empty="0">
-			<button class="menu-fonts-button" onclick="document.getElementById('menu-fonts-input').click(); playPercussion('B0');" onmouseenter="playPercussion('A0');">
-				<svg class="menu-fonts-button-text" viewBox="0 0 100 100"><defs><path id="buttonText" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs><text><textPath xlink:href="#buttonText">Upload a font!</textPath></text></svg>
-				<div class="menu-fonts-button-icon">
-					<svg viewBox="0 0 24 24"><path d="M8 10h-5l9-10 9 10h-5v10h-8v-10zm11 9v3h-14v-3h-2v5h18v-5h-2z"/></svg>
-				</div>
-				<input id="menu-fonts-input" name="file" type="file">
-			</button>
-
-			<button class="menu-fonts-button" onclick="closeMenuFonts(); showControls(); openNav(); resumeInstrument(); playPercussion('B2');" onmouseenter="playPercussion('D5');" style="left: unset; right: 10px;">
-				<svg class="menu-fonts-button-text" viewBox="0 0 100 100"><defs><path id="buttonText" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs><text><textPath xlink:href="#buttonText">Close Menu</textPath></text></svg>
-				<div class="menu-fonts-button-icon">
-					<svg viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
-				</div>
-			</button>
+			<div class="menu-fonts-buttons">
+				<button class="menu-fonts-button" onclick="document.getElementById('menu-fonts-input').click(); playPercussion('B0');" onmouseenter="playPercussion('A0');">
+					<svg class="menu-fonts-button-text" viewBox="0 0 100 100"><defs><path id="buttonText" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs><text><textPath xlink:href="#buttonText">Upload a font!</textPath></text></svg>
+					<div class="menu-fonts-button-icon">
+						<svg viewBox="0 0 24 24"><path d="M8 10h-5l9-10 9 10h-5v10h-8v-10zm11 9v3h-14v-3h-2v5h18v-5h-2z"/></svg>
+					</div>
+					<input id="menu-fonts-input" name="file" type="file">
+				</button>
+	
+				<button class="menu-fonts-button" onclick="closeMenuFonts(); showControls(); openNav(); resumeInstrument(); playPercussion('B2');" onmouseenter="playPercussion('D5');" style="left: unset; right: 10px;">
+					<svg class="menu-fonts-button-text" viewBox="0 0 100 100"><defs><path id="buttonText" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs><text><textPath xlink:href="#buttonText">Close Menu</textPath></text></svg>
+					<div class="menu-fonts-button-icon">
+						<svg viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+					</div>
+				</button>
+			</div>
 
 			<div class="menu-fonts-items"></div>
 			<div class="menu-fonts-items-empty">No fonts found!!!</div>
@@ -144,14 +146,6 @@
 
 		<div class="controls" data-active="0" data-open="0" data-tab="">
 			<div class="controls-tabs">
-				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('variable', this); playPercussion('G1');" onmouseenter="playPercussion('F1');">
-					<svg viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
-					<span>Variable Axes</span>
-				</button>
-				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('typography', this); playPercussion('F3');" onmouseenter="playPercussion('E3');">
-					<svg viewBox="0 0 24 24"><path d="M22 0h-20v6h1.999c0-1.174.397-3 2.001-3h4v16.874c0 1.174-.825 2.126-2 2.126h-1v2h9.999v-2h-.999c-1.174 0-2-.952-2-2.126v-16.874h4c1.649 0 2.02 1.826 2.02 3h1.98v-6z"/></svg>
-					<span>Typography</span>
-				</button>
 				<button class="controls-tab" data-active="0" onclick="toggleControlsTab('interface', this); playPercussion('B4');" onmouseenter="playPercussion('G4');">
 					<svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10v-20zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>
 					<span>Interface</span>
@@ -167,83 +161,7 @@
 			</div>
 
 			<div class="controls-menu">
-				<section class="controls-menu-content" data-tab="variable" data-active="0">
-				</section>
-
-				<section class="controls-menu-content" data-tab="typography" data-active="0">
-					<div class="controls-menu-item">
-						<div class="controls-menu-item-label">Font Size</div>
-						<div class="controls-menu-slider" data-controls-slider="fontsize">
-							<div class="controls-menu-slider-value"></div>
-							<div class="controls-menu-slider-fill"></div>
-						</div>
-					</div>
-
-					<div class="controls-menu-divider"></div>
-
-					<div class="controls-menu-item">
-						<div class="controls-menu-item-label">Letter Spacing</div>
-						<div class="controls-menu-slider" data-controls-slider="letterspacing">
-							<div class="controls-menu-slider-value"></div>
-							<div class="controls-menu-slider-fill"></div>
-						</div>
-					</div>
-
-					<div class="controls-menu-divider"></div>
-
-					<div class="controls-menu-item">
-						<div class="controls-menu-item-label">Line Height</div>
-						<div class="controls-menu-slider" data-controls-slider="lineheight">
-							<div class="controls-menu-slider-value"></div>
-							<div class="controls-menu-slider-fill"></div>
-						</div>
-					</div>
-
-					<div class="controls-menu-divider"></div>
-
-					<div class="controls-menu-item" id="alignment">
-						<div class="controls-menu-item-label">Alignment</div>
-						<button class="controls-menu-button" onclick="setAlignment('left'); playBlock(500);" data-state="0" data-alignment="left">
-							<svg viewBox="0 0 24 24"><path d="m17 17.75c0-.414-.336-.75-.75-.75h-13.5c-.414 0-.75.336-.75.75s.336.75.75.75h13.5c.414 0 .75-.336.75-.75zm5-4c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-9-4c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm7-4c0-.414-.336-.75-.75-.75h-16.5c-.414 0-.75.336-.75.75s.336.75.75.75h16.5c.414 0 .75-.336.75-.75z"/></svg>
-							<span>Left</span>
-						</button>
-						<button class="controls-menu-button" onclick="setAlignment('center'); playBlock(700);" data-state="1" data-alignment="center">
-							<svg viewBox="0 0 24 24"><path d="m6 17.75c0-.414.336-.75.75-.75h10.5c.414 0 .75.336.75.75s-.336.75-.75.75h-10.5c-.414 0-.75-.336-.75-.75zm-4-4c0-.414.336-.75.75-.75h18.5c.414 0 .75.336.75.75s-.336.75-.75.75h-18.5c-.414 0-.75-.336-.75-.75zm0-4c0-.414.336-.75.75-.75h18.5c.414 0 .75.336.75.75s-.336.75-.75.75h-18.5c-.414 0-.75-.336-.75-.75zm4-4c0-.414.336-.75.75-.75h10.5c.414 0 .75.336.75.75s-.336.75-.75.75h-10.5c-.414 0-.75-.336-.75-.75z"/></svg>
-							<span>Center</span>
-						</button>
-						<button class="controls-menu-button" onclick="setAlignment('right'); playBlock(900);" data-state="0" data-alignment="right">
-							<svg viewBox="0 0 24 24"><path d="m7 17.75c0-.414.336-.75.75-.75h13.5c.414 0 .75.336.75.75s-.336.75-.75.75h-13.5c-.414 0-.75-.336-.75-.75zm-5-4c0-.414.336-.75.75-.75h18.5c.414 0 .75.336.75.75s-.336.75-.75.75h-18.5c-.414 0-.75-.336-.75-.75zm9-4c0-.414.336-.75.75-.75h9.5c.414 0 .75.336.75.75s-.336.75-.75.75h-9.5c-.414 0-.75-.336-.75-.75zm-7-4c0-.414.336-.75.75-.75h16.5c.414 0 .75.336.75.75s-.336.75-.75.75h-16.5c-.414 0-.75-.336-.75-.75z"/></svg>
-							<span>Right</span>
-						</button>
-					</div>
-
-					<div class="controls-menu-divider"></div>
-
-					<div class="controls-menu-item" id="capitalization">
-						<div class="controls-menu-item-label">Capitalization</div>
-						<button class="controls-menu-button" onclick="setCapitalization('normal'); playBlock(900);" data-state="1" data-capitalization="normal">
-							<span>Normal</span>
-						</button>
-						<button class="controls-menu-button" onclick="setCapitalization('uppercase'); playBlock(700);" data-state="0" data-capitalization="uppercase">
-							<span>Uppercase</span>
-						</button>
-						<button class="controls-menu-button" onclick="setCapitalization('lowercase'); playBlock(500);" data-state="0" data-capitalization="lowercase">
-							<span>Lowercase</span>
-						</button>
-					</div>
-				</section>
-
 				<section class="controls-menu-content" data-tab="interface" data-active="0">
-					<div class="controls-menu-item-label">Text Color</div>
-					<input class="controls-menu-color" type="color" id="textcolor" oninput="displayForegroundColor(this.value)" value="#353535">
-
-					<div class="controls-menu-divider"></div>
-
-					<div class="controls-menu-item-label">Display Color</div>
-					<input class="controls-menu-color" type="color" id="displaycolor" oninput="displayBackgroundColor(this.value)" value="#e5e5e5">
-
-					<div class="controls-menu-divider"></div>
-
 					<div class="controls-menu-item">
 						<div class="controls-menu-item-label">Interface Color</div>
 						<button class="controls-menu-button" data-background-color="pink" onclick="setColor('pink'); playBlock(400);" data-state="0">
@@ -332,16 +250,112 @@
 
 		<main class="instruments">
 			<div class="instrument" data-position="right" id="oscillator" data-global="0">
+				<div class="instrument-settings">
+					<section class="instrument-settings-group">
+						<h4 class="instrument-settings-label">Font Size</h4>
+						<div class="controls-menu-slider" data-controls-slider="fontsize">
+							<div class="controls-menu-slider-value"></div>
+							<div class="controls-menu-slider-fill"></div>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group">
+						<h4 class="instrument-settings-label">Letter Spacing</h4>
+						<div class="controls-menu-slider" data-controls-slider="letterspacing">
+							<div class="controls-menu-slider-value"></div>
+							<div class="controls-menu-slider-fill"></div>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group">
+						<h4 class="instrument-settings-label">Line Height</h4>
+						<div class="controls-menu-slider" data-controls-slider="lineheight">
+							<div class="controls-menu-slider-value"></div>
+							<div class="controls-menu-slider-fill"></div>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group" id="alignment">
+						<h4 class="instrument-settings-label">Alignment</h4>
+						<div class="instrument-settings-buttons-group">
+							<button class="controls-menu-button" onclick="setAlignment('left'); playBlock(500);" data-state="0" data-alignment="left">
+								<svg viewBox="0 0 100 100"><path d="M90,15H10c-2.76,0-5,2.24-5,5s2.24,5,5,5h80c2.76,0,5-2.24,5-5s-2.24-5-5-5Z"/><path d="M10,55h40c2.76,0,5-2.24,5-5s-2.24-5-5-5H10c-2.76,0-5,2.24-5,5s2.24,5,5,5Z"/><path d="M70,75H10c-2.76,0-5,2.24-5,5s2.24,5,5,5h60c2.76,0,5-2.24,5-5s-2.24-5-5-5Z"/></svg>
+							</button>
+							<button class="controls-menu-button" onclick="setAlignment('center'); playBlock(700);" data-state="1" data-alignment="center">
+								<svg viewBox="0 0 100 100"><path d="M30,25h40c2.76,0,5-2.24,5-5s-2.24-5-5-5H30c-2.76,0-5,2.24-5,5s2.24,5,5,5Z"/><path d="M90,45H10c-2.76,0-5,2.24-5,5s2.24,5,5,5h80c2.76,0,5-2.24,5-5s-2.24-5-5-5Z"/><path d="M70,75H30c-2.76,0-5,2.24-5,5s2.24,5,5,5h40c2.76,0,5-2.24,5-5s-2.24-5-5-5Z"/></svg>
+							</button>
+							<button class="controls-menu-button" onclick="setAlignment('right'); playBlock(900);" data-state="0" data-alignment="right">
+								<svg viewBox="0 0 100 100"><path d="M95,20c0-2.76-2.24-5-5-5H10c-2.76,0-5,2.24-5,5s2.24,5,5,5h80c2.76,0,5-2.24,5-5Z"/><path d="M90,45h-40c-2.76,0-5,2.24-5,5s2.24,5,5,5h40c2.76,0,5-2.24,5-5s-2.24-5-5-5Z"/><path d="M90,75H30c-2.76,0-5,2.24-5,5s2.24,5,5,5h60c2.76,0,5-2.24,5-5s-2.24-5-5-5Z"/></svg>
+							</button>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group" id="capitalization">
+						<h4 class="instrument-settings-label">Capitalization</h4>
+						<div class="instrument-settings-buttons-group">
+							<button class="controls-menu-button" onclick="setCapitalization('normal'); playBlock(900);" data-state="1" data-capitalization="normal">
+								<span>Aa</span>
+							</button>
+							<button class="controls-menu-button" onclick="setCapitalization('uppercase'); playBlock(700);" data-state="0" data-capitalization="uppercase">
+								<span>AA</span>
+							</button>
+							<button class="controls-menu-button" onclick="setCapitalization('lowercase'); playBlock(500);" data-state="0" data-capitalization="lowercase">
+								<span>aa</span>
+							</button>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group">
+						<h4 class="instrument-settings-label">Generate Text</h4>
+						<div class="instrument-settings-buttons-group">
+							<button data-state="0" class="controls-menu-button" onclick="generateText('allglyphs'); playBlock(1000);"><span>GLYPHS</span></button>
+							<button data-state="0" class="controls-menu-button" onclick="generateText('lettersnumbers'); playBlock(500);"><span>ABC+123</span></button>
+							<button data-state="0" class="controls-menu-button" onclick="generateText('randomsentence'); playBlockRandom();"><span>SENTENCE</span></button>
+							<button data-state="0" class="controls-menu-button" onclick="generateText('randomcharacters'); playBlockRandom();"><span>NONSENSE</span></button>
+							<button data-state="0" class="controls-menu-button" onclick="generateText('repeatedcharacters'); playBlockRandom();"><span>AAAAAAAAAA</span></button>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group">
+						<h4 class="instrument-settings-label">Colors</h4>
+						<div class="instrument-settings-buttons">
+							<div class="instrument-settings-buttons-group">
+								<div class="controls-menu-color-swatch">
+									<input class="controls-menu-color" type="color" id="textcolor" oninput="displayForegroundColor(this.value)" value="#1a1a1a">
+									<span class="controls-menu-color-label">Text</span>
+								</div>
+								<div class="controls-menu-color-swatch">
+									<input class="controls-menu-color" type="color" id="displaycolor" oninput="displayBackgroundColor(this.value)" value="#fafafa">
+									<span class="controls-menu-color-label">Screen</span>
+								</div>
+							</div>
+							<button class="controls-menu-button" onclick="swapColors(); playBlockRandom();" data-state="0">
+								<svg viewBox="0 0 24 24"><path d="M6 11v-4l-6 5 6 5v-4h12v4l6-5-6-5v4z"/></svg>
+								<span>SWAP COLORS</span>
+							</button>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group">
+						<h4 class="instrument-settings-label">Actions</h4>
+						<div class="instrument-settings-buttons-group">
+							<button data-state="0" class="controls-menu-button" onclick="randomizeSettings(); playBlockRandom();">
+								<span>RANDO</span>
+							</button>
+							<button data-state="0" class="controls-menu-button" onclick="resetSettings(); playBlock(400);">
+								<span>RESET</span>
+							</button>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group" id="font-features" data-active="0">
+						<h4 class="instrument-settings-label">Font Features</h4>
+						<div class="instrument-settings-buttons-group"></div>
+					</section>
+				</div>
+
 				<div class="instrument-screen">
 					<div class="instrument-text" contenteditable="plaintext-only" spellcheck="false"></div>
-					<div class="instrument-screen-generator">
-						<h4 class="instrument-screen-generator-title">Generate Text</h4>
-						<button class="instrument-screen-generator-button" onclick="generateText('allglyphs'); playBlock(1000);">All Glyphs</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('lettersnumbers'); playBlock(500);">Letters + Numbers</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('randomsentence'); playBlockRandom();">Random sentence</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('randomcharacters'); playBlockRandom();">Random characters</button>
-						<button class="instrument-screen-generator-button" onclick="generateText('repeatedcharacters'); playBlockRandom();">Repeated characters</button>
-					</div>
 					<div class="instrument-screen-bolt" data-position="0"></div>
 					<div class="instrument-screen-bolt" data-position="1"></div>
 					<div class="instrument-screen-bolt" data-position="2"></div>

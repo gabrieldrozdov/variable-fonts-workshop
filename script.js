@@ -17,6 +17,9 @@ function toTitleCase(str) {
 		}
 	);
 }
+function clamp(value, min, max) {
+	return Math.min(Math.max(value, min), max);
+}
 
 // ——————————————————————————————————
 // INTERFACE
@@ -36,7 +39,7 @@ function changePrimaryColor() {
 		currentColor = 0;
 	}
 	const root = document.querySelector('html');
-	root.style.setProperty('--primary', `var(--${colors[currentColor]}`);
+	root.style.setProperty('--primary', `var(--${colors[currentColor]})`);
 
 	for (let backgroundColorToggle of document.querySelectorAll('[data-background-color')) {
 		backgroundColorToggle.dataset.state = 0;
@@ -174,14 +177,54 @@ function displayBackgroundColor(color) {
 	const display = document.querySelector(`#${activeInstrument} .instrument-text`);
 	display.style.backgroundColor = color;
 }
+function randomColor() {
+	return `#${Math.floor(Math.random()*16777216).toString(16).padStart(6, "0")}`;
+}
+function colorLuminance(color) {
+	const red = parseInt(color.slice(1,3), 16)/255;
+	const green = parseInt(color.slice(3,5), 16)/255;
+	const blue = parseInt(color.slice(5,7), 16)/255;
+	return .2126*red + .7152*green + .0722*blue;
+}
+function randomColors() {
+	let text = randomColor();
+	let display = randomColor();
+
+	// Keep the two far enough apart that the text stays readable
+	let attempts = 0;
+	while (Math.abs(colorLuminance(text)-colorLuminance(display)) < .35 && attempts < 25) {
+		text = randomColor();
+		display = randomColor();
+		attempts++;
+	}
+
+	const textColor = document.querySelector(`#textcolor`);
+	textColor.value = text;
+	const displayColor = document.querySelector(`#displaycolor`);
+	displayColor.value = display;
+
+	displayForegroundColor(text);
+	displayBackgroundColor(display);
+}
+function swapColors() {
+	const textColor = document.querySelector(`#textcolor`);
+	const displayColor = document.querySelector(`#displaycolor`);
+
+	const swap = textColor.value;
+	textColor.value = displayColor.value;
+	displayColor.value = swap;
+
+	displayForegroundColor(textColor.value);
+	displayBackgroundColor(displayColor.value);
+}
 function resetColors() {
 	const display = document.querySelector(`#${activeInstrument} .instrument-text`);
-	display.style.color = "#353535";
-	display.style.backgroundColor = "#e5e5e5";
+	display.style.color = "#1a1a1a";
+	display.style.backgroundColor = "#fafafa";
 	const textColor = document.querySelector(`#textcolor`);
-	textColor.value = "#353535";
+	textColor.value = "#1a1a1a";
 	const displayColor = document.querySelector(`#displaycolor`);
-	displayColor.value = "#e5e5e5";
+	displayColor.value = "#fafafa";
 }
 
 // Text alignment
@@ -225,8 +268,8 @@ let controlsSliders = {
 		"units": "px",
 		"rounding": 0,
 		"default": 72,
-		"min": 8,
-		"max": 200
+		"min": 5,
+		"max": 300
 	},
 	"letterspacing": {
 		"value": 0,
@@ -251,27 +294,45 @@ function initControlsSliders() {
 		slider.addEventListener('touchstart', (e) => {startControlsSlider(slider, slider.dataset.controlsSlider); updateControlsSlider(e);});
 	}
 }
+function setControlsSlider(target, value) {
+	const slider = document.querySelector(`[data-controls-slider="${target}"]`);
+	if (!slider) {
+		return;
+	}
+
+	// Normalize and round to appropriate value
+	const min = controlsSliders[target]["min"];
+	const max = controlsSliders[target]["max"];
+	const rounding = controlsSliders[target]["rounding"];
+	const range = max-min;
+	controlsSliders[target]["value"] = clamp(value, min, max).toFixed(rounding);
+
+	// Update slider element
+	const sliderFill = slider.querySelector('.controls-menu-slider-fill');
+	sliderFill.style.width = `${((controlsSliders[target]["value"]-min)/range)*100}%`;
+
+	// Update text element
+	const sliderValue = slider.querySelector('.controls-menu-slider-value');
+	sliderValue.innerText = `${controlsSliders[target]["value"]}`;
+
+	applyControlsSlider(target);
+}
+
+// Push a slider’s value out to wherever it actually does something
+function applyControlsSlider(target) {
+	const value = controlsSliders[target]["value"];
+	const units = controlsSliders[target]["units"];
+	if (target == "volume") {
+		Tone.Destination.volume.value = Tone.gainToDb(value / 100); // convert value to decibels
+	} else {
+		document.querySelector('body').style.setProperty(`--${target}`, value+units);
+	}
+}
 function resetControlsSliders() {
 	for (let slider of document.querySelectorAll('[data-controls-slider]')) {
 		const target = slider.dataset.controlsSlider;
-		controlsSliders[target]["value"] = controlsSliders[target]["default"];
-
-		// Display default values
-		const defaultValue = controlsSliders[target]["default"];
-		const min = controlsSliders[target]["min"];
-		const max = controlsSliders[target]["max"];
-		const units = controlsSliders[target]["units"];
-		const range = max-min;
-
-		const sliderFill = slider.querySelector('.controls-menu-slider-fill');
-		sliderFill.style.width = `${((defaultValue-min)/(range))*100}%`;
-		const sliderValue = slider.querySelector('.controls-menu-slider-value');
-		sliderValue.innerText = `${controlsSliders[target]["default"]}${units}`;
+		setControlsSlider(target, controlsSliders[target]["default"]);
 	}
-
-	document.querySelector('body').style.setProperty('--fontsize', `${controlsSliders["fontsize"]["default"]}${controlsSliders["fontsize"]["units"]}`);
-	document.querySelector('body').style.setProperty('--letterspacing', `${controlsSliders["letterspacing"]["default"]}${controlsSliders["letterspacing"]["units"]}`);
-	document.querySelector('body').style.setProperty('--lineheight', `${controlsSliders["lineheight"]["default"]}${controlsSliders["lineheight"]["units"]}`);
 }
 initControlsSliders();
 resetControlsSliders();
@@ -306,7 +367,6 @@ function updateControlsSlider(e) {
 	const min = controlsSliders[activeControlsSliderTarget]["min"];
 	const max = controlsSliders[activeControlsSliderTarget]["max"];
 	const rounding = controlsSliders[activeControlsSliderTarget]["rounding"];
-	const units = controlsSliders[activeControlsSliderTarget]["units"];
 	const range = max-min;
 	controlsSliders[activeControlsSliderTarget]["value"] = (percentFill*range+min).toFixed(rounding);
 
@@ -316,116 +376,19 @@ function updateControlsSlider(e) {
 
 	// Update text element
 	const sliderValue = activeControlsSlider.querySelector('.controls-menu-slider-value');
-	sliderValue.innerText = `${controlsSliders[activeControlsSliderTarget]["value"]}${units}`;
+	sliderValue.innerText = `${controlsSliders[activeControlsSliderTarget]["value"]}`;
 
 	// Apply settings
 	if (activeControlsSliderTarget == "volume") {
 		disableMute();
-		const dB = Tone.gainToDb(controlsSliders[activeControlsSliderTarget]["value"] / 100); // convert value to decibels
-		Tone.Destination.volume.value = dB;
-	} else if (activeControlsSliderTarget == "fontsize") {
-		document.querySelector('body').style.setProperty("--fontsize", controlsSliders[activeControlsSliderTarget]["value"]+units);
-	} else if (activeControlsSliderTarget == "letterspacing") {
-		document.querySelector('body').style.setProperty("--letterspacing", controlsSliders[activeControlsSliderTarget]["value"]+units);
-	} else if (activeControlsSliderTarget == "lineheight") {
-		document.querySelector('body').style.setProperty("--lineheight", controlsSliders[activeControlsSliderTarget]["value"]+units);
 	}
+	applyControlsSlider(activeControlsSliderTarget);
 }
 function endControlsSlider() {
 	document.removeEventListener('mousemove', updateControlsSlider);
 	document.removeEventListener('mouseup', endControlsSlider);
 	document.removeEventListener("touchmove", updateControlsSlider);
 	document.removeEventListener("touchend", endControlsSlider);
-}
-
-// Min/max axis cap sliders
-let controlsAxisSliders = {};
-function initControlsAxisSliders() {
-	const controlsVariable = document.querySelector('.controls-menu-content[data-tab="variable"]')
-	for (let slider of controlsVariable.querySelectorAll('[data-controls-axis-slider]')) {
-		slider.addEventListener('mousedown', (e) => {startControlsAxisSlider(slider, slider.dataset.controlsAxisSlider); updateControlsAxisSlider(e);});
-		slider.addEventListener('touchstart', (e) => {startControlsAxisSlider(slider, slider.dataset.controlsAxisSlider); updateControlsAxisSlider(e);});
-	}
-}
-function resetControlsAxisSliders() {
-	for (let slider of document.querySelectorAll('[data-controls-axis-slider]')) {
-		const target = slider.dataset.controlsAxisSlider;
-		controlsAxisSliders[target]["value"] = controlsAxisSliders[target]["default"];
-
-		// Display default values
-		const defaultValue = controlsAxisSliders[target]["default"];
-		const min = controlsAxisSliders[target]["min"];
-		const max = controlsAxisSliders[target]["max"];
-		const units = controlsAxisSliders[target]["units"];
-		const range = max-min;
-
-		const sliderFill = slider.querySelector('.controls-menu-slider-fill');
-		sliderFill.style.width = `${((defaultValue-min)/(range))*100}%`;
-		const sliderValue = slider.querySelector('.controls-menu-slider-value');
-		sliderValue.innerText = `${controlsAxisSliders[target]["default"]}${units}`;
-	}
-}
-let activeControlsAxisSlider, activeControlsAxisSliderTarget;
-function startControlsAxisSlider(element, target) {
-	activeControlsAxisSlider = element;
-	activeControlsAxisSliderTarget = target;
-	document.addEventListener('mousemove', updateControlsAxisSlider, {passive:false});
-	document.addEventListener('mouseup', endControlsAxisSlider);
-	document.addEventListener("touchmove", updateControlsAxisSlider, {passive:false});
-	document.addEventListener("touchend", endControlsAxisSlider);
-}
-function updateControlsAxisSlider(e) {
-	e.preventDefault();
-	let offsets = activeControlsAxisSlider.getBoundingClientRect();
-
-	// Calculate percentage
-	let percentFill;
-	if (e.touches != null) {
-		percentFill = (e.touches[0].clientX-offsets.left)/(offsets.right-offsets.left);
-	} else {
-		percentFill = (e.clientX-offsets.left)/(offsets.right-offsets.left);
-	}
-	if (percentFill >= 1) {
-		percentFill = 1;
-	} else if (percentFill <= 0) {
-		percentFill = 0;
-	}
-	
-	// Normalize and round to appropriate value
-	const min = controlsAxisSliders[activeControlsAxisSliderTarget]["min"];
-	const max = controlsAxisSliders[activeControlsAxisSliderTarget]["max"];
-	const rounding = controlsAxisSliders[activeControlsAxisSliderTarget]["rounding"];
-	const units = controlsAxisSliders[activeControlsAxisSliderTarget]["units"];
-	const range = max-min;
-	controlsAxisSliders[activeControlsAxisSliderTarget]["value"] = (percentFill*range+min).toFixed(rounding);
-
-	// Update slider element
-	const sliderFill = activeControlsAxisSlider.querySelector('.controls-menu-slider-fill');
-	sliderFill.style.width = `${percentFill*100}%`;
-
-	// Update text element
-	const sliderValue = activeControlsAxisSlider.querySelector('.controls-menu-slider-value');
-	sliderValue.innerText = `${controlsAxisSliders[activeControlsAxisSliderTarget]["value"]}${units}`;
-
-	// Apply settings
-	let axis = controlsAxisSliders[activeControlsAxisSliderTarget]["axis"];
-	let type = controlsAxisSliders[activeControlsAxisSliderTarget]["type"];
-	activeFontAxes[axis][type] = parseInt(controlsAxisSliders[activeControlsAxisSliderTarget]["value"]);
-
-	// Recalculate range
-	let newRange = Math.abs(activeFontAxes[axis]["capmax"]-activeFontAxes[axis]["capmin"]);
-	activeFontAxes[axis]["range"] = newRange;
-
-	// Per-instrument settings
-	if (activeInstrument == "oscillator") {
-		refreshAxisSlider(axis);
-	}
-}
-function endControlsAxisSlider() {
-	document.removeEventListener('mousemove', updateControlsAxisSlider);
-	document.removeEventListener('mouseup', endControlsAxisSlider);
-	document.removeEventListener("touchmove", updateControlsAxisSlider);
-	document.removeEventListener("touchend", endControlsAxisSlider);
 }
 
 // Mute
@@ -468,7 +431,21 @@ function introOut() {
 	endBackgroundCycle();
 	openNav();
 	showControls();
-	pickRandomFont();
+
+	// Wait for the font collection, then open whatever the URL asked for
+	fontsLoaded.then(async () => {
+		const startupFont = fontFromSlug(startupParams.get('font'));
+		if (startupFont) {
+			await pickFont(startupFont);
+		} else {
+			await pickRandomFont();
+		}
+		if (startupParams.get('menu') == "fonts") {
+			openMenuFonts();
+			closeNav();
+			hideControls();
+		}
+	})
 }
 setLogoDelays();
 setTimeout(introIn, 50);
@@ -479,7 +456,7 @@ setTimeout(introIn, 50);
 
 // Generate font menu
 let fontData, fontNames;
-fetch('fonts.json')
+const fontsLoaded = fetch('fonts.json')
 	.then((response) => response.json())
 	.then((json) => {
 		fontData = json;
@@ -510,7 +487,7 @@ function generateMenuFonts() {
 
 		htmlTemp += `
 			<div class="menu-fonts-item-transform" style="transform: ${itemTransform}" data-filter="1" data-search="1">
-				<button class="menu-fonts-item" style="transform: rotate(${Math.round(Math.random()*20-10)}deg);" data-font="${font}" data-designer="${fontInfo["designer"].toLowerCase()}" data-tags ="${fontInfo["tags"]}" data-default="${fontInfo['preview-text']}" onclick="pickFont('${font}'); playPercussion('C2');" onmouseenter="playTomRandom();">
+				<button class="menu-fonts-item" style="transform: rotate(${Math.round(Math.random()*20-10)}deg);" data-font="${font}" data-loaded="0" data-designer="${fontInfo["designer"].toLowerCase()}" data-tags ="${fontInfo["tags"]}" data-default="${fontInfo['preview-text']}" onclick="pickFont('${font}'); playPercussion('C2');" onmouseenter="playTomRandom();">
 					${credit}
 					<div class="menu-fonts-item-preview">${fontInfo['preview-text']}</div>
 					<div class="menu-fonts-item-info">
@@ -541,7 +518,59 @@ function generateMenuFonts() {
 	}
 }
 
+// Lazy font loading
+// Font files are only downloaded once a menu item is marked as loaded, either
+// because it scrolled into view or because the font was opened directly
+let menuFontsObserver = new IntersectionObserver((entries) => {
+	for (let entry of entries) {
+		if (entry.isIntersecting) {
+			loadMenuFont(entry.target.dataset.font);
+		}
+	}
+}, {rootMargin: "200px"});
+function loadMenuFont(font) {
+	const item = document.querySelector(`.menu-fonts-item[data-font="${font}"]`);
+	if (!item || parseInt(item.dataset.loaded) == 1) {
+		return;
+	}
+	item.dataset.loaded = 1;
+	menuFontsObserver.unobserve(item);
+}
+function observeMenuFonts() {
+	for (let item of document.querySelectorAll('.menu-fonts-item[data-loaded="0"]')) {
+		menuFontsObserver.observe(item);
+	}
+}
+
+// Warm the browser cache for the fonts on either side of the current one,
+// so the previous/next arrows in the nav feel instant
+let preloadedFonts = [];
+function preloadFont(font) {
+	if (!fontData[font] || preloadedFonts.includes(font)) {
+		return;
+	}
+	preloadedFonts.push(font);
+	fetch(`/assets/fonts/${fontData[font]["file"]}`);
+}
+function preloadNeighborFonts(font) {
+	const currentFontIndex = fontOrder.indexOf(font);
+	if (currentFontIndex < 0) {
+		return;
+	}
+	preloadFont(fontOrder[(currentFontIndex+1)%fontOrder.length]);
+	preloadFont(fontOrder[(currentFontIndex-1+fontOrder.length)%fontOrder.length]);
+}
+
 // Fonts menu
+// The open and close animations stagger each item on its own timer, so they have
+// to be cancellable — otherwise a close still in flight re-scatters a fresh open
+let menuFontsAnimation = [];
+function clearMenuFontsAnimation() {
+	for (let timeout of menuFontsAnimation) {
+		clearTimeout(timeout);
+	}
+	menuFontsAnimation = [];
+}
 function openMenuFonts() {
 	instrumentPlaying = false;
 
@@ -552,22 +581,32 @@ function openMenuFonts() {
 	instrument.dataset.position = "right";
 
 	// Animation in
+	clearMenuFontsAnimation();
 	for (let menuItem of document.querySelectorAll('.menu-fonts-item-transform')) {
-		setTimeout(() => {
+		menuFontsAnimation.push(setTimeout(() => {
 			menuItem.style.transform = ``;
-		}, Math.random()*250)
+		}, Math.random()*250))
 	}
+
+	// Start loading previews as they come into view
+	observeMenuFonts();
+	updateURL();
 }
 function closeMenuFonts() {
 	const menuFonts = document.querySelector('.menu-fonts');
 	menuFonts.dataset.active = 0;
 
+	// Stop watching for previews to load
+	menuFontsObserver.disconnect();
+	updateURL();
+
 	// Animation out
+	clearMenuFontsAnimation();
 	if (window.innerWidth > 800) {
 		for (let menuItem of document.querySelectorAll('.menu-fonts-item-transform')) {
-			setTimeout(() => {
+			menuFontsAnimation.push(setTimeout(() => {
 				menuItem.style.transform = `translateX(-${Math.round(Math.random()*50+50)}vw) translateY(${Math.round(Math.random()*200-100)}vh) translateZ(0px)`;
-			}, Math.random()*250)
+			}, Math.random()*250))
 		}
 	}
 }
@@ -836,13 +875,17 @@ let activeFontAxesCount = 0;
 let activeFontData;
 function pickRandomFont() {
 	let randomFont = fontNames[Math.floor(Math.random()*fontNames.length)];
-	pickFont(randomFont);
+	return pickFont(randomFont);
 }
 async function pickFont(fontName) {
 	userFont = false;
 
 	// Fetch font data and load using Opentype.js
-	loadFontData(await fetch(`/assets/fonts/${fontData[fontName]["file"]}`), fontName);
+	await loadFontData(await fetch(`/assets/fonts/${fontData[fontName]["file"]}`), fontName);
+
+	// Show this font in the menu and warm up the ones on either side of it
+	loadMenuFont(fontName);
+	preloadNeighborFonts(fontName);
 
 	changeBackground();
 	changePrimaryColor();
@@ -858,12 +901,6 @@ async function loadFontData(file, fontName) {
 		return
     }
 
-	if (!("fvar" in activeFontData.tables)) {
-		alert("That wasn’t a variable font! Please try using another file.");
-		activeFontData = backup;
-		return
-	}
-
 	// On success, load in new font
 	if (!userFont) {
 		activeFont = fontName;
@@ -878,14 +915,6 @@ async function loadFontData(file, fontName) {
 		`;
 	}
 
-	// Remove previous sliders from controls object
-	if (activeFont != "") {
-		for (let axis of Object.keys(activeFontAxes)) {
-			delete controlsSliders[`${axis}-min`];
-			delete controlsSliders[`${axis}-max`];
-		}
-	}
-
 	// Populate font and credits if included in collection
 	const navFontSectionInfo = document.querySelector('#nav-font .nav-section-info');
 	if (!userFont) {
@@ -894,13 +923,23 @@ async function loadFontData(file, fontName) {
 		navFontSectionInfo.innerText = `Something you uploaded!`;
 	}
 
-	// Build axes object and animation settings
+	// Build axes object — a static font simply has none
 	activeFontAxes = {}; // formatted data
-	let fontDataAxes = activeFontData.tables.fvar.axes; // actual data
-	let animationSettingsHTML = ''; // temp html string
-	let currentAxisNumber = 0; // for divider formatting
+	let fontDataAxes = []; // actual data
+	if ("fvar" in activeFontData.tables) {
+		fontDataAxes = activeFontData.tables.fvar.axes;
+	}
 	activeFontAxesCount = fontDataAxes.length;
 	for (let axis of fontDataAxes) {
+		// Narrow axes need decimal places, or they step instead of sliding
+		let axisRange = Math.abs(axis.maxValue-axis.minValue);
+		let axisRounding = 0;
+		if (axisRange < 10) {
+			axisRounding = 2;
+		} else if (axisRange < 100) {
+			axisRounding = 1;
+		}
+
 		activeFontAxes[axis.tag] = {
 			"value": axis.defaultValue,
 			"min": axis.minValue,
@@ -908,71 +947,20 @@ async function loadFontData(file, fontName) {
 			"capmin": axis.minValue,
 			"capmax": axis.maxValue,
 			"range": Math.abs(axis.maxValue-axis.minValue),
+			"rounding": axisRounding,
 			"default": axis.defaultValue,
 			"name": axis.name.en
 		}
-
-		// Build sliders
-		animationSettingsHTML += `
-			<div class="controls-menu-item">
-				<div class="controls-menu-item-label">${axis.name.en} [${axis.tag}]<br>Minimum Value</div>
-				<div class="controls-menu-slider" data-controls-axis-slider="${axis.tag}-min">
-					<div class="controls-menu-slider-value"></div>
-					<div class="controls-menu-slider-fill"></div>
-				</div>
-			</div>
-
-			<div class="controls-menu-divider"></div>
-
-			<div class="controls-menu-item">
-				<div class="controls-menu-item-label">${axis.name.en} [${axis.tag}]<br>Maximum Value</div>
-				<div class="controls-menu-slider" data-controls-axis-slider="${axis.tag}-max">
-					<div class="controls-menu-slider-value"></div>
-					<div class="controls-menu-slider-fill"></div>
-				</div>
-			</div>
-		`;
-		if (currentAxisNumber < activeFontAxesCount-1) {
-			animationSettingsHTML += `<div class="controls-menu-divider"></div>`;
-		}
-		currentAxisNumber++;
-
-		// Add to controls axis object
-		controlsAxisSliders[`${axis.tag}-min`] = {
-			"axis": axis.tag,
-			"type": "capmin",
-			"value": axis.minValue,
-			"units": "",
-			"rounding": 0,
-			"default": axis.minValue,
-			"min": axis.minValue,
-			"max": axis.maxValue
-		};
-		controlsAxisSliders[`${axis.tag}-max`] = {
-			"axis": axis.tag,
-			"type": "capmax",
-			"value": axis.maxValue,
-			"units": "",
-			"rounding": 0,
-			"default": axis.maxValue,
-			"min": axis.minValue,
-			"max": axis.maxValue
-		};
 	}
 
-	const animationSettings = document.querySelector('.controls-menu-content[data-tab="variable"]');
-	animationSettings.innerHTML = animationSettingsHTML;
-	initControlsAxisSliders();
-	resetControlsAxisSliders();
-	resetControlsSliders();
-	setAlignment('center');
-	setCapitalization('normal');
-	resetColors();
+	buildFontFeatures();
+	resetSettings();
 
 	// Show interface
 	closeMenuFonts();
 	showControls();
 	openNav();
+	updateURL();
 
 	// Initailize current instrument
 	initializeInstrument();
@@ -996,6 +984,233 @@ function nextFont() {
 	}
 	pickFont(fontOrder[currentFontIndex]);
 	flashScreen();
+}
+
+// ——————————————————————————————————
+// FONT FEATURES
+// ——————————————————————————————————
+
+// Shaping and script features that don’t make sense as on/off toggles
+let ignoredFontFeatures = ["aalt", "abvf", "abvm", "abvs", "akhn", "blwf", "blwm", "blws", "ccmp", "cfar", "cjct", "curs", "dist", "dtls", "falt", "fin2", "fin3", "fina", "flac", "half", "haln", "init", "isol", "ljmo", "locl", "mark", "med2", "medi", "mkmk", "mset", "nukt", "pref", "pres", "pstf", "psts", "rand", "rclt", "rkrf", "rlig", "rphf", "rtbd", "rtla", "rtlm", "rvrn", "size", "stch", "tjmo", "valt", "vatu", "vert", "vhal", "vjmo", "vkrn", "vpal", "vrt2"];
+
+// Features the browser already switches on by itself
+let defaultFontFeatures = ["calt", "clig", "kern", "liga"];
+
+let fontFeatureNames = {
+	"afrc": "Alternative Fractions",
+	"c2pc": "Petite Caps from Capitals",
+	"c2sc": "Small Caps from Capitals",
+	"calt": "Contextual Alternates",
+	"case": "Case Sensitive Forms",
+	"clig": "Contextual Ligatures",
+	"cpsp": "Capital Spacing",
+	"cswh": "Contextual Swash",
+	"dlig": "Discretionary Ligatures",
+	"dnom": "Denominators",
+	"expt": "Expert Forms",
+	"frac": "Fractions",
+	"hist": "Historical Forms",
+	"hlig": "Historical Ligatures",
+	"hwid": "Half Widths",
+	"ital": "Italics",
+	"kern": "Kerning",
+	"liga": "Standard Ligatures",
+	"lnum": "Lining Figures",
+	"nalt": "Alternate Annotation Forms",
+	"onum": "Oldstyle Figures",
+	"ordn": "Ordinals",
+	"ornm": "Ornaments",
+	"pcap": "Petite Caps",
+	"pnum": "Proportional Figures",
+	"pwid": "Proportional Widths",
+	"qwid": "Quarter Widths",
+	"ruby": "Ruby Notation Forms",
+	"salt": "Stylistic Alternates",
+	"sinf": "Scientific Inferiors",
+	"smcp": "Small Caps",
+	"smpl": "Simplified Forms",
+	"subs": "Subscript",
+	"sups": "Superscript",
+	"swsh": "Swash",
+	"titl": "Titling",
+	"tnum": "Tabular Figures",
+	"trad": "Traditional Forms",
+	"twid": "Third Widths",
+	"unic": "Unicase",
+	"zero": "Slashed Zero"
+};
+function fontFeatureName(tag) {
+	if (tag in fontFeatureNames) {
+		return fontFeatureNames[tag];
+	}
+	if (tag.startsWith("ss")) {
+		return `Stylistic Set ${parseInt(tag.slice(2))}`;
+	}
+	if (tag.startsWith("cv")) {
+		return `Character Variant ${parseInt(tag.slice(2))}`;
+	}
+	return tag.toUpperCase();
+}
+
+// Read the features the font actually carries and build a toggle for each
+let activeFontFeatures = {};
+function buildFontFeatures() {
+	activeFontFeatures = {};
+
+	let tags = [];
+	for (let table of ["gsub", "gpos"]) {
+		const featureTable = activeFontData.tables[table];
+		if (!featureTable || !featureTable.features) {
+			continue;
+		}
+		for (let feature of featureTable.features) {
+			if (!tags.includes(feature.tag) && !ignoredFontFeatures.includes(feature.tag)) {
+				tags.push(feature.tag);
+			}
+		}
+	}
+	tags.sort();
+
+	// Plenty of fonts have nothing to offer here, so the section hides itself
+	const fontFeatures = document.querySelector('#font-features');
+	const fontFeaturesButtons = fontFeatures.querySelector('.instrument-settings-buttons-group');
+	if (tags.length == 0) {
+		fontFeatures.dataset.active = 0;
+		fontFeaturesButtons.innerHTML = "";
+		applyFontFeatures();
+		return;
+	}
+
+	let featuresHTML = "";
+	for (let tag of tags) {
+		activeFontFeatures[tag] = false;
+		featuresHTML += `
+			<button class="controls-menu-button" data-font-feature="${tag}" data-state="0" title="${fontFeatureName(tag)}" onclick="toggleFontFeature('${tag}'); playBlockRandom();">
+				<span>${tag.toUpperCase()}</span>
+			</button>
+		`;
+	}
+	fontFeaturesButtons.innerHTML = featuresHTML;
+	fontFeatures.dataset.active = 1;
+
+	resetFontFeatures();
+}
+function applyFontFeatures() {
+	let settings = [];
+	for (let tag of Object.keys(activeFontFeatures)) {
+		let state = 0;
+		if (activeFontFeatures[tag]) {
+			state = 1;
+		}
+		settings.push(`"${tag}" ${state}`);
+	}
+
+	const display = document.querySelector(`#${activeInstrument} .instrument-text`);
+	display.style.fontFeatureSettings = settings.join(", ");
+}
+function displayFontFeature(tag) {
+	const button = document.querySelector(`[data-font-feature="${tag}"]`);
+	if (!button) {
+		return;
+	}
+	if (activeFontFeatures[tag]) {
+		button.dataset.state = 1;
+	} else {
+		button.dataset.state = 0;
+	}
+}
+function toggleFontFeature(tag) {
+	activeFontFeatures[tag] = !activeFontFeatures[tag];
+	displayFontFeature(tag);
+	applyFontFeatures();
+}
+function resetFontFeatures() {
+	for (let tag of Object.keys(activeFontFeatures)) {
+		activeFontFeatures[tag] = defaultFontFeatures.includes(tag);
+		displayFontFeature(tag);
+	}
+	applyFontFeatures();
+}
+function randomizeFontFeatures() {
+	for (let tag of Object.keys(activeFontFeatures)) {
+		activeFontFeatures[tag] = Math.random() < .5;
+		displayFontFeature(tag);
+	}
+	applyFontFeatures();
+}
+
+// ——————————————————————————————————
+// SETTINGS ACTIONS
+// ——————————————————————————————————
+let typographySliders = ["fontsize", "letterspacing", "lineheight"];
+let alignments = ["left", "center", "right"];
+let capitalizations = ["normal", "uppercase", "lowercase"];
+
+function resetSettings() {
+	for (let target of typographySliders) {
+		setControlsSlider(target, controlsSliders[target]["default"]);
+	}
+	setAlignment("center");
+	setCapitalization("normal");
+	resetColors();
+	resetFontFeatures();
+}
+function randomizeSettings() {
+	// Stay out of the last tenth at either end, where the display stops being readable
+	for (let target of typographySliders) {
+		const min = controlsSliders[target]["min"];
+		const max = controlsSliders[target]["max"];
+		const range = max-min;
+		setControlsSlider(target, Math.random()*range*.8 + min + range*.1);
+	}
+
+	setAlignment(alignments[Math.floor(Math.random()*alignments.length)]);
+	setCapitalization(capitalizations[Math.floor(Math.random()*capitalizations.length)]);
+	randomColors();
+	randomizeFontFeatures();
+}
+
+// ——————————————————————————————————
+// URL PARAMETERS
+// ——————————————————————————————————
+const startupParams = new URLSearchParams(window.location.search);
+
+// Font names become URL-friendly slugs: "Pixel Pastry" -> "pixel-pastry"
+function fontSlug(font) {
+	return font.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+function fontFromSlug(slug) {
+	if (!slug) {
+		return false;
+	}
+	slug = fontSlug(slug);
+	for (let font of fontNames) {
+		if (fontSlug(font) == slug) {
+			return font;
+		}
+	}
+	return false;
+}
+
+// Keep the address bar in sync so any state can be linked to directly
+function updateURL() {
+	const url = new URL(window.location);
+	const menuFonts = document.querySelector('.menu-fonts');
+
+	if (parseInt(menuFonts.dataset.active) == 1) {
+		// The menu isn’t about any one font, so the font drops off the link
+		url.searchParams.set('menu', 'fonts');
+		url.searchParams.delete('font');
+	} else {
+		url.searchParams.delete('menu');
+		if (activeFont != "" && !userFont) {
+			url.searchParams.set('font', fontSlug(activeFont));
+		} else {
+			url.searchParams.delete('font');
+		}
+	}
+
+	history.replaceState({}, '', url);
 }
 
 // ——————————————————————————————————
@@ -1031,12 +1246,39 @@ function resumeInstrument() {
 }
 
 // Instrument sliders
+// Each slider covers the axis’s full range. The two caps sitting at the top and
+// bottom can be dragged inwards to shrink the range the instrument plays with
+let axisSliderElements = {};
 function initAxisSliders(instrument) {
 	const instrumentDOM = document.querySelector(`#${instrument}`);
 	let sliders = instrumentDOM.querySelectorAll('[data-axis-slider]');
+
+	axisSliderElements = {};
 	for (let slider of sliders) {
-		slider.addEventListener('mousedown', (e) => {startAxisSlider(slider, slider.dataset.axisSlider); updateAxisSlider(e);});
-		slider.addEventListener('touchstart', (e) => {startAxisSlider(slider, slider.dataset.axisSlider); updateAxisSlider(e);});
+		const axis = slider.dataset.axisSlider;
+
+		// Cache the pieces we redraw on every frame
+		axisSliderElements[axis] = {
+			"slider": slider,
+			"fill": slider.querySelector('.instrument-axis-slider-fill'),
+			"value": slider.querySelector('.instrument-axis-slider-value'),
+			"capmin": slider.querySelector('[data-axis-cap="capmin"]'),
+			"capmax": slider.querySelector('[data-axis-cap="capmax"]'),
+			"capminValue": slider.querySelector('[data-axis-cap="capmin"] .instrument-axis-slider-cap-value'),
+			"capmaxValue": slider.querySelector('[data-axis-cap="capmax"] .instrument-axis-slider-cap-value'),
+			"drawn": {}
+		}
+
+		slider.addEventListener('mousedown', (e) => {startAxisSlider(slider, axis); updateAxisSlider(e);});
+		slider.addEventListener('touchstart', (e) => {startAxisSlider(slider, axis); updateAxisSlider(e);});
+
+		// Caps sit inside the slider, so they stop the drag from reaching it
+		for (let cap of slider.querySelectorAll('[data-axis-cap]')) {
+			const type = cap.dataset.axisCap;
+			cap.addEventListener('mousedown', (e) => {e.stopPropagation(); startAxisCap(slider, axis, type); updateAxisCap(e);});
+			cap.addEventListener('touchstart', (e) => {e.stopPropagation(); startAxisCap(slider, axis, type); updateAxisCap(e);});
+			cap.addEventListener('dblclick', () => {resetAxisCap(axis, type); playBlock(400);});
+		}
 	}
 
 	// Set volumes according to number of sliders
@@ -1047,32 +1289,102 @@ function initAxisSliders(instrument) {
 	}
 }
 function resetAxisSliders(instrument) {
-	const instrumentDOM = document.querySelector(`#${instrument}`);
-	for (let slider of instrumentDOM.querySelectorAll('[data-axis-slider]')) {
-		const target = slider.dataset.axisSlider;
-		activeFontAxes[target]["value"] = activeFontAxes[target]["default"];
-
-		// Display default values
-		const defaultValue = activeFontAxes[target]["default"];
-		const min = activeFontAxes[target]["capmin"];
-		const max = activeFontAxes[target]["capmax"];
-		const range = max-min;
-
-		const sliderFill = slider.querySelector('.instrument-axis-slider-fill');
-		sliderFill.style.height = `${((defaultValue-min)/(range))*100}%`;
-		const sliderValue = slider.querySelector('.instrument-axis-slider-value');
-		sliderValue.innerText = `${activeFontAxes[target]["default"]}`;
+	for (let axis of Object.keys(axisSliderElements)) {
+		activeFontAxes[axis]["value"] = activeFontAxes[axis]["default"];
+		displayAxisSlider(axis);
 	}
 }
+
+// Convert a value into a percentage of an axis’s full range
+function axisPercent(axis, value) {
+	const range = activeFontAxes[axis]["max"] - activeFontAxes[axis]["min"];
+	if (range == 0) {
+		return 0;
+	}
+	return (value - activeFontAxes[axis]["min"]) / range;
+}
+
+// Convert a value into a percentage of an axis’s capped range
+function axisCappedPercent(axis, value) {
+	const range = activeFontAxes[axis]["range"];
+	if (range == 0) {
+		return 0;
+	}
+	return (value - Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"])) / range;
+}
+
+// Convert a pointer event into a percentage of a slider’s full range
+function axisSliderPercent(slider, e) {
+	const track = slider.querySelector('.instrument-axis-slider-track');
+	const offsets = track.getBoundingClientRect();
+
+	let percent;
+	if (e.touches != null) {
+		percent = 1-(e.touches[0].clientY-offsets.top)/(offsets.bottom-offsets.top);
+	} else {
+		percent = 1-(e.clientY-offsets.top)/(offsets.bottom-offsets.top);
+	}
+	return clamp(percent, 0, 1);
+}
+
+// Values are stored at full precision so the animation stays smooth on narrow
+// axes — the rounding only ever happens on the way to the screen
+function displayAxisValue(axis, value) {
+	return Number(value).toFixed(activeFontAxes[axis]["rounding"]);
+}
+
+// Draw the current value and the range caps
+function displayAxisSlider(axis) {
+	const elements = axisSliderElements[axis];
+	if (!elements) {
+		return;
+	}
+
+	const capmin = Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
+	const capmax = Math.max(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
+
+	// Keep the value inside the capped range
+	activeFontAxes[axis]["value"] = clamp(activeFontAxes[axis]["value"], capmin, capmax);
+
+	const percentMin = axisPercent(axis, capmin);
+	const percentMax = axisPercent(axis, capmax);
+	const percentValue = axisPercent(axis, activeFontAxes[axis]["value"]);
+
+	// Each cap is drawn as its percentage plus its own 2px line, so the fill
+	// clears it by another 2px — the gap holds even with the caps wide open
+	elements["fill"].style.bottom = `calc(${percentMin*100}% + 4px)`;
+	elements["fill"].style.top = `calc(${(1-percentValue)*100}% + 4px)`;
+	elements["value"].innerText = displayAxisValue(axis, activeFontAxes[axis]["value"]);
+
+	// Grey out everything above the maximum cap and below the minimum cap, and
+	// park the value label halfway between them
+	if (elements["drawn"]["capmin"] != capmin || elements["drawn"]["capmax"] != capmax) {
+		elements["capmax"].style.height = `calc(${(1-percentMax)*100}% + 2px)`;
+		elements["capmaxValue"].innerText = displayAxisValue(axis, capmax);
+		elements["capmin"].style.height = `calc(${percentMin*100}% + 2px)`;
+		elements["capminValue"].innerText = displayAxisValue(axis, capmin);
+		elements["value"].style.top = `${(1-(percentMin+percentMax)/2)*100}%`;
+		elements["drawn"]["capmin"] = capmin;
+		elements["drawn"]["capmax"] = capmax;
+	}
+}
+function setAxisSlider(instrument, axis, percent) {
+	const capmin = Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
+	activeFontAxes[axis]["value"] = percent*activeFontAxes[axis]["range"]+capmin;
+	displayAxisSlider(axis);
+}
+
+// Dragging the body of a slider sets the value
 let activeAxisSlider, activeAxisSliderTarget;
-let activeAxisSliderState = false;
+let activeAxisSliderPower = "on";
 function startAxisSlider(element, target) {
 	activeAxisSlider = element;
 	activeAxisSliderTarget = target;
 
-	// Temporarily disable slider
-	activeAxisSliderState = oscillatorSettings[activeAxisSliderTarget]["state"];
-	oscillatorOff(activeAxisSliderTarget);
+	// Temporarily disable slider. The buttons and the panel stay put, so a
+	// running stagger isn’t torn down and rebuilt on every drag
+	activeAxisSliderPower = oscillatorSettings[activeAxisSliderTarget]["power"];
+	oscillatorSettings[activeAxisSliderTarget]["power"] = "off";
 
 	document.addEventListener('mousemove', updateAxisSlider, {passive:false});
 	document.addEventListener('mouseup', endAxisSlider);
@@ -1081,45 +1393,41 @@ function startAxisSlider(element, target) {
 }
 function updateAxisSlider(e) {
 	e.preventDefault();
-	let offsets = activeAxisSlider.getBoundingClientRect();
 
-	// Calculate percentage
-	let percentFill;
-	if (e.touches != null) {
-		percentFill = 1-(e.touches[0].clientY-offsets.top)/(offsets.bottom-offsets.top);
-	} else {
-		percentFill = 1-(e.clientY-offsets.top)/(offsets.bottom-offsets.top);
-	}
-	if (percentFill >= 1) {
-		percentFill = 1;
-	} else if (percentFill <= 0) {
-		percentFill = 0;
-	}
-	
-	// Normalize and round to appropriate value
-	const min = activeFontAxes[activeAxisSliderTarget]["capmin"];
-	const max = activeFontAxes[activeAxisSliderTarget]["capmax"];
-	const rounding = activeFontAxes[activeAxisSliderTarget]["rounding"];
-	const range = max-min;
-	activeFontAxes[activeAxisSliderTarget]["value"] = (percentFill*range+min).toFixed(rounding);
+	const axis = activeAxisSliderTarget;
+	const percentFull = axisSliderPercent(activeAxisSlider, e);
+	const capmin = Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
+	const capmax = Math.max(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
+	const fullRange = activeFontAxes[axis]["max"] - activeFontAxes[axis]["min"];
 
-	// Update slider element
-	const sliderFill = activeAxisSlider.querySelector('.instrument-axis-slider-fill');
-	sliderFill.style.height = `${percentFill*100}%`;
-
-	// Update text element
-	const sliderValue = activeAxisSlider.querySelector('.instrument-axis-slider-value');
-	sliderValue.innerText = `${activeFontAxes[activeAxisSliderTarget]["value"]}`;
+	// The pointer covers the full range, but the value stays inside the caps
+	const value = clamp(percentFull*fullRange + activeFontAxes[axis]["min"], capmin, capmax);
+	activeFontAxes[axis]["value"] = Number(displayAxisValue(axis, value));
+	displayAxisSlider(axis);
 
 	// Per-instrument controls
-	if (activeInstrument == "oscillator") {
-		oscillatorSettings[activeAxisSliderTarget]["percent"] = percentFill;
+	if (activeInstrument != "oscillator") {
+		return;
+	}
+	const percentCapped = axisCappedPercent(axis, activeFontAxes[axis]["value"]);
+	const percentRaw = oscillatorWaveformPercent(axis, percentCapped);
+	oscillatorSettings[axis]["percent"] = percentRaw;
+
+	// With settings locked together, every other axis follows this one
+	if (oscillatorLock) {
+		for (let other of Object.keys(oscillatorSettings)) {
+			if (other == axis) {
+				continue;
+			}
+			setAxisSlider("oscillator", other, percentCapped);
+			oscillatorSettings[other]["percent"] = percentRaw;
+		}
 	}
 }
 function endAxisSlider() {
 	// Reactivate slider if needed
-	if (activeAxisSliderState == true) {
-		oscillatorOn(activeAxisSliderTarget);
+	if (activeAxisSliderPower != "off") {
+		oscillatorSettings[activeAxisSliderTarget]["power"] = activeAxisSliderPower;
 	}
 	
 	document.removeEventListener('mousemove', updateAxisSlider);
@@ -1127,57 +1435,397 @@ function endAxisSlider() {
 	document.removeEventListener("touchmove", updateAxisSlider);
 	document.removeEventListener("touchend", endAxisSlider);
 }
-function setAxisSlider(instrument, axis, percent) {
-	const instrumentDOM = document.querySelector(`#${instrument}`);
-	const activeAxisSlider = instrumentDOM.querySelector(`[data-axis-slider="${axis}"]`);
 
-	// Normalize and round to appropriate value
-	const min = activeFontAxes[axis]["capmin"];
-	const max = activeFontAxes[axis]["capmax"];
-	const rounding = activeFontAxes[axis]["rounding"];
-	const range = max-min;
-	activeFontAxes[axis]["value"] = (percent*range+min).toFixed(rounding);
+// Dragging a cap shrinks the range the instrument plays with
+let activeAxisCapSlider, activeAxisCapTarget, activeAxisCapType;
+function startAxisCap(slider, axis, type) {
+	activeAxisCapSlider = slider;
+	activeAxisCapTarget = axis;
+	activeAxisCapType = type;
 
-	// Update slider element
-	const sliderFill = activeAxisSlider.querySelector('.instrument-axis-slider-fill');
-	sliderFill.style.height = `${percent*100}%`;
+	document.addEventListener('mousemove', updateAxisCap, {passive:false});
+	document.addEventListener('mouseup', endAxisCap);
+	document.addEventListener("touchmove", updateAxisCap, {passive:false});
+	document.addEventListener("touchend", endAxisCap);
+}
+function updateAxisCap(e) {
+	e.preventDefault();
 
-	// Update text element
-	const sliderValue = activeAxisSlider.querySelector('.instrument-axis-slider-value');
-	sliderValue.innerText = `${activeFontAxes[axis]["value"]}`;
+	const axis = activeAxisCapTarget;
+	const track = activeAxisCapSlider.querySelector('.instrument-axis-slider-track');
+	const trackHeight = track.getBoundingClientRect().height;
+	const percentFull = axisSliderPercent(activeAxisCapSlider, e);
+	const fullRange = activeFontAxes[axis]["max"] - activeFontAxes[axis]["min"];
+	let value = Number(displayAxisValue(axis, percentFull*fullRange + activeFontAxes[axis]["min"]));
+
+	// Caps always leave 2px of slider showing between their two 2px lines
+	let capGap = 0;
+	if (trackHeight > 0) {
+		capGap = (6/trackHeight)*fullRange;
+	}
+	if (activeAxisCapType == "capmin") {
+		value = clamp(value, activeFontAxes[axis]["min"], Math.max(activeFontAxes[axis]["min"], activeFontAxes[axis]["capmax"]-capGap));
+	} else {
+		value = clamp(value, Math.min(activeFontAxes[axis]["max"], activeFontAxes[axis]["capmin"]+capGap), activeFontAxes[axis]["max"]);
+	}
+	activeFontAxes[axis][activeAxisCapType] = value;
+	activeFontAxes[axis]["range"] = Math.abs(activeFontAxes[axis]["capmax"]-activeFontAxes[axis]["capmin"]);
+	displayAxisSlider(axis);
+
+	// A paused axis keeps its spot in the new range
+	if (activeInstrument == "oscillator" && oscillatorSettings[axis]["power"] == "off") {
+		oscillatorSettings[axis]["percent"] = axisCappedPercent(axis, activeFontAxes[axis]["value"]);
+	}
+}
+function endAxisCap() {
+	document.removeEventListener('mousemove', updateAxisCap);
+	document.removeEventListener('mouseup', endAxisCap);
+	document.removeEventListener("touchmove", updateAxisCap);
+	document.removeEventListener("touchend", endAxisCap);
 }
 
-// Refresh slider to account for axis cap changes
-function refreshAxisSlider(axis) {
-	const sliderElement = document.querySelector(`#${activeInstrument} [data-axis-slider="${axis}"]`);
-	const sliderFill = sliderElement.querySelector('.instrument-axis-slider-fill');
-	const sliderValue = sliderElement.querySelector('.instrument-axis-slider-value');
-	
-	// Adjust value if needed
-	const min = Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
-	const max = Math.max(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
-	const range = max-min;
-	if (activeFontAxes[axis]["value"] < min) {
-		activeFontAxes[axis]["value"] = min;
-	} else if (activeFontAxes[axis]["value"] > max) {
-		activeFontAxes[axis]["value"] = max;
+// Double-clicking a cap puts it back to the font’s own limit
+function resetAxisCap(axis, type) {
+	if (type == "capmin") {
+		activeFontAxes[axis]["capmin"] = activeFontAxes[axis]["min"];
+	} else {
+		activeFontAxes[axis]["capmax"] = activeFontAxes[axis]["max"];
+	}
+	activeFontAxes[axis]["range"] = Math.abs(activeFontAxes[axis]["capmax"]-activeFontAxes[axis]["capmin"]);
+	displayAxisSlider(axis);
+}
+
+// ——————————————————————————————————
+// MICROPHONE
+// ——————————————————————————————————
+let micInput, micMeter;
+let micReady = false;
+let micDecibels = -100;
+async function startMic() {
+	if (micReady) {
+		return true;
 	}
 
-	// Calculate percent filled
-	const percentFill = ((activeFontAxes[axis]["value"] - min)/range)*100;
+	try {
+		await Tone.start();
+		micInput = new Tone.UserMedia();
+		micMeter = new Tone.Meter({smoothing: .8});
+		await micInput.open();
+		micInput.connect(micMeter);
+		micReady = true;
+	} catch (err) {
+		alert("Couldn’t reach your microphone! Check your browser’s permissions and try again.");
+		micInput = undefined;
+		micMeter = undefined;
+		micReady = false;
+	}
 
-	// Update slider elements
-	sliderFill.style.height = `${percentFill}%`;
-	sliderValue.innerText = `${activeFontAxes[axis]["value"]}`;
+	return micReady;
 }
+
+let micDirections = ["up", "down"];
+let staggerStates = ["off", "on"];
+
+// One reading per frame, shared by every axis
+function readMic() {
+	if (!micReady) {
+		micDecibels = -100;
+		return;
+	}
+
+	let level = micMeter.getValue();
+	if (!Number.isFinite(level)) {
+		level = -100;
+	}
+	micDecibels = level;
+}
+
+// Sensitivity is the threshold a sound has to clear before it registers: turn it
+// up and quieter sounds start moving the axis. A loud room tops out around -10dB
+function micAxisLevel(axis) {
+	const floor = -25 - 55*oscillatorSettings[axis]["sensitivity"];
+	let level = clamp((micDecibels-floor)/(-10-floor), 0, 1);
+	if (oscillatorSettings[axis]["micdirection"] == "down") {
+		level = 1-level;
+	}
+	return level;
+}
+
+// ——————————————————————————————————
+// STAGGER
+// ——————————————————————————————————
+// Stagger runs every letter through the axis’s own waveform, each one starting a
+// little later than the letter before it
+let staggerActive = false;
+let staggerLetters = [];
+let staggerRebuild;
+
+// A waveform that turns around covers its ground twice per cycle, so its period
+// is 2; the sawtooths run straight through and reset, so theirs is 1
+function oscillatorWaveformPeriod(waveform) {
+	if (waveform == "sawtooth" || waveform == "sawtoothreverse") {
+		return 1;
+	}
+	return 2;
+}
+
+// Is this axis handing its letters their own animations?
+function oscillatorStaggering(axis) {
+	const settings = oscillatorEffective(axis);
+	return settings["mode"] == "synth" && settings["stagger"] == "on";
+}
+
+function updateStagger() {
+	let active = false;
+	for (let axis of Object.keys(oscillatorSettings)) {
+		if (oscillatorStaggering(axis)) {
+			active = true;
+		}
+	}
+	if (active == staggerActive) {
+		return;
+	}
+
+	staggerActive = active;
+	if (staggerActive) {
+		buildStaggerText();
+	} else {
+		flattenStaggerText();
+	}
+}
+
+// One span per letter, with whitespace left as plain text. Inline spans don’t
+// add break opportunities, so words still wrap exactly where they used to
+function buildStaggerText() {
+	const instrumentText = document.querySelector(`#${activeInstrument} .instrument-text`);
+	const text = instrumentText.innerText;
+	const caret = getCaretOffset(instrumentText);
+
+	// The display is a flex container, so everything goes inside one item
+	const inner = document.createElement('span');
+	inner.className = "instrument-text-inner";
+
+	staggerLetters = [];
+	for (let character of text) {
+		if (character == "\n") {
+			inner.appendChild(document.createElement('br'));
+			continue;
+		}
+		if (character == " " || character == "\t") {
+			inner.appendChild(document.createTextNode(character));
+			continue;
+		}
+
+		const letter = document.createElement('span');
+		letter.className = "instrument-text-letter";
+		letter.textContent = character;
+		inner.appendChild(letter);
+		staggerLetters.push(letter);
+	}
+
+	instrumentText.replaceChildren(inner);
+	setCaretOffset(instrumentText, caret);
+}
+function flattenStaggerText() {
+	const instrumentText = document.querySelector(`#${activeInstrument} .instrument-text`);
+	const caret = getCaretOffset(instrumentText);
+
+	instrumentText.innerText = instrumentText.innerText;
+	staggerLetters = [];
+
+	setCaretOffset(instrumentText, caret);
+}
+
+// Whenever the text itself changes underneath us
+function refreshStaggerText() {
+	if (!staggerActive) {
+		return;
+	}
+	buildStaggerText();
+}
+
+// The per-axis settings the letters should follow. Locked axes take theirs from
+// the first axis, the same way the loop does
+function oscillatorEffective(axis) {
+	if (!oscillatorLock) {
+		return oscillatorSettings[axis];
+	}
+	return oscillatorSettings[Object.keys(oscillatorSettings)[0]];
+}
+
+// The noise waveform gives every letter its own oscillator, so nothing ties one
+// letter to the next
+function buildStaggerLetters(settings) {
+	let letters = [];
+	for (let i=0; i<staggerLetters.length; i++) {
+		let direction = 1;
+		if (Math.random() < .5) {
+			direction = -1;
+		}
+		letters.push({"percent": Math.random(), "direction": direction});
+	}
+	settings["letters"] = letters;
+}
+function advanceStaggerLetters(settings) {
+	if (settings["letters"].length != staggerLetters.length) {
+		buildStaggerLetters(settings);
+	}
+
+	// A paused axis holds every letter where it is
+	if (settings["power"] == "off") {
+		return;
+	}
+
+	for (let letter of settings["letters"]) {
+		letter["percent"] += (settings["speed"])/100 * letter["direction"];
+		if (Math.random() < .25) {
+			letter["direction"] *= -1;
+		}
+		if (letter["percent"] >= 1) {
+			letter["percent"] = 1;
+			letter["direction"] *= -1;
+		} else if (letter["percent"] <= 0) {
+			letter["percent"] = 0;
+			letter["direction"] *= -1;
+		}
+	}
+}
+
+// Where one letter sits on the axis. Every letter runs the axis’s whole waveform
+// on its own clock, started a step later than the letter before it — so they
+// turn around at different moments rather than all at once. Group size is how
+// many letters it takes to come back around to the first letter’s animation
+function staggerLetterValue(axis, letterNumber) {
+	const settings = oscillatorEffective(axis);
+	const capmin = Math.min(activeFontAxes[axis]["capmin"], activeFontAxes[axis]["capmax"]);
+
+	if (settings["waveform"] == "noise") {
+		return settings["letters"][letterNumber]["percent"]*activeFontAxes[axis]["range"] + capmin;
+	}
+
+	const period = oscillatorWaveformPeriod(settings["waveform"]);
+	let position = (settings["phase"] + letterNumber*period/settings["groupsize"]) % period;
+	if (position < 0) {
+		position += period;
+	}
+
+	if (period == 2) {
+		// Up the first half of the cycle and back down the second
+		if (position > 1) {
+			position = 2-position;
+		}
+		if (settings["waveform"] == "sine") {
+			position = easeInOutQuad(position);
+		} else if (settings["waveform"] == "square") {
+			position = easeInOutExpo(position);
+		}
+	} else if (settings["waveform"] == "sawtoothreverse") {
+		position = 1-position;
+	}
+
+	return position*activeFontAxes[axis]["range"] + capmin;
+}
+
+// Paint each letter, running it a little further along the wave than the one before
+function applyStaggerVariation() {
+	const axes = Object.keys(oscillatorSettings);
+
+	// Move the per-letter oscillators on. Locked axes share one set of settings,
+	// so each set only gets advanced once
+	let advanced = [];
+	for (let axis of axes) {
+		const settings = oscillatorEffective(axis);
+		if (!oscillatorStaggering(axis) || settings["waveform"] != "noise" || advanced.includes(settings)) {
+			continue;
+		}
+		advanced.push(settings);
+		advanceStaggerLetters(settings);
+	}
+
+	let letterNumber = 0;
+	for (let letter of staggerLetters) {
+		let variation = "";
+		let axisNumber = 0;
+		for (let axis of axes) {
+			let value = activeFontAxes[axis]["value"];
+			if (oscillatorStaggering(axis)) {
+				value = staggerLetterValue(axis, letterNumber);
+			}
+
+			variation += `"${axis}" ${value}`;
+			if (axisNumber < axes.length-1) {
+				variation += ", ";
+			}
+			axisNumber++;
+		}
+
+		letter.style.fontVariationSettings = variation;
+		letterNumber++;
+	}
+}
+
+// Typing rebuilds the spans, so the caret has to be put back where it was
+function getCaretOffset(element) {
+	const selection = window.getSelection();
+	if (!selection.rangeCount || !element.contains(selection.anchorNode)) {
+		return false;
+	}
+
+	const selected = selection.getRangeAt(0);
+	const range = selected.cloneRange();
+	range.selectNodeContents(element);
+	range.setEnd(selected.endContainer, selected.endOffset);
+	return range.toString().length;
+}
+function setCaretOffset(element, offset) {
+	if (offset === false) {
+		return;
+	}
+
+	const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+	const range = document.createRange();
+	let counted = 0;
+	let node = walker.nextNode();
+	let placed = false;
+	while (node) {
+		if (counted + node.length >= offset) {
+			range.setStart(node, offset-counted);
+			placed = true;
+			break;
+		}
+		counted += node.length;
+		node = walker.nextNode();
+	}
+
+	// Nothing to land on, so sit at the very end
+	if (!placed) {
+		range.selectNodeContents(element);
+	}
+	range.collapse(!placed);
+
+	const selection = window.getSelection();
+	selection.removeAllRanges();
+	selection.addRange(range);
+}
+
+// Rebuild a moment after typing stops, so every keystroke isn’t a teardown
+document.querySelector('#oscillator .instrument-text').addEventListener('input', () => {
+	if (!staggerActive) {
+		return;
+	}
+	clearTimeout(staggerRebuild);
+	staggerRebuild = setTimeout(buildStaggerText, 300);
+});
 
 // ——————————————————————————————————
 // OSCILLATOR
 // ——————————————————————————————————
 let oscillatorSettings = {};
-let oscillatorLoop;
+let oscillatorLoop, oscillatorEntrance;
+let oscillatorLoopID = 0;
 function initializeOscillator() {
 	clearTimeout(oscillatorLoop);
+	clearTimeout(oscillatorEntrance);
 	const instrumentOscillator = document.querySelector('#oscillator');
 
 	// Turn off lock
@@ -1198,6 +1846,18 @@ function initializeOscillator() {
 		instrumentOscillator.dataset.global = 0;
 	}
 
+	// Hide the whole axes panel for a font that doesn’t vary
+	if (activeFontAxesCount > 0) {
+		instrumentOscillator.dataset.axes = 1;
+	} else {
+		instrumentOscillator.dataset.axes = 0;
+		instrumentText.style.fontVariationSettings = "";
+	}
+
+	// A new font always starts plain
+	staggerActive = false;
+	staggerLetters = [];
+
 	// Build axes
 	const oscillatorAxes = instrumentOscillator.querySelector('.instrument-axes');
 
@@ -1208,21 +1868,60 @@ function initializeOscillator() {
 		// Build controls
 		oscillatorSettings[axis] = {
 			"percent": 0,
+			"phase": 0, // stagger counts up without turning around, so letters can
 			"waveform": "sine",
 			"speed": 1,
-			"state": true,
+			"groupsize": 10,
+			"sensitivity": .3,
+			"micdirection": "up",
+			"power": "on",
+			"mode": "synth",
+			"stagger": "off",
 			"direction": 1,
+			"letters": [] // one oscillator per letter, for the noise waveform
 		}
 
 		// Generate HTML
 		oscillatorAxesHTML += `
-			<div class="instrument-axis" data-axis="${axis}">
+			<div class="instrument-axis" data-axis="${axis}" data-mode="synth" data-stagger="0">
 				<div class="instrument-axis-slider" data-axis-slider="${axis}">
-					<div class="instrument-axis-slider-fill"></div>
-					<div class="instrument-axis-slider-value"></div>
+					<div class="instrument-axis-slider-track">
+						<div class="instrument-axis-slider-fill"></div>
+						<div class="instrument-axis-slider-cap" data-axis-cap="capmax">
+							<div class="instrument-axis-slider-cap-value"></div>
+						</div>
+						<div class="instrument-axis-slider-cap" data-axis-cap="capmin">
+							<div class="instrument-axis-slider-cap-value"></div>
+						</div>
+						<div class="instrument-axis-slider-value"></div>
+					</div>
 				</div>
 
-				<section class="instrument-axis-section" data-instrument-section="waveform">
+				<section class="instrument-axis-section" data-instrument-section="power">
+					<h4 class="instrument-axis-section-label">Power</h4>
+					<div class="instrument-axis-buttons">
+						<button class="instrument-axis-button" data-active="0" onclick="oscillatorSetPower('${axis}', 'off'); playBlock(500);" data-value="off">
+							<span>Off</span>
+						</button>
+						<button class="instrument-axis-button" data-active="1" onclick="oscillatorSetPower('${axis}', 'on'); playBlock(1000);" data-value="on">
+							<span>On</span>
+						</button>
+					</div>
+				</section>
+
+				<section class="instrument-axis-section" data-instrument-section="mode">
+					<h4 class="instrument-axis-section-label">Mode</h4>
+					<div class="instrument-axis-buttons">
+						<button class="instrument-axis-button" data-active="1" onclick="oscillatorSetMode('${axis}', 'synth'); playBlock(1000);" data-value="synth">
+							<span>Synth</span>
+						</button>
+						<button class="instrument-axis-button" data-active="0" onclick="oscillatorSetMode('${axis}', 'mic'); playBlock(800);" data-value="mic">
+							<span>Mic</span>
+						</button>
+					</div>
+				</section>
+
+				<section class="instrument-axis-section" data-instrument-section="waveform" data-modes="synth">
 					<h4 class="instrument-axis-section-label">Waveform</h4>
 					<div class="instrument-axis-buttons">
 						<button class="instrument-axis-button" onclick="oscillatorPickWaveform('${axis}', 'sine'); playBlock(450);" data-active="1" data-value="sine">
@@ -1246,29 +1945,71 @@ function initializeOscillator() {
 					</div>
 				</section>
 
-				<section class="instrument-axis-section" data-instrument-section="speed">
+				<section class="instrument-axis-section" data-instrument-section="speed" data-modes="synth">
 					<h4 class="instrument-axis-section-label">Speed</h4>
 					<div class="instrument-axis-increment">
-						<button class="instrument-axis-increment-button" onclick="oscillatorSpeedDown('${axis}'); playBlock(600);">
+						<button class="instrument-axis-increment-button" data-axis-increment="speed" data-axis-step="down">
 							<svg viewBox="0 0 24 24"><path d="M0 9h24v6h-24z"/></svg>
 						</button>
 						<div class="instrument-axis-increment-display">
 							&times; 1.0
 						</div>
-						<button class="instrument-axis-increment-button" onclick="oscillatorSpeedUp('${axis}'); playBlock(1200);">
+						<button class="instrument-axis-increment-button" data-axis-increment="speed" data-axis-step="up">
 							<svg viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg>
 						</button>
 					</div>
 				</section>
 
-				<section class="instrument-axis-section" data-instrument-section="state">
-					<h4 class="instrument-axis-section-label">State</h4>
+				<section class="instrument-axis-section" data-instrument-section="stagger" data-modes="synth">
+					<h4 class="instrument-axis-section-label">Stagger</h4>
 					<div class="instrument-axis-buttons">
-						<button class="instrument-axis-button" data-active="0" onclick="oscillatorOff('${axis}'); playBlock(500);" data-value="false">
+						<button class="instrument-axis-button" data-active="1" onclick="oscillatorSetStagger('${axis}', 'off'); playBlock(500);" data-value="off">
 							<span>Off</span>
 						</button>
-						<button class="instrument-axis-button" data-active="1" onclick="oscillatorOn('${axis}'); playBlock(1000);" data-value="true">
+						<button class="instrument-axis-button" data-active="0" onclick="oscillatorSetStagger('${axis}', 'on'); playBlockRandom();" data-value="on">
 							<span>On</span>
+						</button>
+					</div>
+				</section>
+
+				<section class="instrument-axis-section" data-instrument-section="groupsize" data-modes="synth">
+					<h4 class="instrument-axis-section-label">Group Size</h4>
+					<div class="instrument-axis-increment">
+						<button class="instrument-axis-increment-button" data-axis-increment="groupsize" data-axis-step="down">
+							<svg viewBox="0 0 24 24"><path d="M0 9h24v6h-24z"/></svg>
+						</button>
+						<div class="instrument-axis-increment-display">
+							10
+						</div>
+						<button class="instrument-axis-increment-button" data-axis-increment="groupsize" data-axis-step="up">
+							<svg viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg>
+						</button>
+					</div>
+				</section>
+
+				<section class="instrument-axis-section" data-instrument-section="direction" data-modes="mic">
+					<h4 class="instrument-axis-section-label">Direction</h4>
+					<div class="instrument-axis-buttons">
+						<button class="instrument-axis-button" onclick="oscillatorPickMicDirection('${axis}', 'up'); playBlock(900);" data-active="1" data-value="up">
+							<span>Up</span>
+						</button>
+						<button class="instrument-axis-button" onclick="oscillatorPickMicDirection('${axis}', 'down'); playBlock(500);" data-active="0" data-value="down">
+							<span>Down</span>
+						</button>
+					</div>
+				</section>
+
+				<section class="instrument-axis-section" data-instrument-section="sensitivity" data-modes="mic">
+					<h4 class="instrument-axis-section-label">Sensitivity</h4>
+					<div class="instrument-axis-increment">
+						<button class="instrument-axis-increment-button" data-axis-increment="sensitivity" data-axis-step="down">
+							<svg viewBox="0 0 24 24"><path d="M0 9h24v6h-24z"/></svg>
+						</button>
+						<div class="instrument-axis-increment-display">
+							0.3
+						</div>
+						<button class="instrument-axis-increment-button" data-axis-increment="sensitivity" data-axis-step="up">
+							<svg viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg>
 						</button>
 					</div>
 				</section>
@@ -1302,34 +2043,70 @@ function initializeOscillator() {
 	// Initialize sliders
 	initAxisSliders("oscillator");
 	resetAxisSliders("oscillator");
+	initOscillatorIncrements();
 
 	// Generate text
 	generateText("randomsentence");
 
-	// Move instrument in
-	setTimeout(() => {
+	// Move instrument in, unless the fonts menu is sitting on top of it
+	oscillatorEntrance = setTimeout(() => {
+		if (parseInt(document.querySelector('.menu-fonts').dataset.active) == 1) {
+			return;
+		}
 		instrumentOscillator.dataset.position = "center";
 		instrumentOscillatorLoop();
 	}, 100)
 }
 
 function resumeOscillator() {
+	clearTimeout(oscillatorEntrance);
 	instrumentOscillatorLoop();
 
-	// Move instrument in
-	setTimeout(() => {
+	// Move instrument in, unless the fonts menu is sitting on top of it
+	oscillatorEntrance = setTimeout(() => {
+		if (parseInt(document.querySelector('.menu-fonts').dataset.active) == 1) {
+			return;
+		}
 		const instrumentOscillator = document.querySelector('#oscillator');
 		instrumentOscillator.dataset.position = "center";
 	}, 100)
 }
 
-function instrumentOscillatorLoop() {
-	if (!instrumentPlaying) {
+function instrumentOscillatorLoop(loopID = ++oscillatorLoopID) {
+	// Only the newest loop keeps running, so switching fonts quickly can’t stack
+	// two loops on top of each other and double the speed
+	if (!instrumentPlaying || loopID != oscillatorLoopID) {
 		return
 	}
+
+	// Nothing to animate on a static font
+	if (activeFontAxesCount == 0) {
+		return
+	}
+
+	readMic();
 	let axes = Object.keys(oscillatorSettings);
 	let axisNumber = 0;
 	let fontVariation = "";
+
+	// Snapshot the first axis before anything moves, so locked axes all advance
+	// from the same starting point it does
+	let lockedFrom = false;
+	if (oscillatorLock) {
+		lockedFrom = {
+			"waveform": oscillatorSettings[axes[0]]["waveform"],
+			"percent": oscillatorSettings[axes[0]]["percent"],
+			"direction": oscillatorSettings[axes[0]]["direction"],
+			"mode": oscillatorSettings[axes[0]]["mode"],
+			"power": oscillatorSettings[axes[0]]["power"],
+			"stagger": oscillatorSettings[axes[0]]["stagger"],
+			"phase": oscillatorSettings[axes[0]]["phase"],
+			"groupsize": oscillatorSettings[axes[0]]["groupsize"],
+			"micdirection": oscillatorSettings[axes[0]]["micdirection"],
+			"sensitivity": oscillatorSettings[axes[0]]["sensitivity"],
+			"speed": oscillatorSettings[axes[0]]["speed"]
+		};
+	}
 	for (let axis of axes) {
 		let axisOscillatorInfo = oscillatorSettings[axis];
 
@@ -1338,17 +2115,40 @@ function instrumentOscillatorLoop() {
 			axisOscillatorInfo["waveform"],
 			axisOscillatorInfo["percent"],
 			axisOscillatorInfo["direction"],
-			axisOscillatorInfo["state"]
+			axisOscillatorInfo["mode"],
+			axisOscillatorInfo["power"],
+			axisOscillatorInfo["stagger"],
+			axisOscillatorInfo["phase"],
+			axisOscillatorInfo["groupsize"],
+			axisOscillatorInfo["micdirection"],
+			axisOscillatorInfo["sensitivity"],
+			axisOscillatorInfo["speed"]
 		]
-		if (oscillatorLock && axisNumber > 0) {
-			axisOscillatorInfo["waveform"] = oscillatorSettings[axes[0]]["waveform"];
-			axisOscillatorInfo["percent"] = oscillatorSettings[axes[0]]["percent"];
-			axisOscillatorInfo["direction"] = oscillatorSettings[axes[0]]["direction"];
-			axisOscillatorInfo["state"] = oscillatorSettings[axes[0]]["state"];
+		if (lockedFrom && axisNumber > 0) {
+			for (let setting of Object.keys(lockedFrom)) {
+				axisOscillatorInfo[setting] = lockedFrom[setting];
+			}
 		}
 		
 		let baseFrequency = oscillatorFrequencies[axisNumber%oscillatorFrequencies.length];
-		if (axisOscillatorInfo["state"]) {
+		const axisMode = axisOscillatorInfo["mode"];
+		if (axisOscillatorInfo["power"] == "off") {
+			// Paused: the axis holds wherever it got to
+
+		} else if (axisMode == "mic") {
+			// The mic drives the axis directly — no tone, or it would feed back
+			const level = micAxisLevel(axis);
+			axisOscillatorInfo["percent"] = level;
+			setAxisSlider("oscillator", axis, level);
+
+		} else {
+			// Stagger reads off a phase that keeps counting up, so each letter can
+			// turn around at its own moment instead of all of them at once
+			axisOscillatorInfo["phase"] += (axisOscillatorInfo["speed"])/100;
+			if (axisOscillatorInfo["phase"] >= 2) {
+				axisOscillatorInfo["phase"] -= 2;
+			}
+
 			if (axisOscillatorInfo["waveform"] == "sine") {
 				axisOscillatorInfo["percent"] += (axisOscillatorInfo["speed"])/100 * axisOscillatorInfo["direction"];
 				if (axisOscillatorInfo["percent"] >= 1) {
@@ -1436,7 +2236,14 @@ function instrumentOscillatorLoop() {
 			axisOscillatorInfo["waveform"] = backup[0];
 			axisOscillatorInfo["percent"] = backup[1];
 			axisOscillatorInfo["direction"] = backup[2];
-			axisOscillatorInfo["state"] = backup[3];
+			axisOscillatorInfo["mode"] = backup[3];
+			axisOscillatorInfo["power"] = backup[4];
+			axisOscillatorInfo["stagger"] = backup[5];
+			axisOscillatorInfo["phase"] = backup[6];
+			axisOscillatorInfo["groupsize"] = backup[7];
+			axisOscillatorInfo["micdirection"] = backup[8];
+			axisOscillatorInfo["sensitivity"] = backup[9];
+			axisOscillatorInfo["speed"] = backup[10];
 		}
 
 		fontVariation += `"${axis}" ${activeFontAxes[axis]["value"]}`;
@@ -1449,8 +2256,11 @@ function instrumentOscillatorLoop() {
 	// Apply styles to display
 	const instrumentText = document.querySelector(`#oscillator .instrument-text`);
 	instrumentText.style.fontVariationSettings = fontVariation;
+	if (staggerActive) {
+		applyStaggerVariation();
+	}
 
-	oscillatorLoop = setTimeout(instrumentOscillatorLoop, 17);
+	oscillatorLoop = setTimeout(() => instrumentOscillatorLoop(loopID), 17);
 }
 function easeInOutQuad(x) {
 	return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
@@ -1462,6 +2272,36 @@ function easeInOutExpo(x) {
 		? 1
 		: x < 0.5 ? Math.pow(2, 20 * x - 10) / 2
 		: (2 - Math.pow(2, -20 * x + 10)) / 2;
+}
+function easeInOutQuadInverse(y) {
+	if (y < 0.5) {
+		return Math.sqrt(y/2);
+	}
+	return 1 - Math.sqrt((1-y)*2)/2;
+}
+function easeInOutExpoInverse(y) {
+	if (y <= 0) {
+		return 0;
+	}
+	if (y >= 1) {
+		return 1;
+	}
+	if (y < 0.5) {
+		return (Math.log2(y*2)+10)/20;
+	}
+	return (10-Math.log2((1-y)*2))/20;
+}
+
+// Sliders show the eased value, but the oscillator counts in raw progress. Going
+// backwards through the easing keeps a released slider from jumping
+function oscillatorWaveformPercent(axis, percent) {
+	const waveform = oscillatorSettings[axis]["waveform"];
+	if (waveform == "sine") {
+		return clamp(easeInOutQuadInverse(percent), 0, 1);
+	} else if (waveform == "square") {
+		return clamp(easeInOutExpoInverse(percent), 0, 1);
+	}
+	return percent;
 }	
 
 // Oscillator controls
@@ -1469,86 +2309,185 @@ let oscillatorWaveforms = ["sine", "triangle", "square", "sawtooth", "sawtoothre
 function oscillatorPickWaveform(axis, waveform) {
 	// Change settings
 	oscillatorSettings[axis]["waveform"] = waveform;
+	oscillatorSettings[axis]["letters"] = []; // reseed the per-letter oscillators
 
 	oscillatorDisplayValue(axis, "waveform", waveform);
 }
-function oscillatorSpeedDown(axis) {
-	oscillatorSettings[axis]["speed"] = oscillatorSettings[axis]["speed"]-.5;
-	if (oscillatorSettings[axis]["speed"] <= .5) {
-		oscillatorSettings[axis]["speed"] = .5;
-	}
-	oscillatorDisplaySpeed(axis);
+// Speed and sensitivity are the same sort of control, so they share the machinery
+let oscillatorIncrements = {
+	"speed": {"step": .1, "min": .1, "max": 5, "rounding": 1, "prefix": "&times; "},
+	"sensitivity": {"step": .1, "min": .1, "max": 1, "rounding": 1, "prefix": ""},
+	"groupsize": {"step": 1, "min": 2, "max": 20, "rounding": 0, "prefix": ""}
+};
+function oscillatorSetSetting(axis, setting, value) {
+	const limits = oscillatorIncrements[setting];
+	oscillatorSettings[axis][setting] = clamp(Number(value.toFixed(limits["rounding"])), limits["min"], limits["max"]);
+	oscillatorDisplaySetting(axis, setting);
 }
-function oscillatorSpeedUp(axis) {
-	oscillatorSettings[axis]["speed"] = oscillatorSettings[axis]["speed"]+.5;
-	if (oscillatorSettings[axis]["speed"] >= 5) {
-		oscillatorSettings[axis]["speed"] = 5;
+function oscillatorDisplaySetting(axis, setting) {
+	const limits = oscillatorIncrements[setting];
+	const axisControls = document.querySelector(`#oscillator .instrument-axis[data-axis='${axis}']`);
+	const display = axisControls.querySelector(`[data-instrument-section="${setting}"] .instrument-axis-increment-display`);
+	if (!display) {
+		return;
 	}
-	oscillatorDisplaySpeed(axis);
+	display.innerHTML = limits["prefix"] + oscillatorSettings[axis][setting].toFixed(limits["rounding"]);
 }
 function oscillatorSetSpeed(axis, value) {
-	oscillatorSettings[axis]["speed"] = value;
-	oscillatorDisplaySpeed(axis);
+	oscillatorSetSetting(axis, "speed", value);
 }
-function oscillatorDisplaySpeed(axis) {
-	// Fix floating point rounding
-	oscillatorSettings[axis]["speed"] = Math.round(oscillatorSettings[axis]["speed"] * 10) / 10;
 
-	// Display correct speed
-	const axisControls = document.querySelector(`#oscillator .instrument-axis[data-axis='${axis}']`);
-	const axisControlsSpeed = axisControls.querySelector(`[data-instrument-section="speed"] .instrument-axis-increment-display`);
-	if (Number.isInteger(oscillatorSettings[axis]["speed"])) {
-		axisControlsSpeed.innerHTML = "&times; "+oscillatorSettings[axis]["speed"]+".0";
-	} else {
-		axisControlsSpeed.innerHTML = "&times; "+oscillatorSettings[axis]["speed"];
+// Holding one of the buttons keeps nudging the number along
+let oscillatorIncrementDelay, oscillatorIncrementRepeat;
+function initOscillatorIncrements() {
+	for (let button of document.querySelectorAll('#oscillator [data-axis-increment]')) {
+		const axis = button.closest('.instrument-axis').dataset.axis;
+		const setting = button.dataset.axisIncrement;
+		const direction = button.dataset.axisStep;
+		button.addEventListener('mousedown', () => {startOscillatorIncrement(axis, setting, direction);});
+		button.addEventListener('touchstart', (e) => {e.preventDefault(); startOscillatorIncrement(axis, setting, direction);});
 	}
 }
+function stepOscillatorIncrement(axis, setting, direction) {
+	const before = oscillatorSettings[axis][setting];
+	let step = oscillatorIncrements[setting]["step"];
+	if (direction == "down") {
+		step = -step;
+	}
+	oscillatorSetSetting(axis, setting, before + step);
+
+	// Only click when the number actually moved, so the floor and ceiling go quiet
+	if (oscillatorSettings[axis][setting] != before) {
+		if (direction == "up") {
+			playBlock(1200);
+		} else {
+			playBlock(600);
+		}
+	}
+}
+function startOscillatorIncrement(axis, setting, direction) {
+	endOscillatorIncrement();
+	stepOscillatorIncrement(axis, setting, direction);
+
+	// Then keep stepping for as long as the button is held
+	oscillatorIncrementDelay = setTimeout(() => {
+		oscillatorIncrementRepeat = setInterval(() => {
+			stepOscillatorIncrement(axis, setting, direction);
+		}, 80);
+	}, 400);
+
+	document.addEventListener('mouseup', endOscillatorIncrement);
+	document.addEventListener('touchend', endOscillatorIncrement);
+}
+function endOscillatorIncrement() {
+	clearTimeout(oscillatorIncrementDelay);
+	clearInterval(oscillatorIncrementRepeat);
+	document.removeEventListener('mouseup', endOscillatorIncrement);
+	document.removeEventListener('touchend', endOscillatorIncrement);
+}
+
+// Which way the mic pushes an axis
+function oscillatorPickMicDirection(axis, direction) {
+	oscillatorSettings[axis]["micdirection"] = direction;
+	oscillatorDisplayValue(axis, "direction", direction);
+}
+
+// Power is the play/pause for an axis: everything it was doing stays on screen,
+// it just stops moving
+function oscillatorSetPower(axis, power) {
+	oscillatorSettings[axis]["power"] = power;
+	oscillatorDisplayValue(axis, "power", power);
+}
 function oscillatorOff(axis) {
-	oscillatorSettings[axis]["state"] = false;
-	oscillatorDisplayValue(axis, "state", "false");
+	oscillatorSetPower(axis, "off");
 }
 function oscillatorOffAll() {
 	for (let axis of Object.keys(activeFontAxes)) {
-		oscillatorSettings[axis]["state"] = false;
-		oscillatorDisplayValue(axis, "state", "false");
+		oscillatorSetPower(axis, "off");
 	}
 }
 function oscillatorOn(axis) {
-	oscillatorSettings[axis]["state"] = true;
-	oscillatorDisplayValue(axis, "state", "true");
+	oscillatorSetPower(axis, "on");
 }
 function oscillatorOnAll() {
 	for (let axis of Object.keys(activeFontAxes)) {
-		oscillatorSettings[axis]["state"] = true;
-		oscillatorDisplayValue(axis, "state", "true");
+		oscillatorSetPower(axis, "on");
 	}
 }
+
+let oscillatorModes = ["synth", "mic"];
+async function oscillatorSetMode(axis, mode) {
+	// The mic needs permission before it can do anything
+	if (mode == "mic") {
+		const ready = await startMic();
+		if (!ready) {
+			mode = "synth";
+		}
+	}
+
+	oscillatorSettings[axis]["mode"] = mode;
+	oscillatorDisplayValue(axis, "mode", mode);
+
+	// The rest of the axis panel changes with the mode
+	const axisControls = document.querySelector(`#oscillator .instrument-axis[data-axis='${axis}']`);
+	axisControls.dataset.mode = mode;
+
+	updateStagger();
+}
+
+// Stagger hands each letter its own run of the waveform
+function oscillatorSetStagger(axis, stagger) {
+	oscillatorSettings[axis]["stagger"] = stagger;
+	oscillatorDisplayValue(axis, "stagger", stagger);
+
+	const axisControls = document.querySelector(`#oscillator .instrument-axis[data-axis='${axis}']`);
+	if (stagger == "on") {
+		axisControls.dataset.stagger = 1;
+	} else {
+		axisControls.dataset.stagger = 0;
+	}
+
+	updateStagger();
+}
+// Rando and Reset take the mode with them. Mic only joins the shuffle once it’s
+// already open, so a random press never springs a permission prompt
 function oscillatorRando(axis) {
+	let modes = ["synth"];
+	if (micReady) {
+		modes.push("mic");
+	}
+	oscillatorSetPower(axis, "on");
+	oscillatorSetMode(axis, modes[Math.floor(Math.random()*modes.length)]);
+	oscillatorSetStagger(axis, staggerStates[Math.floor(Math.random()*staggerStates.length)]);
+	oscillatorSetSetting(axis, "groupsize", Math.random()*18 + 2);
 	oscillatorPickWaveform(axis, oscillatorWaveforms[Math.floor(Math.random()*oscillatorWaveforms.length)]);
-	oscillatorSetSpeed(axis, (Math.round(Math.random()*9) * .5 + .5));
+	oscillatorPickMicDirection(axis, micDirections[Math.floor(Math.random()*micDirections.length)]);
+	oscillatorSetSpeed(axis, (Math.random()*4.5 + .5));
+	oscillatorSetSetting(axis, "sensitivity", Math.random()*.9 + .1);
 	oscillatorSettings[axis]["percent"] = Math.random();
 	setAxisSlider("oscillator", axis, oscillatorSettings[axis]["percent"]);
 }
 function oscillatorRandoAll() {
 	for (let axis of Object.keys(activeFontAxes)) {
-		oscillatorPickWaveform(axis, oscillatorWaveforms[Math.floor(Math.random()*oscillatorWaveforms.length)]);
-		oscillatorSetSpeed(axis, (Math.round(Math.random()*9) * .5 + .5));
-		oscillatorSettings[axis]["percent"] = Math.random();
-		setAxisSlider("oscillator", axis, oscillatorSettings[axis]["percent"]);
+		oscillatorRando(axis);
 	}
 }
 function oscillatorReset(axis) {
+	oscillatorSetPower(axis, "on");
+	oscillatorSetMode(axis, "synth");
+	oscillatorSetStagger(axis, "off");
+	oscillatorSetSetting(axis, "groupsize", 10);
 	oscillatorPickWaveform(axis, "sine");
+	oscillatorPickMicDirection(axis, "up");
 	oscillatorSetSpeed(axis, 1);
+	oscillatorSetSetting(axis, "sensitivity", .3);
 	oscillatorSettings[axis]["percent"] = 0;
+	oscillatorSettings[axis]["phase"] = 0;
 	setAxisSlider("oscillator", axis, oscillatorSettings[axis]["percent"]);
 }
 function oscillatorResetAll() {
 	for (let axis of Object.keys(activeFontAxes)) {
-		oscillatorPickWaveform(axis, "sine");
-		oscillatorSetSpeed(axis, 1);
-		oscillatorSettings[axis]["percent"] = 0;
-		setAxisSlider("oscillator", axis, oscillatorSettings[axis]["percent"]);
+		oscillatorReset(axis);
 	}
 }
 
@@ -1652,10 +2591,12 @@ function generateText(textType) {
 	} else if (textType == "randomsentence") {
 		instrumentDisplay.innerText = randomSentence();
 	} else if (textType == "randomcharacters") {
-		instrumentDisplay.innerText = randomCharacters(Math.round(Math.random()*100+30));
+		instrumentDisplay.innerText = randomCharacters(Math.round(Math.random()*200+30));
 	} else if (textType == "repeatedcharacters") {
-		instrumentDisplay.innerText = repeatedCharacters(Math.round(Math.random()*100+30));
+		instrumentDisplay.innerText = repeatedCharacters(Math.round(Math.random()*200+30));
 	}
+
+	refreshStaggerText();
 }
 
 // ——————————————————————————————————————————
@@ -2028,10 +2969,5 @@ function playPercussion(sample) {
 }
 
 // TODO
-// - fix bug where oscillator moves too fast when next font is clicked quickly
-// - make font credit bigger
-// - allow for more speed adjustments and holding down button to change speed easier
-// - fix floating point rounding error when changing axis bounds
-// - fix lock together not updating when dragging first axis
 // - add scrambler instrument (or find way to activate via oscillator?)
 // - add conversator inside of oscillator instrument
