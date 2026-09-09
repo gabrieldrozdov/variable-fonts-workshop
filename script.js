@@ -217,6 +217,16 @@ function swapColors() {
 	displayForegroundColor(textColor.value);
 	displayBackgroundColor(displayColor.value);
 }
+function randomizeColors() {
+	const textColor = document.querySelector(`#textcolor`);
+	const displayColor = document.querySelector(`#displaycolor`);
+
+	textColor.value = randomColor();
+	displayColor.value = randomColor();
+
+	displayForegroundColor(textColor.value);
+	displayBackgroundColor(displayColor.value);
+}
 function resetColors() {
 	const display = document.querySelector(`#${activeInstrument} .instrument-text`);
 	display.style.color = "#1a1a1a";
@@ -1166,7 +1176,7 @@ function randomizeSettings() {
 
 	setAlignment(alignments[Math.floor(Math.random()*alignments.length)]);
 	setCapitalization(capitalizations[Math.floor(Math.random()*capitalizations.length)]);
-	randomColors();
+	// randomColors();
 	randomizeFontFeatures();
 }
 

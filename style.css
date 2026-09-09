@@ -1322,6 +1322,9 @@ button {
 .instrument-settings-buttons-group[data-row="1"] {
 	flex-direction: row;
 }
+.instrument-settings-buttons-group[data-row="1"] > * {
+	flex-basis: 80px;
+}
 .instrument-settings-buttons-group[data-row="2"] {
 	flex-direction: row;
 	flex-wrap: wrap;

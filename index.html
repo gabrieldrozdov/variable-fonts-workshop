@@ -327,6 +327,20 @@
 					</section>
 
 					<section class="instrument-settings-group">
+						<h4 class="instrument-settings-label">Text Settings</h4>
+						<div class="instrument-settings-buttons">
+							<div class="instrument-settings-buttons-group" data-row="1">
+								<button data-state="0" class="controls-menu-button" onclick="randomizeSettings(); playBlockRandom();">
+									<span>RANDO</span>
+								</button>
+								<button data-state="0" class="controls-menu-button" onclick="resetSettings(); playBlock(400);">
+									<span>RESET</span>
+								</button>
+							</div>
+						</div>
+					</section>
+
+					<section class="instrument-settings-group">
 						<h4 class="instrument-settings-label">Colors</h4>
 						<div class="instrument-settings-buttons">
 							<div class="instrument-settings-buttons-group" data-row="1">
@@ -339,23 +353,17 @@
 									<span class="controls-menu-color-label">Screen</span>
 								</div>
 							</div>
-							<button class="controls-menu-button" onclick="swapColors(); playBlockRandom();" data-state="0">
-								<span>SWAP COLORS</span>
-							</button>
-						</div>
-					</section>
-
-					<section class="instrument-settings-group">
-						<h4 class="instrument-settings-label">Actions</h4>
-						<div class="instrument-settings-buttons">
 							<div class="instrument-settings-buttons-group" data-row="1">
-								<button data-state="0" class="controls-menu-button" onclick="randomizeSettings(); playBlockRandom();">
+								<button class="controls-menu-button" onclick="swapColors(); playBlockRandom();" data-state="0">
+									<span>SWAP</span>
+								</button>
+								<button class="controls-menu-button" onclick="randomizeColors(); playBlockRandom();" data-state="0">
 									<span>RANDO</span>
 								</button>
-								<button data-state="0" class="controls-menu-button" onclick="resetSettings(); playBlock(400);">
-									<span>RESET</span>
-								</button>
 							</div>
+							<button class="controls-menu-button" onclick="resetColors(); playBlockRandom();" data-state="0">
+								<span>RESET</span>
+							</button>
 						</div>
 					</section>
 
